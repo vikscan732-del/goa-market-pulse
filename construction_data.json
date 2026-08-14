@@ -1,0 +1,1103 @@
+{
+  "last_updated": "Today, 02:45 PM",
+  "total_categories": 16,
+  "total_materials": 200,
+  "categories": [
+    {
+      "category": "🏗️ Cement → IS 269",
+      "icon": "🧱",
+      "items": [
+        {
+          "name": "OPC 43 Grade Cement",
+          "price": "₹454",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "OPC 53 Grade Cement",
+          "price": "₹477",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "PPC Cement (Fly Ash)",
+          "price": "₹432",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "PSC Cement (Slag)",
+          "price": "₹442",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "White Cement",
+          "price": "₹26",
+          "unit": "per kg"
+        },
+        {
+          "name": "UltraTech OPC 53 Grade",
+          "price": "₹477",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "UltraTech PPC",
+          "price": "₹445",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "UltraTech Super",
+          "price": "₹487",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "Shree Rockstrong PPC",
+          "price": "₹408",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "Shree Bangur OPC 53",
+          "price": "₹433",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "Ambuja Plus OPC 53",
+          "price": "₹466",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "Ambuja Compocem",
+          "price": "₹424",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "ACC Gold",
+          "price": "₹463",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "ACC F2R",
+          "price": "₹427",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "JSW Portland",
+          "price": "₹435",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "Ramco Supergrade",
+          "price": "₹443",
+          "unit": "per 50kg bag"
+        },
+        {
+          "name": "Dalmia DSP",
+          "price": "₹424",
+          "unit": "per 50kg bag"
+        }
+      ]
+    },
+    {
+      "category": "🔩 Steel & Rebar → IS 1786",
+      "icon": "🏗️",
+      "items": [
+        {
+          "name": "TMT Bar 8mm (Fe500D)",
+          "price": "₹72",
+          "unit": "per kg"
+        },
+        {
+          "name": "TMT Bar 10mm (Fe500D)",
+          "price": "₹70",
+          "unit": "per kg"
+        },
+        {
+          "name": "TMT Bar 12mm (Fe500D)",
+          "price": "₹68",
+          "unit": "per kg"
+        },
+        {
+          "name": "TMT Bar 16mm (Fe500D)",
+          "price": "₹66",
+          "unit": "per kg"
+        },
+        {
+          "name": "TMT Bar 20mm (Fe500D)",
+          "price": "₹66",
+          "unit": "per kg"
+        },
+        {
+          "name": "TMT Bar 25mm (Fe500D)",
+          "price": "₹66",
+          "unit": "per kg"
+        },
+        {
+          "name": "Structural Steel (ISMB/ISMC)",
+          "price": "₹76",
+          "unit": "per kg"
+        },
+        {
+          "name": "MS Plate (6-12mm)",
+          "price": "₹73",
+          "unit": "per kg"
+        },
+        {
+          "name": "Binding Wire (18 gauge)",
+          "price": "₹65",
+          "unit": "per kg"
+        },
+        {
+          "name": "Tata Tiscon Fe 500D 8mm",
+          "price": "₹74",
+          "unit": "per kg"
+        },
+        {
+          "name": "Tata Tiscon Fe 500D 10mm",
+          "price": "₹73",
+          "unit": "per kg"
+        },
+        {
+          "name": "Tata Tiscon Fe 500D 12mm",
+          "price": "₹72",
+          "unit": "per kg"
+        },
+        {
+          "name": "Tata Tiscon Fe 500D 16mm",
+          "price": "₹71",
+          "unit": "per kg"
+        },
+        {
+          "name": "JSW Neosteel 500D 10mm",
+          "price": "₹72",
+          "unit": "per kg"
+        },
+        {
+          "name": "JSW Neosteel 500D 12mm",
+          "price": "₹71",
+          "unit": "per kg"
+        },
+        {
+          "name": "JSW Neosteel 500D 16mm",
+          "price": "₹69",
+          "unit": "per kg"
+        },
+        {
+          "name": "SAIL SeQR 10mm",
+          "price": "₹69",
+          "unit": "per kg"
+        },
+        {
+          "name": "SAIL SeQR 12mm",
+          "price": "₹68",
+          "unit": "per kg"
+        },
+        {
+          "name": "Vizag Steel 12mm",
+          "price": "₹68",
+          "unit": "per kg"
+        },
+        {
+          "name": "Kamdhenu Nxt 10mm",
+          "price": "₹64",
+          "unit": "per kg"
+        },
+        {
+          "name": "Kamdhenu Nxt 12mm",
+          "price": "₹63",
+          "unit": "per kg"
+        },
+        {
+          "name": "Jindal Panther 10mm",
+          "price": "₹65",
+          "unit": "per kg"
+        },
+        {
+          "name": "Jindal Panther 16mm",
+          "price": "₹64",
+          "unit": "per kg"
+        }
+      ]
+    },
+    {
+      "category": "⛰️ Sand & Aggregates →",
+      "icon": "⏳",
+      "items": [
+        {
+          "name": "River Sand",
+          "price": "₹2,627",
+          "unit": "per tonne"
+        },
+        {
+          "name": "M-Sand (Manufactured)",
+          "price": "₹1,751",
+          "unit": "per tonne"
+        },
+        {
+          "name": "Plastering Sand (P-Sand)",
+          "price": "₹2,001",
+          "unit": "per tonne"
+        },
+        {
+          "name": "Coarse Aggregate 20mm",
+          "price": "₹1,367",
+          "unit": "per tonne"
+        },
+        {
+          "name": "Coarse Aggregate 40mm",
+          "price": "₹1,228",
+          "unit": "per tonne"
+        },
+        {
+          "name": "Stone Dust / Crusher Dust",
+          "price": "₹938",
+          "unit": "per tonne"
+        },
+        {
+          "name": "Coarse Aggregate 10mm",
+          "price": "₹1,422",
+          "unit": "per tonne"
+        },
+        {
+          "name": "Boulder Soling (40mm+)",
+          "price": "₹1,088",
+          "unit": "per tonne"
+        },
+        {
+          "name": "Graded Sub-Base (GSB)",
+          "price": "₹1,060",
+          "unit": "per tonne"
+        },
+        {
+          "name": "Stone Chips 6mm",
+          "price": "₹1,452",
+          "unit": "per tonne"
+        },
+        {
+          "name": "Kadappa Aggregate",
+          "price": "₹1,951",
+          "unit": "per tonne"
+        }
+      ]
+    },
+    {
+      "category": "🧱 Ready-Mix Concrete →",
+      "icon": "🏗️",
+      "items": [
+        {
+          "name": "Ready-Mix M20",
+          "price": "₹5,523",
+          "unit": "per m³"
+        },
+        {
+          "name": "Ready-Mix M25",
+          "price": "₹6,025",
+          "unit": "per m³"
+        },
+        {
+          "name": "Ready-Mix M30",
+          "price": "₹6,528",
+          "unit": "per m³"
+        },
+        {
+          "name": "Ready-Mix M35",
+          "price": "₹7,086",
+          "unit": "per m³"
+        },
+        {
+          "name": "Ready-Mix M40",
+          "price": "₹7,531",
+          "unit": "per m³"
+        },
+        {
+          "name": "Lean Concrete M10 (PCC)",
+          "price": "₹4,520",
+          "unit": "per m³"
+        },
+        {
+          "name": "Plasticizer Admixture",
+          "price": "₹100",
+          "unit": "per kg"
+        },
+        {
+          "name": "Superplasticizer Admixture",
+          "price": "₹178",
+          "unit": "per kg"
+        }
+      ]
+    },
+    {
+      "category": "🧱 Bricks & Blocks →",
+      "icon": "🧱",
+      "items": [
+        {
+          "name": "Red Clay Brick (9×4×3\")",
+          "price": "₹14",
+          "unit": "per piece"
+        },
+        {
+          "name": "Fly Ash Brick",
+          "price": "₹7",
+          "unit": "per piece"
+        },
+        {
+          "name": "AAC Block (600×200×200)",
+          "price": "₹86",
+          "unit": "per piece"
+        },
+        {
+          "name": "Solid Concrete Block (400×200×200)",
+          "price": "₹57",
+          "unit": "per piece"
+        },
+        {
+          "name": "Hollow Concrete Block (400×200×200)",
+          "price": "₹51",
+          "unit": "per piece"
+        },
+        {
+          "name": "Siporex AAC Block 4 inch",
+          "price": "₹55",
+          "unit": "per piece"
+        },
+        {
+          "name": "Siporex AAC Block 6 inch",
+          "price": "₹75",
+          "unit": "per piece"
+        },
+        {
+          "name": "Biltech AAC Block 6 inch",
+          "price": "₹44",
+          "unit": "per piece"
+        },
+        {
+          "name": "Magicrete AAC Block 6 inch",
+          "price": "₹81",
+          "unit": "per piece"
+        },
+        {
+          "name": "CLC Block 6 inch",
+          "price": "₹42",
+          "unit": "per piece"
+        },
+        {
+          "name": "Paver Block 60mm",
+          "price": "₹49",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Paver Block 80mm",
+          "price": "₹57",
+          "unit": "per sqft"
+        }
+      ]
+    },
+    {
+      "category": "🔲 Tiles & Flooring →",
+      "icon": "🏗️",
+      "items": [
+        {
+          "name": "Vitrified Tiles (2×2 ft)",
+          "price": "₹89",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Ceramic Wall Tiles",
+          "price": "₹44",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Granite Slab (Polished)",
+          "price": "₹154",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Marble Slab (Indian)",
+          "price": "₹133",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Kota Stone",
+          "price": "₹31",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Kajaria Vitrified Tile",
+          "price": "₹69",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Kajaria Ceramic Wall Tile",
+          "price": "₹54",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Somany Vitrified Tile",
+          "price": "₹66",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Johnson Ceramic Wall Tile",
+          "price": "₹51",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Asian Granito Vitrified",
+          "price": "₹71",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Italian Marble (Statuario)",
+          "price": "₹699",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Makrana Marble (White)",
+          "price": "₹392",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Wooden Laminate Flooring",
+          "price": "₹115",
+          "unit": "per sqft"
+        },
+        {
+          "name": "SPC Vinyl Flooring",
+          "price": "₹136",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Cuddapah Black Stone",
+          "price": "₹45",
+          "unit": "per sqft"
+        }
+      ]
+    },
+    {
+      "category": "🎨 Paints & Finishes → IS 15489",
+      "icon": "🎨",
+      "items": [
+        {
+          "name": "Interior Emulsion Paint",
+          "price": "₹298",
+          "unit": "per litre"
+        },
+        {
+          "name": "Exterior Emulsion Paint",
+          "price": "₹348",
+          "unit": "per litre"
+        },
+        {
+          "name": "Wall Primer",
+          "price": "₹124",
+          "unit": "per litre"
+        },
+        {
+          "name": "Wall Putty (White Cement)",
+          "price": "₹26",
+          "unit": "per kg"
+        },
+        {
+          "name": "Enamel Paint (Metal/Wood)",
+          "price": "₹336",
+          "unit": "per litre"
+        },
+        {
+          "name": "Asian Royale Luxury",
+          "price": "₹626",
+          "unit": "per litre"
+        },
+        {
+          "name": "Asian Apex Ultima",
+          "price": "₹614",
+          "unit": "per litre"
+        },
+        {
+          "name": "Asian Tractor Emulsion",
+          "price": "₹224",
+          "unit": "per litre"
+        },
+        {
+          "name": "Asian Tractor Distemper",
+          "price": "₹105",
+          "unit": "per litre"
+        },
+        {
+          "name": "Asian Apcolite Enamel",
+          "price": "₹330",
+          "unit": "per litre"
+        },
+        {
+          "name": "Berger Silk",
+          "price": "₹566",
+          "unit": "per litre"
+        },
+        {
+          "name": "Berger Weathercoat All Guard",
+          "price": "₹435",
+          "unit": "per litre"
+        },
+        {
+          "name": "Berger Easy Clean",
+          "price": "₹358",
+          "unit": "per litre"
+        },
+        {
+          "name": "Berger Bison Distemper",
+          "price": "₹113",
+          "unit": "per litre"
+        },
+        {
+          "name": "Berger Luxol Hi-gloss",
+          "price": "₹347",
+          "unit": "per litre"
+        },
+        {
+          "name": "Nerolac Excel Total",
+          "price": "₹424",
+          "unit": "per litre"
+        },
+        {
+          "name": "Nerolac Impressions",
+          "price": "₹537",
+          "unit": "per litre"
+        },
+        {
+          "name": "Nerolac Beauty Smooth",
+          "price": "₹151",
+          "unit": "per litre"
+        },
+        {
+          "name": "Dulux Weathershield",
+          "price": "₹281",
+          "unit": "per litre"
+        },
+        {
+          "name": "Dulux Velvet Touch",
+          "price": "₹513",
+          "unit": "per litre"
+        },
+        {
+          "name": "Dulux Diamond Glo",
+          "price": "₹447",
+          "unit": "per litre"
+        },
+        {
+          "name": "JK Wall Putty",
+          "price": "₹27",
+          "unit": "per kg"
+        },
+        {
+          "name": "Birla Wall Putty",
+          "price": "₹28",
+          "unit": "per kg"
+        }
+      ]
+    },
+    {
+      "category": "🪵 Wood & Plywood →",
+      "icon": "🪵",
+      "items": [
+        {
+          "name": "Commercial Plywood (19mm)",
+          "price": "₹78",
+          "unit": "per sqft"
+        },
+        {
+          "name": "BWR Plywood (19mm)",
+          "price": "₹140",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Marine Plywood (19mm)",
+          "price": "₹165",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Sunmica / Laminate Sheet",
+          "price": "₹29",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Teak Wood (Sagwan)",
+          "price": "₹3,985",
+          "unit": "per cft"
+        },
+        {
+          "name": "Greenply Commercial Ply",
+          "price": "₹61",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Century Prowud",
+          "price": "₹92",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Kitply Marine Plywood",
+          "price": "₹120",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Flush Door (Commercial)",
+          "price": "₹144",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Greenlam Laminate Sheet",
+          "price": "₹48",
+          "unit": "per sqft"
+        },
+        {
+          "name": "MDF Board 19mm",
+          "price": "₹68",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Blockboard 19mm",
+          "price": "₹98",
+          "unit": "per sqft"
+        }
+      ]
+    },
+    {
+      "category": "🚿 Plumbing → IS 2065",
+      "icon": "🚰",
+      "items": [
+        {
+          "name": "CPVC Pipe (1/2\" / 15mm)",
+          "price": "₹61",
+          "unit": "per metre"
+        },
+        {
+          "name": "PVC Pipe (4\" / 110mm SWR)",
+          "price": "₹368",
+          "unit": "per metre"
+        },
+        {
+          "name": "GI Pipe (1\" / 25mm)",
+          "price": "₹275",
+          "unit": "per metre"
+        },
+        {
+          "name": "Plastic Water Tank (1000L)",
+          "price": "₹7,166",
+          "unit": "per piece"
+        },
+        {
+          "name": "Astral CPVC Pipe 20mm (3/4\")",
+          "price": "₹86",
+          "unit": "per metre"
+        },
+        {
+          "name": "Supreme CPVC Pipe 20mm",
+          "price": "₹83",
+          "unit": "per metre"
+        },
+        {
+          "name": "Finolex uPVC Pipe 25mm",
+          "price": "₹52",
+          "unit": "per metre"
+        },
+        {
+          "name": "Prince PPR Pipe 25mm",
+          "price": "₹79",
+          "unit": "per metre"
+        },
+        {
+          "name": "GI Class-B Pipe 20mm",
+          "price": "₹222",
+          "unit": "per metre"
+        },
+        {
+          "name": "Kohler Wall-Hung WC",
+          "price": "₹32,245",
+          "unit": "per piece"
+        },
+        {
+          "name": "Hindware One-Piece WC",
+          "price": "₹12,898",
+          "unit": "per piece"
+        },
+        {
+          "name": "Parryware WC",
+          "price": "₹10,012",
+          "unit": "per piece"
+        },
+        {
+          "name": "Jaquar Basin Faucet Mid",
+          "price": "₹5,733",
+          "unit": "per piece"
+        },
+        {
+          "name": "Jaquar Basin Faucet Premium",
+          "price": "₹12,898",
+          "unit": "per piece"
+        },
+        {
+          "name": "Cera Wash Basin",
+          "price": "₹3,725",
+          "unit": "per piece"
+        },
+        {
+          "name": "Sintex Water Tank 1000L",
+          "price": "₹8,599",
+          "unit": "per piece"
+        }
+      ]
+    },
+    {
+      "category": "⚡ Electrical → IS 694",
+      "icon": "⚡",
+      "items": [
+        {
+          "name": "Electrical Wire (1.0 sq mm)",
+          "price": "₹25",
+          "unit": "per metre"
+        },
+        {
+          "name": "Electrical Wire (2.5 sq mm)",
+          "price": "₹61",
+          "unit": "per metre"
+        },
+        {
+          "name": "MCB Single Pole (16A)",
+          "price": "₹189",
+          "unit": "per piece"
+        },
+        {
+          "name": "Modular Switch Plate (6M)",
+          "price": "₹296",
+          "unit": "per piece"
+        },
+        {
+          "name": "LED Bulb (9W)",
+          "price": "₹100",
+          "unit": "per piece"
+        },
+        {
+          "name": "Finolex Wire 1.5 sqmm",
+          "price": "₹39",
+          "unit": "per metre"
+        },
+        {
+          "name": "Havells Wire 2.5 sqmm",
+          "price": "₹66",
+          "unit": "per metre"
+        },
+        {
+          "name": "Polycab Wire 2.5 sqmm",
+          "price": "₹80",
+          "unit": "per metre"
+        },
+        {
+          "name": "KEI Wire 2.5 sqmm",
+          "price": "₹49",
+          "unit": "per metre"
+        },
+        {
+          "name": "Legrand Modular Switch",
+          "price": "₹531",
+          "unit": "per piece"
+        },
+        {
+          "name": "Anchor Modular Switch",
+          "price": "₹207",
+          "unit": "per piece"
+        },
+        {
+          "name": "Havells MCB 32A SP",
+          "price": "₹285",
+          "unit": "per piece"
+        },
+        {
+          "name": "L&T MCB 32A SP",
+          "price": "₹246",
+          "unit": "per piece"
+        },
+        {
+          "name": "Havells Ceiling Fan",
+          "price": "₹6,491",
+          "unit": "per piece"
+        },
+        {
+          "name": "Philips LED Bulb 9W",
+          "price": "₹141",
+          "unit": "per piece"
+        }
+      ]
+    },
+    {
+      "category": "🪟 Interiors & Glass →",
+      "icon": "🏗️",
+      "items": [
+        {
+          "name": "Plain Glass (5mm)",
+          "price": "₹47",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Toughened Glass (12mm)",
+          "price": "₹166",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Gypsum Board (12.5mm)",
+          "price": "₹22",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Plaster of Paris (POP)",
+          "price": "₹18",
+          "unit": "per kg"
+        },
+        {
+          "name": "Aluminium Section (Window)",
+          "price": "₹372",
+          "unit": "per kg"
+        },
+        {
+          "name": "Toughened Glass 8mm",
+          "price": "₹116",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Double-Glazed Unit (DGU)",
+          "price": "₹301",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Jindal Aluminium Section",
+          "price": "₹378",
+          "unit": "per kg"
+        },
+        {
+          "name": "Fenesta uPVC Profile",
+          "price": "₹728",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Alstrong ACP Sheet",
+          "price": "₹95",
+          "unit": "per sqft"
+        },
+        {
+          "name": "Saint-Gobain Gypsum Board",
+          "price": "₹26",
+          "unit": "per sqft"
+        }
+      ]
+    },
+    {
+      "category": "💧 Waterproofing → IS 3067",
+      "icon": "🏗️",
+      "items": [
+        {
+          "name": "Waterproofing Chemical (Dr Fixit/SikaTop)",
+          "price": "₹189",
+          "unit": "per litre"
+        },
+        {
+          "name": "APP Membrane (3mm)",
+          "price": "₹173",
+          "unit": "per sqm"
+        },
+        {
+          "name": "Dr Fixit LW+ Integral",
+          "price": "₹124",
+          "unit": "per kg"
+        },
+        {
+          "name": "Dr Fixit Pidiseal",
+          "price": "₹227",
+          "unit": "per litre"
+        },
+        {
+          "name": "Dr Fixit Raincoat",
+          "price": "₹573",
+          "unit": "per litre"
+        },
+        {
+          "name": "Fosroc Nitoproof 120",
+          "price": "₹265",
+          "unit": "per litre"
+        },
+        {
+          "name": "Fosroc Brushbond RFH",
+          "price": "₹111",
+          "unit": "per kg"
+        },
+        {
+          "name": "Sika Top Seal 107",
+          "price": "₹153",
+          "unit": "per kg"
+        },
+        {
+          "name": "PU Liquid Membrane",
+          "price": "₹416",
+          "unit": "per kg"
+        },
+        {
+          "name": "Bituminous Coating",
+          "price": "₹114",
+          "unit": "per kg"
+        }
+      ]
+    },
+    {
+      "category": "👷 Labour Rates →",
+      "icon": "🏗️",
+      "items": [
+        {
+          "name": "Skilled Mason",
+          "price": "₹963",
+          "unit": "per day"
+        },
+        {
+          "name": "Unskilled Labour",
+          "price": "₹662",
+          "unit": "per day"
+        },
+        {
+          "name": "Plumber",
+          "price": "₹911",
+          "unit": "per day"
+        },
+        {
+          "name": "Electrician",
+          "price": "₹911",
+          "unit": "per day"
+        },
+        {
+          "name": "Painter",
+          "price": "₹795",
+          "unit": "per day"
+        },
+        {
+          "name": "Tile Layer",
+          "price": "₹998",
+          "unit": "per day"
+        },
+        {
+          "name": "Carpenter",
+          "price": "₹998",
+          "unit": "per day"
+        },
+        {
+          "name": "Bar Bender / Steel Fixer",
+          "price": "₹939",
+          "unit": "per day"
+        }
+      ]
+    },
+    {
+      "category": "🚽 Sanitaryware →",
+      "icon": "🏗️",
+      "items": [
+        {
+          "name": "Pedestal Wash Basin",
+          "price": "₹3,213",
+          "unit": "per piece"
+        },
+        {
+          "name": "Wall-hung Wash Basin",
+          "price": "₹2,295",
+          "unit": "per piece"
+        },
+        {
+          "name": "WC (Floor-mount, S-trap)",
+          "price": "₹6,885",
+          "unit": "per piece"
+        },
+        {
+          "name": "WC (Wall-hung, with cistern)",
+          "price": "₹12,394",
+          "unit": "per piece"
+        },
+        {
+          "name": "Stainless Steel Kitchen Sink",
+          "price": "₹5,049",
+          "unit": "per piece"
+        },
+        {
+          "name": "Shower + Diverter Set",
+          "price": "₹5,508",
+          "unit": "per set"
+        },
+        {
+          "name": "Hindware Pedestal Basin",
+          "price": "₹4,453",
+          "unit": "per piece"
+        },
+        {
+          "name": "Cera Pedestal Basin",
+          "price": "₹4,131",
+          "unit": "per piece"
+        },
+        {
+          "name": "Jaquar Recessed Wash Basin",
+          "price": "₹6,426",
+          "unit": "per piece"
+        }
+      ]
+    },
+    {
+      "category": "🔌 Switches & Sockets →",
+      "icon": "🏗️",
+      "items": [
+        {
+          "name": "Modular Switch 1-way 6A",
+          "price": "₹110",
+          "unit": "per piece"
+        },
+        {
+          "name": "Modular Switch 2-way 16A",
+          "price": "₹216",
+          "unit": "per piece"
+        },
+        {
+          "name": "Modular Socket 6/16A",
+          "price": "₹248",
+          "unit": "per piece"
+        },
+        {
+          "name": "Modular Switch Plate (6-mod)",
+          "price": "₹335",
+          "unit": "per piece"
+        },
+        {
+          "name": "Anchor Roma 1-way Switch",
+          "price": "₹85",
+          "unit": "per piece"
+        },
+        {
+          "name": "Legrand Myrius Switch 6A",
+          "price": "₹211",
+          "unit": "per piece"
+        }
+      ]
+    },
+    {
+      "category": "🚪 Doors →",
+      "icon": "🏗️",
+      "items": [
+        {
+          "name": "Flush Door 7×3 ft (Internal)",
+          "price": "₹3,351",
+          "unit": "per piece"
+        },
+        {
+          "name": "WPC Door 7×3 ft (Bathroom)",
+          "price": "₹3,379",
+          "unit": "per piece"
+        },
+        {
+          "name": "Teak Panel Door 7×3 ft",
+          "price": "₹21,271",
+          "unit": "per piece"
+        },
+        {
+          "name": "Sal Wood Door Frame (Chowkat)",
+          "price": "₹4,590",
+          "unit": "per piece"
+        }
+      ]
+    }
+  ]
+}
