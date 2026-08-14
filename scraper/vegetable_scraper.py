@@ -6,9 +6,6 @@ import requests
 from PIL import Image
 import pytesseract
 
-# -------------------------------------------------------------
-# 1. FETCH LATEST INSTAGRAM POST & DOWNLOAD IMAGE
-# -------------------------------------------------------------
 API_URL = "https://europe-west3-storyviewer-7a64d.cloudfunctions.net/getInstagramData"
 PAYLOAD = {
     "data": {
@@ -24,8 +21,21 @@ HEADERS = {
 }
 IMAGE_FILENAME = "latest_price.jpg"
 
+def find_image_urls(obj):
+    """Recursively traverse the JSON to find any valid image URL."""
+    urls = []
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            if isinstance(v, str) and v.startswith("http") and any(ext in v.lower() for ext in [".jpg", ".jpeg", ".png", "cdninstagram", "fbcdn"]):
+                urls.append(v)
+            else:
+                urls.extend(find_image_urls(v))
+    elif isinstance(obj, list):
+        for item in obj:
+            urls.extend(find_image_urls(item))
+    return urls
+
 print("📡 Fetching latest Instagram post from @gshclgoa...")
-image_downloaded = False
 
 try:
     response = requests.post(API_URL, json=PAYLOAD, headers=HEADERS, timeout=30)
@@ -34,46 +44,35 @@ try:
     if response.status_code == 200:
         res_data = response.json()
         
-        # Save raw response for reference
+        # Save raw response for debug inspection if needed
         with open("latest_post.json", "w", encoding="utf-8") as f:
             json.dump(res_data, f, indent=2, ensure_ascii=False)
 
-        # Extract image URL from response (handles multiple API response structures)
-        image_url = None
-        posts = res_data.get("result", {}).get("items", []) or res_data.get("data", {}).get("items", []) or res_data.get("items", [])
+        found_urls = find_image_urls(res_data)
         
-        if posts and len(posts) > 0:
-            latest_post = posts[0]
-            # Standard Instagram image candidates
-            candidates = latest_post.get("image_versions2", {}).get("candidates", [])
-            if candidates:
-                image_url = candidates[0].get("url")
-            elif "display_url" in latest_post:
-                image_url = latest_post.get("display_url")
-
-        if image_url:
-            print(f"📸 Downloading image from: {image_url[:60]}...")
+        if found_urls:
+            image_url = found_urls[0]
+            print(f"📸 Found image URL: {image_url[:80]}...")
             img_res = requests.get(image_url, timeout=30)
             if img_res.status_code == 200:
                 with open(IMAGE_FILENAME, "wb") as img_file:
                     img_file.write(img_res.content)
-                print(f"✅ Saved {IMAGE_FILENAME}")
-                image_downloaded = True
+                print(f"✅ Successfully downloaded {IMAGE_FILENAME}")
         else:
-            print("⚠️ Could not find an image URL in the latest post payload.")
+            print("⚠️ No valid image URLs found in the JSON payload.")
     else:
-        print("⚠️ Failed to fetch Instagram data.")
+        print(f"⚠️ Instagram API failed with response: {response.text[:200]}")
 except Exception as e:
-    print(f"⚠️ Instagram fetch error: {e}")
+    print(f"⚠️ Network error while fetching Instagram post: {e}")
 
 # -------------------------------------------------------------
-# 2. RUN TESSERACT OCR ON DOWNLOADED IMAGE
+# 2. RUN OCR ON DOWNLOADED IMAGE
 # -------------------------------------------------------------
 if not os.path.exists(IMAGE_FILENAME):
     print(f"❌ '{IMAGE_FILENAME}' not found. Cannot proceed with OCR.")
     exit(0)
 
-print("\n🔍 Running OCR on image...")
+print("\n🔍 Running OCR...")
 img = Image.open(IMAGE_FILENAME)
 
 text = pytesseract.image_to_string(
@@ -86,7 +85,7 @@ print("\n========== RAW OCR TEXT ==========")
 print(text)
 
 # -------------------------------------------------------------
-# 3. TEXT CORRECTIONS & EMOJI MAPPINGS
+# 3. TYPO FIXES & EMOJIS
 # -------------------------------------------------------------
 FIXES = {
     "Carot": "Carrot",
@@ -135,7 +134,7 @@ EMOJI = {
 }
 
 # -------------------------------------------------------------
-# 4. PARSE VEGETABLE NAMES & PRICES
+# 4. PARSE VEGETABLES & PRICES
 # -------------------------------------------------------------
 parsed_veggies = []
 
@@ -156,17 +155,18 @@ for line in text.splitlines():
     except ValueError:
         continue
 
-    # Apply fixes
     for wrong, correct in FIXES.items():
         if name.lower() == wrong.lower():
             name = correct
             break
 
+    unit = "pc" if "cauliflower" in name.lower() or "flower" in name.lower() else "kg"
+
     parsed_veggies.append({
         "name": name,
         "price": price,
-        "unit": "piece" if "flower" in name.lower() or "pc" in name.lower() else "kg",
-        "market": "GSHCL Horticultural",
+        "unit": unit,
+        "market": "GSHCL Goa",
         "icon": EMOJI.get(name, "🥬")
     })
 
@@ -178,7 +178,7 @@ if not parsed_veggies:
 parsed_veggies.sort(key=lambda x: x["name"])
 
 # -------------------------------------------------------------
-# 5. CALCULATE PRICE CHANGES AGAINST HISTORY
+# 5. CALCULATE PRICE HISTORY & CHANGES
 # -------------------------------------------------------------
 today = datetime.now().strftime("%Y-%m-%d")
 history_file = "history.json"
@@ -191,7 +191,7 @@ if os.path.exists(history_file):
     except:
         history = {}
 
-final_vegetable_list = []
+final_vegetables = []
 
 for veg in parsed_veggies:
     v_name = veg["name"]
@@ -200,7 +200,6 @@ for veg in parsed_veggies:
     if v_name not in history:
         history[v_name] = []
 
-    # Calculate change with yesterday's price
     yesterday_price = v_price
     if len(history[v_name]) >= 1:
         yesterday_price = history[v_name][-1]["price"]
@@ -210,32 +209,31 @@ for veg in parsed_veggies:
 
     veg["change"] = change
     veg["changePercent"] = change_pct
-    final_vegetable_list.append(veg)
+    final_vegetables.append(veg)
 
-    # Save to today's history
+    # Update today's date
     found = False
     for entry in history[v_name]:
-        if entry["date"] == today:
+        if entry.get("date") == today:
             entry["price"] = v_price
             found = True
             break
     if not found:
         history[v_name].append({"date": today, "price": v_price})
 
-# Save updated history
 with open(history_file, "w", encoding="utf-8") as f:
     json.dump(history, f, indent=2, ensure_ascii=False)
 
 # -------------------------------------------------------------
-# 6. WRITE TO vegetables_data.json FOR GITHUB PAGES
+# 6. WRITE TO vegetables_data.json
 # -------------------------------------------------------------
 now = datetime.now()
 output_data = {
-    "last_updated": f"Today, {now.strftime('%I:%M %p')}",
-    "vegetables": final_vegetable_list
+    "last_updated": f"GSHCL {now.strftime('%d %b')}, Today",
+    "vegetables": final_vegetables
 }
 
 with open("vegetables_data.json", "w", encoding="utf-8") as f:
     json.dump(output_data, f, indent=2, ensure_ascii=False)
 
-print(f"\n🎉 Successfully updated vegetables_data.json with {len(final_vegetable_list)} items!")
+print(f"\n🎉 Successfully parsed and saved {len(final_vegetables)} vegetables into vegetables_data.json!")
