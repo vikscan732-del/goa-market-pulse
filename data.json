@@ -1,0 +1,55 @@
+{
+  "last_updated": "Today, 08:30 AM",
+  "trending_prices": [
+    {
+      "id": 1,
+      "title": "Supari (Arecanut)",
+      "category": "Goa Bagaydar",
+      "price": "240",
+      "unit": "kg",
+      "change": "10",
+      "change_percent": "4.0%",
+      "direction": "down"
+    },
+    {
+      "id": 2,
+      "title": "Onion",
+      "category": "Vegetable",
+      "price": "32",
+      "unit": "kg",
+      "change": "4",
+      "change_percent": "14.3%",
+      "direction": "up"
+    },
+    {
+      "id": 3,
+      "title": "LPG (14.2 kg)",
+      "category": "Fule Prices (Goa)",
+      "price": "903",
+      "unit": "cyl",
+      "change": "12",
+      "change_percent": "1.3%",
+      "direction": "down"
+    },
+    {
+      "id": 4,
+      "title": "Petrol",
+      "category": "Fule Prices (Goa)",
+      "price": "105.50",
+      "unit": "L",
+      "change": "0.50",
+      "change_percent": "0.5%",
+      "direction": "up"
+    },
+    {
+      "id": 5,
+      "title": "Gold (22 Carat)",
+      "category": "Market Rate (Goa)",
+      "price": "6,720",
+      "unit": "gm",
+      "change": "30",
+      "change_percent": "0.45%",
+      "direction": "down"
+    }
+  ]
+}
