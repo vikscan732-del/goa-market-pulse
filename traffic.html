@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goa Traffic Fines & ITMS Camera Rates - Goa Market Pulse</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased pb-20">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-50">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h1 class="text-base font-extrabold text-[#e11d48] leading-tight">Goa Traffic Fines</h1>
+                    <p class="text-[11px] text-slate-400 font-medium">Directorate of Transport, Goa (ITMS)</p>
+                </div>
+            </div>
+            <span class="bg-rose-50 text-[#e11d48] text-[10px] font-bold px-2.5 py-1 rounded-full border border-rose-200">
+                Official Rules
+            </span>
+        </div>
+    </header>
+
+    <main class="max-w-md mx-auto px-4 mt-3 space-y-3">
+
+        <!-- Search Bar -->
+        <div class="relative">
+            <i class="fas fa-search absolute left-3.5 top-3.5 text-slate-400 text-xs"></i>
+            <input type="text" id="searchInput" placeholder="Search helmet, signal, speeding, parking..." 
+                   class="w-full bg-white border border-slate-200 rounded-xl pl-9 pr-4 py-2.5 text-xs text-slate-700 placeholder-slate-400 focus:outline-none focus:border-[#e11d48] transition shadow-sm">
+        </div>
+
+        <!-- Warning / Suspension Notice Card -->
+        <div class="bg-gradient-to-r from-red-600 to-rose-600 rounded-2xl p-3.5 text-white shadow-sm">
+            <div class="flex items-start gap-2.5">
+                <span class="text-xl">⚠️</span>
+                <div>
+                    <h4 class="font-extrabold text-xs">Strict 3-Month License Suspension</h4>
+                    <p class="text-[10px] text-rose-100 mt-0.5 leading-relaxed">
+                        Under SC Committee on Road Safety rules, violations like <b>Red Light Jumping</b>, <b>Over Speeding</b>, <b>Mobile Driving</b>, <b>Overloading</b>, & <b>Drunk Driving</b> attract a fine <u>PLUS min. 3 months license suspension</u>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Title -->
+        <div class="flex items-center justify-between pt-1">
+            <h2 class="font-extrabold text-xs text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                <i class="fas fa-video text-rose-500"></i> ITMS Camera Violation Penalties
+            </h2>
+            <span id="violationCount" class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-bold">12 Offenses</span>
+        </div>
+
+        <!-- Fine Cards Container -->
+        <div id="finesContainer" class="space-y-2.5"></div>
+
+        <!-- ITMS Camera Locations Accordion -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mt-4">
+            <div id="locationHeader" class="p-3.5 cursor-pointer flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition">
+                <div class="flex items-center gap-2">
+                    <span class="text-base">📍</span>
+                    <span class="font-bold text-xs text-slate-800">26 Active ITMS Camera Locations in Goa</span>
+                </div>
+                <i id="locationArrow" class="fas fa-chevron-down text-slate-400 text-xs transition-transform duration-200"></i>
+            </div>
+            <div id="locationBody" class="p-3.5 border-t border-slate-100 text-xs text-slate-600 space-y-1.5" style="display: none;">
+                <p class="text-[11px] text-slate-500 font-semibold mb-2">Electronic camera enforcement implemented at:</p>
+                <div class="grid grid-cols-1 gap-1 text-[11px]">
+                    <div><b>1.</b> Merces, Panaji</div>
+                    <div><b>2.</b> Birla Cross Verna</div>
+                    <div><b>3.</b> Bellem Navelim, Margao</div>
+                    <div><b>4.</b> Old Market Circle Margao</div>
+                    <div><b>5.</b> Fatorda Margao</div>
+                    <div><b>6.</b> Tata Showroom Nuvem</div>
+                    <div><b>7.</b> Goa Ceramics Nuvem</div>
+                    <div><b>8.</b> Gorvotti Nuvem</div>
+                    <div><b>9.</b> Nuvem Bypass Nuvem</div>
+                    <div><b>10.</b> Arlem Circle, Margao</div>
+                    <div><b>11.</b> Bolshe Circle Gogal, Margao</div>
+                    <div><b>12.</b> Missing link Loutolim</div>
+                    <div><b>13.</b> Navelim Margao</div>
+                    <div><b>14.</b> Power House Circle Margao</div>
+                    <div><b>15.</b> Munj Vihar Circle Margao</div>
+                    <div><b>16.</b> Titan Verna</div>
+                    <div><b>17.</b> IFB Verna</div>
+                    <div><b>18.</b> Ravi Café Verna</div>
+                    <div><b>19.</b> VP Chicalim Vasco</div>
+                    <div><b>20.</b> Benaulim, Salcete</div>
+                    <div><b>21.</b> Green House Colva</div>
+                    <div><b>22.</b> Maria Hall Benaulim</div>
+                    <div><b>23.</b> Ambedkar Circle Curchorem</div>
+                    <div><b>24.</b> Tara Bastora Mapusa</div>
+                    <div><b>25.</b> Acoi Village Mapusa</div>
+                    <div><b>26.</b> Dhuler Mapusa</div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const trafficFines = [
+            {
+                name: "Using Mobile Phone while driving",
+                icon: "📱",
+                bg: "bg-rose-50 border-rose-100 text-rose-600",
+                firstFine: "₹1,000",
+                subsequentFine: "₹10,000",
+                suspension: true
+            },
+            {
+                name: "Failure to obey traffic signs / Red Light Jumping",
+                icon: "🚦",
+                bg: "bg-red-50 border-red-100 text-red-600",
+                firstFine: "₹500",
+                subsequentFine: "₹1,500",
+                suspension: true
+            },
+            {
+                name: "Over Speeding (LMV)",
+                icon: "⚡",
+                bg: "bg-amber-50 border-amber-100 text-amber-600",
+                firstFine: "₹1,000",
+                subsequentFine: "₹1,000 (Non-LMV: ₹2,000)",
+                suspension: true
+            },
+            {
+                name: "Not wearing Seat Belt",
+                icon: "💺",
+                bg: "bg-blue-50 border-blue-100 text-blue-600",
+                firstFine: "₹1,000",
+                subsequentFine: "₹1,000",
+                suspension: false
+            },
+            {
+                name: "Not wearing Helmet (Rider / Pillion)",
+                icon: "🪖",
+                bg: "bg-orange-50 border-orange-100 text-orange-600",
+                firstFine: "₹1,000",
+                subsequentFine: "₹1,000",
+                suspension: false
+            },
+            {
+                name: "Dangerous / Reckless Driving",
+                icon: "💥",
+                bg: "bg-rose-50 border-rose-100 text-rose-600",
+                firstFine: "₹1,000",
+                subsequentFine: "₹10,000",
+                suspension: true
+            },
+            {
+                name: "Failure to give passage to Emergency Vehicles (Ambulance / Fire)",
+                icon: "🚑",
+                bg: "bg-purple-50 border-purple-100 text-purple-600",
+                firstFine: "₹10,000",
+                subsequentFine: "₹10,000",
+                suspension: false
+            },
+            {
+                name: "No Parking / Unauthorized Location",
+                icon: "🚫",
+                bg: "bg-slate-100 border-slate-200 text-slate-700",
+                firstFine: "₹500",
+                subsequentFine: "₹1,500",
+                suspension: false
+            },
+            {
+                name: "Carry excess pillion riders (Triple Riding)",
+                icon: "🛵",
+                bg: "bg-amber-50 border-amber-100 text-amber-600",
+                firstFine: "₹1,000",
+                subsequentFine: "₹1,000",
+                suspension: false
+            },
+            {
+                name: "Dangerous Overtaking / Driving against traffic (Wrong Side)",
+                icon: "⛔",
+                bg: "bg-red-50 border-red-100 text-red-600",
+                firstFine: "₹500",
+                subsequentFine: "₹1,500",
+                suspension: false
+            },
+            {
+                name: "Goods carriage carrying passengers / Overloading",
+                icon: "🚚",
+                bg: "bg-teal-50 border-teal-100 text-teal-600",
+                firstFine: "₹500",
+                subsequentFine: "₹1,500",
+                suspension: true
+            },
+            {
+                name: "Fancy Number Plates",
+                icon: "🔢",
+                bg: "bg-indigo-50 border-indigo-100 text-indigo-600",
+                firstFine: "₹500",
+                subsequentFine: "₹1,500",
+                suspension: false
+            }
+        ];
+
+        function renderFines(list) {
+            const container = document.getElementById('finesContainer');
+            document.getElementById('violationCount').textContent = `${list.length} Offenses`;
+
+            if (list.length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-xs text-slate-400 bg-white rounded-2xl">No violation found.</div>`;
+                return;
+            }
+
+            container.innerHTML = list.map(item => `
+                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 ${item.bg} border rounded-2xl flex items-center justify-center text-xl shrink-0">
+                            ${item.icon}
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xs text-slate-800 leading-snug">${item.name}</h3>
+                            ${item.suspension ? '<div class="mt-1"><span class="text-red-600 font-bold bg-red-50 border border-red-100 text-[10px] px-2 py-0.5 rounded-md inline-block">DL Suspend 3 Months</span></div>' : ''}
+                        </div>
+                    </div>
+
+                    <div class="mt-3 pt-2.5 border-t border-slate-50 grid grid-cols-2 gap-2 text-center">
+                        <div class="bg-emerald-50/70 p-2 rounded-xl border border-emerald-100">
+                            <span class="text-[10px] text-emerald-700 font-semibold block uppercase tracking-wide">1st Offense</span>
+                            <span class="text-xs font-extrabold text-emerald-800">${item.firstFine}</span>
+                        </div>
+                        <div class="bg-rose-100/70 p-2 rounded-xl border border-rose-200">
+                            <span class="text-[10px] text-rose-700 font-semibold block uppercase tracking-wide">Subsequent</span>
+                            <span class="text-xs font-extrabold text-rose-800">${item.subsequentFine}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Search Filter
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            const filtered = trafficFines.filter(item => 
+                item.name.toLowerCase().includes(query)
+            );
+            renderFines(filtered);
+        });
+
+        // Locations Toggle
+        const locHeader = document.getElementById('locationHeader');
+        const locBody = document.getElementById('locationBody');
+        const locArrow = document.getElementById('locationArrow');
+
+        locHeader.addEventListener('click', () => {
+            const isOpen = locBody.style.display === 'block';
+            locBody.style.display = isOpen ? 'none' : 'block';
+            locArrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
+
+        // Init
+        renderFines(trafficFines);
+    </script>
+</body>
+</html>
