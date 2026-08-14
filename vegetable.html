@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goa Vegetable Rates - Goa Market Pulse</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f6f8f7;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased pb-12">
+
+    <!-- Header Section -->
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-50">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h1 class="text-base font-extrabold text-[#c2410c] leading-tight">Vegetable Market</h1>
+                    <p class="text-[11px] text-slate-400 font-medium">Daily Market & Instagram OCR Rates</p>
+                </div>
+            </div>
+            <span class="bg-[#fff7ed] text-[#c2410c] text-[10px] font-bold px-2.5 py-1 rounded-full border border-orange-200">
+                OCR Sync
+            </span>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-md mx-auto px-4 mt-3 space-y-3">
+
+        <!-- Search Bar -->
+        <div class="relative">
+            <i class="fas fa-search absolute left-3.5 top-3.5 text-slate-400 text-xs"></i>
+            <input type="text" id="searchInput" placeholder="Search onion, tomato, bhaji, chilli..." 
+                   class="w-full bg-white border border-slate-200 rounded-xl pl-9 pr-4 py-2.5 text-xs text-slate-700 placeholder-slate-400 focus:outline-none focus:border-[#c2410c] transition">
+        </div>
+
+        <!-- Info / Last Updated Bar -->
+        <div class="bg-[#fff7ed] text-[#c2410c] px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center justify-between">
+            <span id="updateTime"><i class="far fa-clock mr-1"></i> Updated daily</span>
+            <span id="productCount" class="text-[10px] bg-white text-[#c2410c] px-2 py-0.5 rounded-md font-bold">0 Items</span>
+        </div>
+
+        <!-- Product Cards Container -->
+        <div id="vegetable-list" class="space-y-2.5">
+            <div class="text-center py-8 text-xs text-slate-400">Loading vegetable prices...</div>
+        </div>
+
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        let allVegetables = [];
+
+        const colorThemes = [
+            { bg: "bg-emerald-50", border: "border-emerald-100" },
+            { bg: "bg-amber-50", border: "border-amber-100" },
+            { bg: "bg-orange-50", border: "border-orange-100" },
+            { bg: "bg-rose-50", border: "border-rose-100" },
+            { bg: "bg-purple-50", border: "border-purple-100" },
+            { bg: "bg-teal-50", border: "border-teal-100" }
+        ];
+
+        function formatIndianPrice(priceStr) {
+            if (!priceStr) return "₹0";
+            const num = parseFloat(priceStr);
+            if (isNaN(num)) return `₹${priceStr}`;
+            return `₹${Number(num).toLocaleString('en-IN')}`;
+        }
+
+        async function loadVegetableData() {
+            try {
+                const res = await fetch('vegetables_data.json');
+                const data = await res.json();
+                
+                allVegetables = Array.isArray(data) ? data : (data.vegetables || []);
+                
+                if (data.last_updated) {
+                    document.getElementById('updateTime').innerHTML = `<i class="far fa-clock mr-1"></i> ${data.last_updated}`;
+                }
+                
+                renderVegetables(allVegetables);
+            } catch (err) {
+                console.error("Error loading vegetable data:", err);
+                document.getElementById('vegetable-list').innerHTML = `
+                    <div class="bg-white p-4 rounded-2xl text-center text-xs text-red-500 border border-red-100">
+                        Unable to load data. Please check <b>vegetables_data.json</b>.
+                    </div>`;
+            }
+        }
+
+        function renderVegetables(items) {
+            const container = document.getElementById('vegetable-list');
+            document.getElementById('productCount').textContent = `${items.length} Items`;
+
+            if (items.length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-xs text-slate-400">No vegetables found.</div>`;
+                return;
+            }
+
+            container.innerHTML = items.map((item, index) => {
+                const theme = colorThemes[index % colorThemes.length];
+                const change = item.change || 0;
+                const changePercent = item.changePercent || 0;
+                const isDown = change < 0;
+                const isUp = change > 0;
+                const trendColor = isUp ? 'text-red-500' : isDown ? 'text-green-600' : 'text-slate-400';
+                const trendIcon = isUp ? 'fa-arrow-up' : isDown ? 'fa-arrow-down' : 'fa-minus';
+
+                return `
+                    <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between hover:shadow-md transition">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 ${theme.bg} ${theme.border} border rounded-2xl flex items-center justify-center text-2xl">
+                                ${item.icon || '🥬'}
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xs text-slate-800 leading-snug">${item.name}</h3>
+                                <div class="text-[10px] text-slate-400 flex gap-2 mt-0.5">
+                                    <span>${item.market || 'Goa Local Mandi'}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-right">
+                            <div class="font-extrabold text-sm text-slate-800">
+                                ${formatIndianPrice(item.price)} <span class="text-[10px] font-normal text-slate-400">/ ${item.unit || 'kg'}</span>
+                            </div>
+                            <div class="text-[10px] font-semibold ${trendColor} flex items-center justify-end gap-1">
+                                <i class="fas ${trendIcon} text-[8px]"></i>
+                                <span>₹${Math.abs(change)} (${changePercent}%)</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Search Filter
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = allVegetables.filter(p => p.name.toLowerCase().includes(query));
+            renderVegetables(filtered);
+        });
+
+        document.addEventListener('DOMContentLoaded', loadVegetableData);
+    </script>
+</body>
+</html>
