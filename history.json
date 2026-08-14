@@ -1,0 +1,62 @@
+{
+  "Bhendi": [
+    {
+      "date": "2026-08-14",
+      "price": 37
+    }
+  ],
+  "Cabbage": [
+    {
+      "date": "2026-08-14",
+      "price": 28
+    }
+  ],
+  "Carrot": [
+    {
+      "date": "2026-08-14",
+      "price": 48
+    }
+  ],
+  "Cauliflower": [
+    {
+      "date": "2026-08-14",
+      "price": 35
+    }
+  ],
+  "Chilli": [
+    {
+      "date": "2026-08-14",
+      "price": 58
+    }
+  ],
+  "Cluster Beans": [
+    {
+      "date": "2026-08-14",
+      "price": 52
+    }
+  ],
+  "French Beans": [
+    {
+      "date": "2026-08-14",
+      "price": 75
+    }
+  ],
+  "Onion": [
+    {
+      "date": "2026-08-14",
+      "price": 39
+    }
+  ],
+  "Potato": [
+    {
+      "date": "2026-08-14",
+      "price": 29
+    }
+  ],
+  "Tomato": [
+    {
+      "date": "2026-08-14",
+      "price": 30
+    }
+  ]
+}

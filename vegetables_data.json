@@ -1,113 +1,95 @@
 {
-  "last_updated": "Today, 08:30 AM",
+  "last_updated": "GSHCL 14 Aug, Today",
   "vegetables": [
     {
-      "name": "Onion (Kanda)",
-      "price": 32,
+      "name": "Bhendi",
+      "price": 37,
       "unit": "kg",
-      "market": "Panaji / Margao",
-      "icon": "🧅",
-      "change": 4,
-      "changePercent": 14.3
-    },
-    {
-      "name": "Tomato (Tamatar)",
-      "price": 40,
-      "unit": "kg",
-      "market": "Mapusa Market",
-      "icon": "🍅",
-      "change": -5,
-      "changePercent": 11.1
-    },
-    {
-      "name": "Potato (Batata)",
-      "price": 35,
-      "unit": "kg",
-      "market": "Ponda Market",
-      "icon": "🥔",
-      "change": 0,
-      "changePercent": 0.0
-    },
-    {
-      "name": "Green Chilli (Mirchi)",
-      "price": 80,
-      "unit": "kg",
-      "market": "Bicholim Market",
-      "icon": "🌶️",
-      "change": 10,
-      "changePercent": 14.2
-    },
-    {
-      "name": "Lady Finger (Bhendi)",
-      "price": 60,
-      "unit": "kg",
-      "market": "Margao Gandhi Market",
-      "icon": "🌱",
-      "change": -5,
-      "changePercent": 7.6
-    },
-    {
-      "name": "Ginger (Alay)",
-      "price": 160,
-      "unit": "kg",
-      "market": "Panaji Market",
-      "icon": "🫚",
-      "change": 15,
-      "changePercent": 10.3
-    },
-    {
-      "name": "Garlic (Losun)",
-      "price": 280,
-      "unit": "kg",
-      "market": "Mapusa Market",
-      "icon": "🧄",
-      "change": 0,
-      "changePercent": 0.0
-    },
-    {
-      "name": "Goan Tambdi Bhaji",
-      "price": 30,
-      "unit": "bunch",
-      "market": "Goa Local Farmers",
+      "market": "GSHCL Goa",
       "icon": "🌿",
       "change": 0,
       "changePercent": 0.0
     },
     {
-      "name": "Brinjal (Goan Vaingim)",
-      "price": 50,
+      "name": "Cabbage",
+      "price": 28,
       "unit": "kg",
-      "market": "Tivim / Mapusa",
-      "icon": "🍆",
-      "change": -2,
-      "changePercent": 3.8
-    },
-    {
-      "name": "Cucumber (Taushem)",
-      "price": 40,
-      "unit": "kg",
-      "market": "Goa Local Mandi",
-      "icon": "🥒",
+      "market": "GSHCL Goa",
+      "icon": "🥬",
       "change": 0,
       "changePercent": 0.0
     },
     {
-      "name": "Lemon (Limbu)",
-      "price": 8,
-      "unit": "piece",
-      "market": "Panaji Market",
-      "icon": "🍋",
-      "change": 1,
-      "changePercent": 14.2
+      "name": "Carrot",
+      "price": 48,
+      "unit": "kg",
+      "market": "GSHCL Goa",
+      "icon": "🥕",
+      "change": 0,
+      "changePercent": 0.0
     },
     {
-      "name": "Coriander (Kothmir)",
-      "price": 25,
-      "unit": "bunch",
-      "market": "Goa APMC",
-      "icon": "☘️",
-      "change": -5,
-      "changePercent": 16.6
+      "name": "Cauliflower",
+      "price": 35,
+      "unit": "pc",
+      "market": "GSHCL Goa",
+      "icon": "🥦",
+      "change": 0,
+      "changePercent": 0.0
+    },
+    {
+      "name": "Chilli",
+      "price": 58,
+      "unit": "kg",
+      "market": "GSHCL Goa",
+      "icon": "🌶️",
+      "change": 0,
+      "changePercent": 0.0
+    },
+    {
+      "name": "Cluster Beans",
+      "price": 52,
+      "unit": "kg",
+      "market": "GSHCL Goa",
+      "icon": "🫛",
+      "change": 0,
+      "changePercent": 0.0
+    },
+    {
+      "name": "French Beans",
+      "price": 75,
+      "unit": "kg",
+      "market": "GSHCL Goa",
+      "icon": "🫛",
+      "change": 0,
+      "changePercent": 0.0
+    },
+    {
+      "name": "Onion",
+      "price": 39,
+      "unit": "kg",
+      "market": "GSHCL Goa",
+      "icon": "🧅",
+      "change": 0,
+      "changePercent": 0.0
+    },
+    {
+      "name": "Potato",
+      "price": 29,
+      "unit": "kg",
+      "market": "GSHCL Goa",
+      "icon": "🥔",
+      "change": 0,
+      "changePercent": 0.0
+    },
+    {
+      "name": "Tomato",
+      "price": 30,
+      "unit": "kg",
+      "market": "GSHCL Goa",
+      "icon": "🍅",
+      "change": 0,
+      "changePercent": 0.0
     }
   ]
 }
