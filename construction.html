@@ -14,9 +14,6 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f6f8f7;
         }
-        .accordion-content {
-            transition: max-height 0.3s ease-out;
-        }
     </style>
 </head>
 <body class="text-slate-800 antialiased pb-20">
@@ -87,7 +84,7 @@
 
         function formatIndianPrice(priceStr) {
             if (!priceStr) return "—";
-            let clean = priceStr.replace(/[₹,\s]/g, '');
+            let clean = String(priceStr).replace(/[₹,\s]/g, '');
             const num = parseFloat(clean);
             if (isNaN(num)) return priceStr;
             return `₹${Number(num).toLocaleString('en-IN')}`;
@@ -130,7 +127,7 @@
                 card.className = "bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden transition";
 
                 const itemsHtml = (cat.items || []).map(item => `
-                    <div class="flex items-center justify-between py-2.5 border-b border-slate-50 last:border-b-0">
+                    <div class="flex items-center justify-between py-2.5 border-b border-slate-100 last:border-b-0">
                         <div class="pr-2">
                             <h4 class="font-bold text-xs text-slate-800">${item.name}</h4>
                             ${item.unit ? `<span class="text-[10px] text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md font-medium mt-0.5 inline-block">${item.unit}</span>` : ''}
@@ -146,35 +143,25 @@
                 card.innerHTML = `
                     <div class="category-header cursor-pointer p-3.5 flex items-center justify-between border-l-4 ${theme.border} hover:bg-slate-50 transition">
                         <div class="flex items-center gap-2.5">
-                            <span class="text-lg">${cat.icon || '🏗️'}</span>
-                            <span class="font-bold text-xs text-slate-800">${cat.category}</span>
+                            <span class="text-base font-bold text-slate-800">${cat.category}</span>
                             <span class="text-[10px] ${theme.badge} font-bold px-2 py-0.5 rounded-full">${cat.items ? cat.items.length : 0}</span>
                         </div>
                         <i class="fas fa-chevron-down text-slate-400 text-xs transition-transform duration-200"></i>
                     </div>
-                    <div class="category-body px-3.5 pb-3 pt-1 border-t border-slate-100 bg-[#fafcfb]">
+                    <div class="category-body px-3.5 pb-3 pt-1 border-t border-slate-100 bg-[#fafcfb]" style="display: none;">
                         ${itemsHtml}
                     </div>
                 `;
 
-                // Accordion toggle functionality
+                // Accordion click handler
                 const header = card.querySelector('.category-header');
                 const body = card.querySelector('.category-body');
                 const arrow = card.querySelector('i');
 
-                // Keep first 2 open by default
-                if (idx > 1) {
-                    body.style.display = 'none';
-                    arrow.style.transform = 'rotate(0deg)';
-                } else {
-                    body.style.display = 'block';
-                    arrow.style.transform = 'rotate(180deg)';
-                }
-
                 header.addEventListener('click', () => {
-                    const isOpen = body.style.display !== 'none';
-                    body.style.display = isOpen ? 'none' : 'block';
-                    arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+                    const isCurrentlyOpen = body.style.display === 'block';
+                    body.style.display = isCurrentlyOpen ? 'none' : 'block';
+                    arrow.style.transform = isCurrentlyOpen ? 'rotate(0deg)' : 'rotate(180deg)';
                 });
 
                 container.appendChild(card);
@@ -197,7 +184,8 @@
             }).filter(cat => cat.items.length > 0);
 
             renderCategories(filtered);
-            // Open all accordion cards when actively searching
+            
+            // Auto open all categories when actively searching
             document.querySelectorAll('.category-body').forEach(b => b.style.display = 'block');
             document.querySelectorAll('.category-header i').forEach(i => i.style.transform = 'rotate(180deg)');
         });
