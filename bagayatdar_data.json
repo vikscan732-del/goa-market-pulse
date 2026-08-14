@@ -1,37 +1,145 @@
 {
-  "last_updated": "Today, 08:30 AM",
+  "last_updated": "Last Updated Date: 14-08-2026",
   "products": [
     {
-      "name": "Supari (Arecanut Grade 1)",
-      "price": 240,
-      "highest": 255,
-      "lowest": 230,
-      "change": -10,
-      "changePercent": 4.0
+      "name": "Supari Old / सुपारी जुनी",
+      "price": "402",
+      "icon": "🥥"
     },
     {
-      "name": "Coconut (Big)",
-      "price": 28,
-      "highest": 30,
-      "lowest": 24,
-      "change": 2,
-      "changePercent": 7.6
+      "name": "Supari Raas Old / सुपारी रास जुनी",
+      "price": "397",
+      "icon": "🥥"
     },
     {
-      "name": "Cashew Raw (Kaju)",
-      "price": 145,
-      "highest": 160,
-      "lowest": 140,
-      "change": 0,
-      "changePercent": 0
+      "name": "Safed Khoka Old / सफेद खोका जुना",
+      "price": "312",
+      "icon": "🥥"
     },
     {
-      "name": "Black Pepper",
-      "price": 680,
-      "highest": 710,
-      "lowest": 650,
-      "change": 15,
-      "changePercent": 2.25
+      "name": "Lal Khoka Old / लाल खोका जुना",
+      "price": "342",
+      "icon": "🥥"
+    },
+    {
+      "name": "Vench Old / वेंच जुना",
+      "price": "300",
+      "icon": "🥥"
+    },
+    {
+      "name": "Khasod Old / खासोद जुना",
+      "price": "300",
+      "icon": "🥥"
+    },
+    {
+      "name": "Tukada Old / तुकडा जुना",
+      "price": "329",
+      "icon": "🥥"
+    },
+    {
+      "name": "Bad Vench Old / बादवेंच जुना",
+      "price": "206",
+      "icon": "🥥"
+    },
+    {
+      "name": "Bad Vench Chura (Old) / बादवेंच (चुरा) जुना",
+      "price": "106",
+      "icon": "🥥"
+    },
+    {
+      "name": "Miri / मिरी",
+      "price": "698",
+      "icon": "🫒"
+    },
+    {
+      "name": "Safed Miri / सफेद मिरी",
+      "price": "754",
+      "icon": "🫒"
+    },
+    {
+      "name": "Jayfal / जायफळ सोलेली",
+      "price": "870",
+      "icon": "🌰"
+    },
+    {
+      "name": "Jaypatri / जायपत्री",
+      "price": "1958",
+      "icon": "🌿"
+    },
+    {
+      "name": "Dalchini / दालचिनी",
+      "price": "233",
+      "icon": "🌿"
+    },
+    {
+      "name": "Tamalpatra / तमालपत्र",
+      "price": "100",
+      "icon": "🌿"
+    },
+    {
+      "name": "Kokum Ghal / कोकम गूल",
+      "price": "200",
+      "icon": "🫐"
+    },
+    {
+      "name": "Kokum Be / कोकम बी",
+      "price": "21",
+      "icon": "🫐"
+    },
+    {
+      "name": "Coconut Raas / नारळ रास",
+      "price": "14000 - 23000",
+      "icon": "🥥"
+    },
+    {
+      "name": "Coconut Raas (Small) / नारळ रास (लहान)",
+      "price": "11000 - 13000",
+      "icon": "🥥"
+    },
+    {
+      "name": "Coconut 80/Bag / नारळ ८० प.",
+      "price": "39000",
+      "icon": "🥥"
+    },
+    {
+      "name": "Coconut 90/Bag / नारळ ९० प.",
+      "price": "37000",
+      "icon": "🥥"
+    },
+    {
+      "name": "Coconut 100/Bag / नारळ १०० प.",
+      "price": "36000",
+      "icon": "🥥"
+    },
+    {
+      "name": "Coconut 120/Bag / नारळ १२० प.",
+      "price": "34000",
+      "icon": "🥥"
+    },
+    {
+      "name": "Coconut 150/Bag / नारळ १५० प.",
+      "price": "31000",
+      "icon": "🥥"
+    },
+    {
+      "name": "Coconut 200/Bag / नारळ २०० प.",
+      "price": "26000",
+      "icon": "🥥"
+    },
+    {
+      "name": "Coconut 300/Bag / नारळ ३०० प.",
+      "price": "21000",
+      "icon": "🥥"
+    },
+    {
+      "name": "Coconut 400/Bag / नारळ ४०० प.",
+      "price": "15500",
+      "icon": "🥥"
+    },
+    {
+      "name": "Solela Naral / सोलेला नारळ",
+      "price": "51",
+      "icon": "🥥"
     }
   ]
 }
