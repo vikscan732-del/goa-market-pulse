@@ -1,1 +1,224 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goa Market Price Tracker</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-green': '#0e5e3a',
+                        'soft-green': '#e8f5ed',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f6f8f7;
+        }
+        /* Hide scrollbars for clean look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased pb-12">
+
+    <!-- Top Navigation Bar -->
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-50">
+        <div class="max-w-md mx-auto px-5 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-[#0e5e3a] text-white p-2.5 rounded-xl shadow-sm">
+                    <i class="fas fa-shopping-basket text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-extrabold text-[#0e5e3a] leading-tight">Goa Market Price Tracker</h1>
+                    <p class="text-[12px] text-slate-500 font-medium">Daily Prices. Smarter Choices.</p>
+                </div>
+            </div>
+            <button class="text-slate-700 text-xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-md mx-auto px-4 mt-3 space-y-4">
+
+        <!-- Last Updated Pill -->
+        <div class="bg-[#e8f5ed] text-[#0e5e3a] px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2">
+            <i class="far fa-clock"></i>
+            <span id="last-updated-text">Last updated: Loading...</span>
+        </div>
+
+        <!-- 4 Top Category Cards (Horizontal Scroll / Grid) -->
+        <div class="grid grid-cols-4 gap-2.5">
+            
+            <!-- Card 1: Goa Bagaydar -->
+            <a href="bagayatdar.html" class="bg-[#f0fdf4] border border-[#22c55e] rounded-2xl p-2.5 flex flex-col items-center justify-between text-center aspect-[4/5] hover:shadow-md transition">
+                <div class="w-12 h-12 flex items-center justify-center text-3xl mt-1">
+                    🧺
+                </div>
+                <div class="flex items-center justify-center gap-0.5 text-[#15803d] font-bold text-[11px]">
+                    <span>Goa Bagaydar</span>
+                    <i class="fas fa-chevron-right text-[8px]"></i>
+                </div>
+            </a>
+
+            <!-- Card 2: Vegetable -->
+            <a href="vegetable.html" class="bg-[#fff7ed] border border-[#fed7aa] rounded-2xl p-2.5 flex flex-col items-center justify-between text-center aspect-[4/5] hover:shadow-md transition">
+                <div class="w-12 h-12 flex items-center justify-center text-3xl mt-1">
+                    🥬
+                </div>
+                <div class="flex items-center justify-center gap-0.5 text-[#c2410c] font-bold text-[11px]">
+                    <span>Vegetable</span>
+                    <i class="fas fa-chevron-right text-[8px]"></i>
+                </div>
+            </a>
+
+            <!-- Card 3: Construction -->
+            <a href="construction.html" class="bg-[#eff6ff] border border-[#bfdbfe] rounded-2xl p-2.5 flex flex-col items-center justify-between text-center aspect-[4/5] hover:shadow-md transition">
+                <div class="w-12 h-12 flex items-center justify-center text-3xl mt-1">
+                    🏗️
+                </div>
+                <div class="flex items-center justify-center gap-0.5 text-[#1d4ed8] font-bold text-[11px]">
+                    <span>Construction</span>
+                    <i class="fas fa-chevron-right text-[8px]"></i>
+                </div>
+            </a>
+
+            <!-- Card 4: Fule -->
+            <a href="fuel.html" class="bg-[#fefce8] border border-[#fef08a] rounded-2xl p-2.5 flex flex-col items-center justify-between text-center aspect-[4/5] hover:shadow-md transition">
+                <div class="w-12 h-12 flex items-center justify-center text-3xl mt-1">
+                    ⛽
+                </div>
+                <div class="flex items-center justify-center gap-0.5 text-[#a16207] font-bold text-[11px]">
+                    <span>Fule</span>
+                    <i class="fas fa-chevron-right text-[8px]"></i>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Section Title: Trending Prices -->
+        <div class="pt-2 flex items-center gap-2">
+            <i class="fas fa-chart-line text-[#0e5e3a]"></i>
+            <h2 class="font-bold text-slate-800 text-sm">Today's Trending Prices</h2>
+        </div>
+
+        <!-- Dynamic Trending List Container -->
+        <div id="price-list-container" class="space-y-2.5">
+            <!-- Dynamic items loaded via JavaScript from data.json -->
+        </div>
+
+        <!-- View Full Report Banner -->
+        <div class="bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-sm mt-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-[#e8f5ed] text-[#0e5e3a] p-2.5 rounded-xl text-lg">
+                    <i class="fas fa-poll"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-xs text-slate-800">View Full Report</h3>
+                    <p class="text-[10px] text-slate-400">Detailed price history & trends</p>
+                </div>
+            </div>
+            <a href="#" class="bg-[#0e5e3a] text-white text-xs font-semibold px-4 py-2 rounded-xl flex items-center gap-1.5 hover:bg-emerald-900 transition">
+                <span>View Report</span>
+                <i class="fas fa-chevron-right text-[9px]"></i>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-slate-400 text-xs mt-4">
+        <p>© 2026 Goa Market Price Tracker. All rights reserved.</p>
+        <p class="mt-1 flex items-center justify-center gap-1">
+            Made with <i class="fas fa-heart text-red-500 text-[10px]"></i> in Goa
+        </p>
+    </footer>
+
+    <!-- JavaScript to Fetch and Display data.json -->
+    <script>
+        // Preset icon/emoji mapping based on keywords
+        const iconMap = {
+            "Supari (Arecanut)": "🥥",
+            "Onion": "🧅",
+            "LPG (14.2 kg)": "🛢️",
+            "Petrol": "⛽",
+            "Gold (22 Carat)": "🪙"
+        };
+
+        async function fetchMarketData() {
+            try {
+                const res = await fetch('data.json');
+                const data = await res.json();
+
+                // Update timestamp
+                document.getElementById('last-updated-text').textContent = `Last updated: ${data.last_updated}`;
+
+                // Populate trending list
+                const listContainer = document.getElementById('price-list-container');
+                listContainer.innerHTML = '';
+
+                data.trending_prices.forEach(item => {
+                    const isUp = item.direction === 'up';
+                    const trendColor = isUp ? 'text-red-500' : 'text-green-600';
+                    const trendIcon = isUp ? 'fa-arrow-up' : 'fa-arrow-down';
+                    const emoji = iconMap[item.title] || '📦';
+
+                    const cardHtml = `
+                        <div class="bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-sm hover:shadow-md transition">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-2xl">
+                                    ${emoji}
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xs text-slate-800 leading-snug">${item.title}</h4>
+                                    <p class="text-[10px] text-slate-400 font-medium">${item.category}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-3">
+                                <div class="text-right">
+                                    <div class="font-extrabold text-sm text-slate-800">
+                                        ₹${item.price} <span class="text-[10px] font-normal text-slate-500">/ ${item.unit}</span>
+                                    </div>
+                                    <div class="text-[10px] font-semibold ${trendColor} flex items-center justify-end gap-1">
+                                        <i class="fas ${trendIcon} text-[8px]"></i>
+                                        <span>₹${item.change} (${item.change_percent})</span>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-right text-slate-300 text-xs"></i>
+                            </div>
+                        </div>
+                    `;
+                    listContainer.insertAdjacentHTML('beforeend', cardHtml);
+                });
+
+            } catch (err) {
+                console.error("Failed to load market data:", err);
+                document.getElementById('last-updated-text').textContent = "Failed to load live data";
+            }
+        }
+
+        // Run when page loads
+        document.addEventListener('DOMContentLoaded', fetchMarketData);
+    </script>
+</body>
+</html>
