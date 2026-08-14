@@ -4,7 +4,6 @@ on:
   schedule:
     # 30 21 * * * UTC corresponds to 03:00 AM IST every single day
     - cron: '30 21 * * *'
-  # Allows you to trigger the scraper manually anytime with a single click
   workflow_dispatch:
 
 jobs:
@@ -14,47 +13,40 @@ jobs:
       contents: write
 
     steps:
-      # Step 1: Check out repository code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      # Step 3: Install Tesseract OCR and system libraries
       - name: Install Tesseract OCR
         run: |
           sudo apt-get update
           sudo apt-get install -y tesseract-ocr libtesseract-dev
 
-      # Step 4: Install Python packages
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4 pillow pytesseract
 
-      # Step 5: Run Goa Bagayatdar scraper
       - name: Run Goa Bagayatdar Scraper
         run: |
           python scraper/bagayatdar_scraper.py || echo "Bagayatdar scraper encountered an issue, proceeding..."
 
-      # Step 6: Run Instagram OCR vegetable scraper
       - name: Run Instagram OCR Vegetable Scraper
         run: |
           python scraper/vegetable_scraper.py || echo "Vegetable OCR scraper encountered an issue, proceeding..."
 
-      # Step 7: Commit and push updated JSON files back to repository
-      - name: Commit and Push Updated Data
+      - name: Commit and Push Updated Data & Latest Photo
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add *.json history.json || true
+          git add *.json history.json latest_price.jpg || true
           if git diff --staged --quiet; then
-            echo "No changes in data today."
+            echo "No changes today."
           else
-            git commit -m "Auto-update market data for $(date +'%Y-%m-%d')"
+            git commit -m "Auto-update market rates and replace latest_price.jpg [$(date +'%Y-%m-%d')]"
             git push
           fi
