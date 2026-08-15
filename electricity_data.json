@@ -1,0 +1,80 @@
+{
+  "tariff_period": "Current Active Tariff (FPPCA 3.5%)",
+  "domestic": [
+    {
+      "category": "LTDS-II (Standard Domestic)",
+      "desc": "Standard Household Slabs",
+      "slabs": [
+        {
+          "range": "0 – 100 units",
+          "base_rate": 2.1,
+          "fppca": 0.4,
+          "total_rate": 2.5
+        },
+        {
+          "range": "101 – 200 units",
+          "base_rate": 3.1,
+          "fppca": 0.6,
+          "total_rate": 3.7
+        },
+        {
+          "range": "201 – 300 units",
+          "base_rate": 4.15,
+          "fppca": 0.8,
+          "total_rate": 4.95
+        },
+        {
+          "range": "301 – 400 units",
+          "base_rate": 5.45,
+          "fppca": 1.05,
+          "total_rate": 6.5
+        },
+        {
+          "range": "Above 400 units",
+          "base_rate": 6.6,
+          "fppca": 1.27,
+          "total_rate": 7.87
+        }
+      ]
+    },
+    {
+      "category": "LTDS-I (Low Income Group)",
+      "desc": "Connected load ≤ 250W & consumption ≤ 100 units/mo",
+      "slabs": [
+        {
+          "range": "Up to 100 units",
+          "base_rate": 1.5,
+          "fppca": 0.29,
+          "total_rate": 1.79
+        }
+      ]
+    }
+  ],
+  "agriculture": [
+    {
+      "name": "LTAS-I (Pumps ≤ 10 kW)",
+      "desc": "Small & Irrigation Pumps",
+      "base_rate": 1.7,
+      "fppca": 0.33,
+      "total_rate": 2.03,
+      "icon": "🚜"
+    },
+    {
+      "name": "LTAS-II (Pumps > 10 kW)",
+      "desc": "Heavy Agriculture Pumps",
+      "base_rate": 1.8,
+      "fppca": 0.35,
+      "total_rate": 2.15,
+      "icon": "💧"
+    },
+    {
+      "name": "LTAS-III (Agriculture Allied)",
+      "desc": "Dairy, Poultry & Allied",
+      "base_rate": 2.0,
+      "fppca": 0.38,
+      "total_rate": 2.38,
+      "icon": "🌾"
+    }
+  ],
+  "source_pdf_url": "https://www.goaelectricity.gov.in/wp-content/uploads/2026/08/Final-FPPCA-Computation-for-May-26-to-be-levied-for-consumption-of-July-26-combined.pdf"
+}
