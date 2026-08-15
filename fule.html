@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goa Fuel & LPG Rates - Goa Market Pulse</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f6f8f7;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased pb-20">
+
+    <!-- Top Header -->
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-50">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h1 class="text-base font-extrabold text-[#e11d48] leading-tight">Fuel & LPG Rates</h1>
+                    <p class="text-[11px] text-slate-400 font-medium">Daily Petrol, Diesel & Gas Tracker</p>
+                </div>
+            </div>
+            <span class="bg-rose-50 text-[#e11d48] text-[10px] font-bold px-2.5 py-1 rounded-full border border-rose-200">
+                Goa Market
+            </span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-md mx-auto px-4 mt-3 space-y-3">
+
+        <!-- Info & Filter Bar -->
+        <div class="bg-rose-50 border border-rose-100 px-3 py-1 rounded-2xl flex items-center gap-2">
+            <!-- Type Filters -->
+            <button onclick="filterCategory('all', this)" class="cat-btn flex-1 py-2 text-center text-[11px] font-extrabold rounded-xl bg-white text-[#e11d48] shadow-sm transition">All</button>
+            <button onclick="filterCategory('petrol', this)" class="cat-btn flex-1 py-2 text-center text-[11px] font-bold rounded-xl text-slate-600 hover:text-slate-800 transition">Petrol</button>
+            <button onclick="filterCategory('diesel', this)" class="cat-btn flex-1 py-2 text-center text-[11px] font-bold rounded-xl text-slate-600 hover:text-slate-800 transition">Diesel</button>
+            <button onclick="filterCategory('lpg', this)" class="cat-btn flex-1 py-2 text-center text-[11px] font-bold rounded-xl text-slate-600 hover:text-slate-800 transition">LPG</button>
+        </div>
+
+        <!-- Last Updated Marker -->
+        <div class="text-[10px] text-slate-400 font-semibold px-1 flex items-center gap-1.5">
+            <i class="far fa-clock"></i> Last updated: <span id="updateTime" class="text-slate-500 font-medium">Today, 06:00 AM</span>
+        </div>
+
+        <!-- Fuel Cards Container -->
+        <div id="fuelContainer" class="space-y-3">
+            <!-- Modern Loading Placeholder -->
+            <div class="bg-white p-6 rounded-2xl text-center text-xs text-slate-400 border border-slate-100 shadow-sm">
+                <i class="fas fa-spinner fa-spin mr-1.5"></i> Syncing latest fuel rates...
+            </div>
+        </div>
+
+    </main>
+
+    <!-- JavaScript for Dynamic Loading & Interaction -->
+    <script>
+        let allFuels = [];
+        let currentFilter = 'all';
+
+        // Predefined beautiful soft color themes for different fuel types
+        const fuelThemes = {
+            petrol: { bg: "bg-red-50", border: "border-red-100", trend: "text-red-500", icon: "⛽" },
+            diesel: { bg: "bg-blue-50", border: "border-blue-100", trend: "text-blue-500", icon: "🛢️" },
+            lpg: { bg: "bg-amber-50", border: "border-amber-100", trend: "text-amber-500", icon: "🔴" },
+            cng: { bg: "bg-emerald-50", border: "border-emerald-100", trend: "text-emerald-500", icon: "🟢" }
+        };
+
+        const defaultTheme = { bg: "bg-slate-50", border: "border-slate-100", trend: "text-slate-400", icon: "⚓" };
+
+        // Helper: Format price in Indian Rupee format (e.g., 956.00)
+        function formatIndianPrice(num) {
+            return `₹${Number(num).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
+        // 1. Fetch Dynamic Data from JSON
+        async function loadFuelData() {
+            try {
+                // Fetch fuel_data.json. We add Date.now() to prevent browser caching.
+                const res = await fetch('fuel_data.json?t=' + Date.now());
+                const data = await res.json();
+                
+                // Store the list globally for filtering
+                allFuels = data.fuels || [];
+                
+                // Update the "Last Updated" text
+                if (data.last_updated) {
+                    document.getElementById('updateTime').textContent = data.last_updated;
+                }
+                
+                // Render all cards initially
+                renderFuels(allFuels);
+            } catch (err) {
+                console.error("Error loading fuel data:", err);
+                // Modern error message card
+                document.getElementById('fuelContainer').innerHTML = `
+                    <div class="bg-white p-5 rounded-2xl text-center text-xs text-red-500 border border-red-100 shadow-sm flex items-center justify-center gap-2.5">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Unable to load rates. Check <b>fuel_data.json</b> in repository.</span>
+                    </div>`;
+            }
+        }
+
+        // 2. Render Cards based on Data List
+        function renderFuels(list) {
+            const container = document.getElementById('fuelContainer');
+            container.innerHTML = ''; // Clear existing content
+
+            if (list.length === 0) {
+                container.innerHTML = `<div class="text-center py-10 text-xs text-slate-400 bg-white rounded-2xl border border-slate-100 shadow-sm">No matching fuel found.</div>`;
+                return;
+            }
+
+            container.innerHTML = list.map(item => {
+                // Determine theme by category (petrol, diesel, lpg, cng)
+                const theme = fuelThemes[item.category] || defaultTheme;
+                
+                // Trend logic
+                const change = item.change || 0;
+                const changePercent = item.changePercent || 0;
+                const isUp = change > 0;
+                const isDown = change < 0;
+                
+                // Determine price color/icon based on trend
+                const trendColor = isUp ? 'text-red-500' : isDown ? 'text-emerald-600' : 'text-slate-400';
+                const trendIcon = isUp ? 'fa-arrow-up' : isDown ? 'fa-arrow-down' : 'fa-minus';
+
+                return `
+                    <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between hover:shadow-md transition">
+                        <!-- Left side: Emojis and Details -->
+                        <div class="flex items-center gap-3">
+                            <!-- Large Emoji Container -->
+                            <div class="w-12 h-12 ${theme.bg} ${theme.border} border rounded-xl flex items-center justify-center text-2xl shrink-0 shadow-inner">
+                                ${theme.icon}
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xs text-slate-800 leading-snug">${item.name}</h3>
+                                <div class="text-[10px] text-slate-400 flex items-center gap-1.5 mt-0.5">
+                                    <span class="font-medium">${item.district}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right side: Price and Trend -->
+                        <div class="text-right">
+                            <div class="font-extrabold text-sm text-slate-800 leading-tight">
+                                ${formatIndianPrice(item.price)} <span class="text-[9px] font-normal text-slate-400">/ ${item.unit}</span>
+                            </div>
+                            <div class="text-[10px] font-semibold ${trendColor} flex items-center justify-end gap-1.5 mt-1">
+                                <i class="fas ${trendIcon} text-[8px]"></i>
+                                <span>₹${Math.abs(change).toFixed(2)} (${changePercent.toFixed(2)}%)</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 3. Filtering Logic for Type Tabs
+        function filterCategory(cat, btn) {
+            currentFilter = cat;
+            
+            // Modern UI: Update button states
+            document.querySelectorAll('.cat-btn').forEach(b => {
+                b.className = "cat-btn flex-1 py-2 text-center text-[11px] font-bold rounded-xl text-slate-600 hover:text-slate-800 transition";
+            });
+            btn.className = "cat-btn flex-1 py-2 text-center text-[11px] font-extrabold rounded-xl bg-white text-[#e11d48] shadow-sm transition";
+
+            let filtered = allFuels;
+            if (cat !== 'all') {
+                // Filter by exact category match (from JSON 'category' field)
+                filtered = allFuels.filter(f => f.category === cat);
+            }
+            renderFuels(filtered);
+        }
+
+        // Initialize dynamic loading when page is ready
+        document.addEventListener('DOMContentLoaded', loadFuelData);
+    </script>
+</body>
+</html>
