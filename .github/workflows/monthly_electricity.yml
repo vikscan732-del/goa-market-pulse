@@ -1,0 +1,44 @@
+name: Monthly Electricity Tariff Sync
+
+on:
+  schedule:
+    # Runs at 21:30 UTC on the 1st of every month (03:00 AM IST on the 2nd)
+    - cron: '30 21 1 * *'
+  # Allows manual testing anytime from GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  update-monthly-tariff:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4 pdfplumber
+
+      - name: Run Monthly Electricity Scraper
+        run: |
+          python scraper/electricity_sync.py
+
+      - name: Commit and Push if updated
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add electricity_data.json || true
+          if git diff --staged --quiet; then
+            echo "No new tariff updates this month."
+          else
+            git commit -m "Auto-update monthly electricity tariff [$(date +'%Y-%m')]"
+            git push
+          fi
