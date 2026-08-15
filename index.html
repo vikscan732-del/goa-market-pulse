@@ -27,7 +27,7 @@
 
     <!-- Top Header -->
     <header class="bg-white sticky top-0 z-50 border-b border-slate-100 shadow-xs">
-        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="max-w-md mx-auto px-4 py-3.5 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-[#0e5e3a] rounded-xl flex items-center justify-center text-xl shadow-inner">
                     🛍️
@@ -50,7 +50,7 @@
         <div class="bg-emerald-50 text-emerald-800 text-[11px] font-bold px-3 py-2 rounded-xl flex items-center gap-2 border border-emerald-100">
             <i class="far fa-clock"></i>
             <span>Updated:</span>
-            <span id="marketUpdated">Today, 06:00 AM IST</span>
+            <span id="marketUpdated">Today, Live Rates</span>
         </div>
 
         <!-- Top 4 Category Cards -->
@@ -184,32 +184,106 @@
             const listEl = document.getElementById('trendingList');
             const ts = Date.now();
 
-            let trendingData = [
-                { name: 'Supari (Arecanut)', sub: 'Goa Bagaydar', price: '240', unit: 'kg', icon: '🥥', change: -10, changePct: 4.0, link: 'bagayatdar.html' },
-                { name: 'Onion', sub: 'Vegetable', price: '32', unit: 'kg', icon: '🧅', change: 4, changePct: 14.3, link: 'vegetable.html' },
-                { name: 'LPG (14.2 kg)', sub: 'Fuel Prices (Goa)', price: '903', unit: 'cyl', icon: '🔵', change: -12, changePct: 1.3, link: 'fuel.html' },
-                { name: 'Petrol', sub: 'Fuel Prices (Goa)', price: '104.06', unit: 'L', icon: '⛽', change: 0.5, changePct: 0.5, link: 'fuel.html' },
-                { name: 'Coconut (Single)', sub: 'Goa Bagaydar', price: '28', unit: 'piece', icon: '🥥', change: 0, changePct: 0.0, link: 'bagayatdar.html' }
+            let trendingItems = [
+                {
+                    key: 'supari',
+                    name: 'Supari (Juni)',
+                    sub: 'Goa Bagaydar',
+                    price: 402,
+                    unit: 'kg',
+                    icon: '🥥',
+                    change: 7.0,
+                    changePercent: 1.77,
+                    link: 'bagayatdar.html'
+                },
+                {
+                    key: 'onion',
+                    name: 'Onion',
+                    sub: 'Vegetable (GSAMB)',
+                    price: 36,
+                    unit: 'kg',
+                    icon: '🧅',
+                    change: 4.0,
+                    changePercent: 12.5,
+                    link: 'vegetable.html'
+                },
+                {
+                    key: 'lpg',
+                    name: 'LPG (14.2 kg)',
+                    sub: 'Fuel Prices (Goa)',
+                    price: 956,
+                    unit: 'cyl',
+                    icon: '🔵',
+                    change: 0.0,
+                    changePercent: 0.0,
+                    link: 'fuel.html'
+                },
+                {
+                    key: 'petrol',
+                    name: 'Petrol (Panjim)',
+                    sub: 'Fuel Prices (Goa)',
+                    price: 104.06,
+                    unit: 'L',
+                    icon: '⛽',
+                    change: 0.0,
+                    changePercent: 0.0,
+                    link: 'fuel.html'
+                },
+                {
+                    key: 'coconut',
+                    name: 'Sollera Nal (Coconut)',
+                    sub: 'Goa Bagaydar',
+                    price: 51,
+                    unit: 'piece',
+                    icon: '🥥',
+                    change: 3.0,
+                    changePercent: 6.25,
+                    link: 'bagayatdar.html'
+                }
             ];
 
-            // 1. Try loading real Bagayatdar data
+            // 1. Fetch Bagayatdar JSON
             try {
                 const res = await fetch('bagayatdar_data.json?t=' + ts);
                 if (res.ok) {
                     const bData = await res.json();
-                    const items = bData.today_prices || bData.items || [];
-                    const supari = items.find(i => (i.item || i.name || '').toLowerCase().includes('supari') || (i.item || i.name || '').toLowerCase().includes('arecanut'));
+                    const list = bData.today_prices || bData.items || [];
+                    
+                    // Match Supari Juni
+                    const supari = list.find(i => (i.name || '').toLowerCase().includes('supari') || (i.name || '').toLowerCase().includes('juni'));
                     if (supari) {
-                        trendingData[0].price = supari.price || supari.rate;
+                        trendingItems[0].price = supari.price;
+                        trendingItems[0].change = supari.change ?? 0;
+                        trendingItems[0].changePercent = supari.changePercent ?? 0;
                     }
-                    const coconut = items.find(i => (i.item || i.name || '').toLowerCase().includes('coconut'));
+
+                    // Match Sollera Nal / Coconut
+                    const coconut = list.find(i => (i.name || '').toLowerCase().includes('sollera') || (i.name || '').toLowerCase().includes('coconut') || (i.name || '').toLowerCase().includes('nal'));
                     if (coconut) {
-                        trendingData[4].price = coconut.price || coconut.rate;
+                        trendingItems[4].price = coconut.price;
+                        trendingItems[4].name = coconut.name;
+                        trendingItems[4].change = coconut.change ?? 0;
+                        trendingItems[4].changePercent = coconut.changePercent ?? 0;
                     }
                 }
-            } catch (e) { console.log('Bagayatdar fallback used'); }
+            } catch (e) { console.log('Using default Bagayatdar rates'); }
 
-            // 2. Try loading real Fuel data
+            // 2. Fetch Vegetables JSON (Onion)
+            try {
+                const res = await fetch('vegetables_data.json?t=' + ts);
+                if (res.ok) {
+                    const vData = await res.json();
+                    const vList = vData.vegetables || vData.items || [];
+                    const onion = vList.find(i => (i.name || '').toLowerCase().includes('onion') || (i.name || '').toLowerCase().includes('kanda'));
+                    if (onion) {
+                        trendingItems[1].price = onion.price;
+                        trendingItems[1].change = onion.change ?? 0;
+                        trendingItems[1].changePercent = onion.changePercent ?? 0;
+                    }
+                }
+            } catch (e) { console.log('Using default Vegetable rates'); }
+
+            // 3. Fetch Fuel JSON
             try {
                 const res = await fetch('fuel_data.json?t=' + ts);
                 if (res.ok) {
@@ -217,21 +291,23 @@
                     const fuels = fData.fuels || [];
                     const petrol = fuels.find(f => (f.name || '').toLowerCase().includes('petrol'));
                     if (petrol) {
-                        trendingData[3].price = petrol.price;
-                        trendingData[3].change = petrol.change || 0;
-                        trendingData[3].changePct = petrol.changePercent || 0;
+                        trendingItems[3].price = petrol.price;
+                        trendingItems[3].change = petrol.change ?? 0;
+                        trendingItems[3].changePercent = petrol.changePercent ?? 0;
                     }
                     const lpg = fuels.find(f => (f.name || '').toLowerCase().includes('14.2') || (f.name || '').toLowerCase().includes('domestic'));
                     if (lpg) {
-                        trendingData[2].price = lpg.price;
+                        trendingItems[2].price = lpg.price;
+                        trendingItems[2].change = lpg.change ?? 0;
+                        trendingItems[2].changePercent = lpg.changePercent ?? 0;
                     }
                     if (fData.last_updated) {
                         document.getElementById('marketUpdated').textContent = fData.last_updated;
                     }
                 }
-            } catch (e) { console.log('Fuel fallback used'); }
+            } catch (e) { console.log('Using default Fuel rates'); }
 
-            // 3. Try loading live Gold & Silver
+            // 4. Fetch Metals JSON
             try {
                 const res = await fetch('metals_data.json?t=' + ts);
                 if (res.ok) {
@@ -248,13 +324,17 @@
                         document.getElementById('metalsUpdateText').innerHTML = `<i class="far fa-clock mr-1"></i> ${mData.last_updated}`;
                     }
                 }
-            } catch (e) { console.log('Metals fallback used'); }
+            } catch (e) { console.log('Using default Metal rates'); }
 
-            // Render Trending Cards
-            listEl.innerHTML = trendingData.map(item => {
-                const isUp = item.change > 0;
-                const isDown = item.change < 0;
-                const trendColor = isUp ? 'text-rose-500' : isDown ? 'text-emerald-600' : 'text-slate-400';
+            // Render the items
+            listEl.innerHTML = trendingItems.map(item => {
+                const change = parseFloat(item.change) || 0;
+                const changePercent = parseFloat(item.changePercent) || 0;
+                const isUp = change > 0;
+                const isDown = change < 0;
+
+                // Price increase = red, Price decrease = green (market standard for consumers)
+                const trendColor = isUp ? 'text-emerald-600' : isDown ? 'text-rose-500' : 'text-slate-400';
                 const trendIcon = isUp ? 'fa-arrow-up' : isDown ? 'fa-arrow-down' : 'fa-minus';
 
                 return `
@@ -274,7 +354,7 @@
                             </div>
                             <div class="text-[10px] font-semibold ${trendColor} flex items-center justify-end gap-1 mt-0.5">
                                 <i class="fas ${trendIcon} text-[8px]"></i>
-                                <span>₹${Math.abs(item.change).toFixed(2)} (${Math.abs(item.changePct).toFixed(1)}%)</span>
+                                <span>₹${Math.abs(change).toFixed(2)} (${Math.abs(changePercent).toFixed(1)}%)</span>
                             </div>
                         </div>
                     </a>
