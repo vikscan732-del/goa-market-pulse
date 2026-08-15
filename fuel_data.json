@@ -1,0 +1,67 @@
+{
+  "last_updated": "Today, 07:03 AM",
+  "city": "Panjim",
+  "state": "Goa",
+  "fuels": [
+    {
+      "name": "Petrol (Panjim)",
+      "category": "petrol",
+      "price": 104.06,
+      "unit": "Litre",
+      "district": "Goa (Panjim)",
+      "icon": "⛽",
+      "change": 0.0,
+      "changePercent": 0.0
+    },
+    {
+      "name": "Diesel (Panjim)",
+      "category": "diesel",
+      "price": 95.94,
+      "unit": "Litre",
+      "district": "Goa (Panjim)",
+      "icon": "🛢️",
+      "change": 0.0,
+      "changePercent": 0.0
+    },
+    {
+      "name": "CNG (Panjim)",
+      "category": "cng",
+      "price": 94.5,
+      "unit": "kg",
+      "district": "Goa (Panjim)",
+      "icon": "🟢",
+      "change": 0.0,
+      "changePercent": 0.0
+    },
+    {
+      "name": "Auto Gas (Panjim)",
+      "category": "cng",
+      "price": 46.69,
+      "unit": "Litre",
+      "district": "Goa (Panjim)",
+      "icon": "🔵",
+      "change": 0.0,
+      "changePercent": 0.0
+    },
+    {
+      "name": "LPG (Domestic) (Panjim)",
+      "category": "lpg",
+      "price": 956.0,
+      "unit": "14.2 kg cyl",
+      "district": "Goa (Panjim)",
+      "icon": "🔴",
+      "change": 0.0,
+      "changePercent": 0.0
+    },
+    {
+      "name": "Commercial LPG (19 kg)",
+      "category": "lpg",
+      "price": 2815.0,
+      "unit": "19 kg cyl",
+      "district": "All Goa (Hotels & Commercial)",
+      "icon": "🔴",
+      "change": 0.0,
+      "changePercent": 0.0
+    }
+  ]
+}
