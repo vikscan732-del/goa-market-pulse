@@ -162,6 +162,91 @@
 </div>
 <!-- END: Electricity Charge Calculator Banner -->
 
+        <!-- START: Gold & Silver Live Rates Banner (Golden Yellow Theme) -->
+<div class="bg-gradient-to-br from-[#d97706] via-[#eab308] to-[#ca8a04] rounded-3xl p-4 text-white shadow-xl mt-4 border border-amber-300">
+    <div class="flex items-center justify-between pb-3 border-b border-amber-200/40">
+        <div class="flex items-center gap-3">
+            <div class="w-11 h-11 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl shadow-inner shrink-0">
+                🪙
+            </div>
+            <div>
+                <span class="text-[10px] uppercase font-bold tracking-widest text-amber-100 block opacity-90">Live Bullion Rates</span>
+                <h3 class="font-extrabold text-sm text-white leading-tight">Gold & Silver (Goa)</h3>
+            </div>
+        </div>
+        <span class="bg-white/25 text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/30">
+            24K / 22K
+        </span>
+    </div>
+
+    <!-- Live Prices Container (Populated via JS) -->
+    <div id="metalRatesBanner" class="grid grid-cols-2 gap-2.5 mt-3 text-xs">
+        <!-- Gold 22K Box -->
+        <div class="bg-black/15 p-2.5 rounded-2xl backdrop-blur-xs border border-white/20 flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+                <span class="font-bold text-amber-100 text-[11px]">Gold 22K</span>
+                <span class="text-[9px] bg-amber-400/30 text-amber-100 px-1.5 py-0.5 rounded-md font-semibold">1g</span>
+            </div>
+            <div class="mt-1.5">
+                <span id="gold22kRate" class="font-extrabold text-base text-white">₹12,308</span>
+                <span class="text-[9px] text-amber-100 block opacity-80">24K: <b id="gold24kRate" class="text-white">₹13,426</b></span>
+            </div>
+        </div>
+
+        <!-- Silver Box -->
+        <div class="bg-black/15 p-2.5 rounded-2xl backdrop-blur-xs border border-white/20 flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+                <span class="font-bold text-amber-100 text-[11px]">Silver</span>
+                <span class="text-[9px] bg-amber-400/30 text-amber-100 px-1.5 py-0.5 rounded-md font-semibold">10g</span>
+            </div>
+            <div class="mt-1.5">
+                <span id="silver10gRate" class="font-extrabold text-base text-white">₹1,984</span>
+                <span class="text-[9px] text-amber-100 block opacity-80">1g: <b id="silver1gRate" class="text-white">₹198.43</b></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timestamp footer -->
+    <div class="mt-2.5 pt-2 flex items-center justify-between text-[10px] text-amber-100/90 font-medium">
+        <span id="metalsLastUpdated"><i class="far fa-clock mr-1"></i> Syncing live rates...</span>
+        <span class="font-bold">GoldAPI</span>
+    </div>
+</div>
+<!-- END: Gold & Silver Live Rates Banner -->
+
+<!-- Add this JS script just before </body> in index.html -->
+<script>
+    async function loadGoldSilverBanner() {
+        try {
+            const res = await fetch('metals_data.json?t=' + Date.now());
+            if (!res.ok) return;
+            const data = await res.json();
+
+            if (data.gold) {
+                const g22 = data.gold.karats?.['22k'] || (data.gold.gram_price * 0.916);
+                const g24 = data.gold.karats?.['24k'] || data.gold.gram_price;
+                document.getElementById('gold22kRate').textContent = `₹${Math.round(g22).toLocaleString('en-IN')}`;
+                document.getElementById('gold24kRate').textContent = `₹${Math.round(g24).toLocaleString('en-IN')}`;
+            }
+
+            if (data.silver) {
+                const s1g = data.silver.gram_price;
+                const s10g = s1g * 10;
+                document.getElementById('silver10gRate').textContent = `₹${Math.round(s10g).toLocaleString('en-IN')}`;
+                document.getElementById('silver1gRate').textContent = `₹${s1g.toFixed(2)}`;
+            }
+
+            if (data.last_updated) {
+                document.getElementById('metalsLastUpdated').innerHTML = `<i class="far fa-clock mr-1"></i> ${data.last_updated}`;
+            }
+        } catch (e) {
+            console.log("Could not load metal banner rates:", e);
+        }
+    }
+    document.addEventListener('DOMContentLoaded', loadGoldSilverBanner);
+</script>
+
+
 
     </main>
 
