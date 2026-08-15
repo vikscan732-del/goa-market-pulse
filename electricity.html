@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goa Electricity Rates & Automated Bill Calculator - Goa Market Pulse</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f6f8f7;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased pb-20">
+
+    <!-- Header Section -->
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-50">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h1 class="text-base font-extrabold text-[#d97706] leading-tight">Electricity Tariff</h1>
+                    <p class="text-[11px] text-slate-400 font-medium">Official Unit Rates Tracker</p>
+                </div>
+            </div>
+            <span class="bg-amber-50 text-amber-700 text-[10px] font-bold px-2.5 py-1 rounded-full border border-amber-200">
+                Official Data
+            </span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-md mx-auto px-4 mt-3 space-y-3">
+
+        <!-- Live Sync Status Card (Dynamic) -->
+        <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl border border-emerald-100">
+                    <i class="fas fa-sync-alt fa-spin text-sm"></i>
+                </div>
+                <div>
+                    <h3 class="font-extrabold text-xs text-slate-800 leading-tight">Monthly Tariff Status</h3>
+                    <p id="periodDisplay" class="text-[10px] text-slate-400 mt-0.5">Loading consumption period...</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <span id="fppcaBadge" class="bg-emerald-50 text-emerald-700 font-extrabold text-[10px] px-2.5 py-1 rounded-full border border-emerald-100">
+                    LIVE SYNC
+                </span>
+            </div>
+        </div>
+
+        <!-- Automated Bill Calculator Card -->
+        <div class="bg-gradient-to-br from-[#d97706] to-[#f59e0b] rounded-3xl p-4 text-white shadow-xl flex items-center justify-between border border-amber-400">
+            <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-3xl">
+                    ⚡
+                </div>
+                <div>
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-amber-100 opacity-80 block">Goa Govt Rates</span>
+                    <h3 class="font-extrabold text-sm text-white leading-tight">Bill Calculator</h3>
+                    <p class="text-[10px] text-amber-100 font-medium">Domestic & Agriculture Unit Estimation</p>
+                </div>
+            </div>
+            <a href="#calc" class="bg-white text-[#d97706] hover:bg-amber-50 text-xs font-extrabold px-4 py-2.5 rounded-xl shadow-lg transition duration-200 flex items-center gap-1.5">
+                <span>Start</span>
+                <i class="fas fa-chevron-right text-[10px]"></i>
+            </a>
+        </div>
+
+        <!-- Tariff Section Container (Domestic/Agriculture) -->
+        <div id="tariffContainer" class="space-y-4">
+            <div class="text-center py-12 text-xs text-slate-400">Loading dynamic tariff rates...</div>
+        </div>
+
+        <!-- Interactive Calculator Anchored Section -->
+        <div id="calc" class="pt-2"></div>
+        <div class="bg-white p-4 rounded-3xl border border-slate-100 shadow-xl space-y-3">
+            <div class="flex items-center justify-between">
+                <h3 class="font-bold text-xs text-slate-800 flex items-center gap-2">
+                    <i class="fas fa-calculator text-amber-500"></i> Estimate Your Bill
+                </h3>
+                <span class="text-[9px] text-slate-400 font-medium">*Energy Charges + FPPCA only</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2">
+                <input type="number" id="calcUnits" placeholder="Enter Units" 
+                       class="col-span-1 w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-amber-500 transition shadow-inner">
+                
+                <select id="calcType" class="col-span-2 w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-xs text-slate-700 font-semibold focus:outline-none focus:border-amber-500 transition shadow-inner">
+                    <option value="ltds2">🏠 LTDS-II (Domestic Home)</option>
+                    <option value="ltas1">🚜 LTAS-I (Agri Pumps ≤10kW)</option>
+                    <option value="ltas2">💧 LTAS-II (Agri Pumps >10kW)</option>
+                    <option value="ltas3">🌾 LTAS-III (Agri Allied)</option>
+                    <option value="ltds1">💡 LTDS-I (Low Income Group)</option>
+                </select>
+            </div>
+
+            <div class="bg-amber-50 border border-amber-100 p-3.5 rounded-2xl flex items-center justify-between shadow-inner">
+                <div>
+                    <span class="text-[10px] text-amber-700 font-semibold block uppercase">Calculated Total</span>
+                    <span class="text-[9px] text-amber-500">(Rounded estimate)</span>
+                </div>
+                <span id="calcResult" class="font-extrabold text-2xl text-amber-700">₹0.00</span>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Copyright -->
+    <footer class="max-w-md mx-auto text-center py-4 mt-6 border-t border-slate-100">
+        <p class="text-[10px] text-slate-400">© 2026 Goa Market Pulse • Automatic Tariff Tracking</p>
+    </footer>
+
+    <!-- All Interactive JavaScript -->
+    <script>
+        let currentSlabs = { domestic: {}, agriculture: {} };
+
+        // 1. Fetch Dynamic Data from JSON
+        async function loadElectricityData() {
+            try {
+                const res = await fetch('electricity_data.json?t=' + Date.now()); // Prevent caching
+                const data = await res.json();
+                
+                if (data.tariff_period) {
+                    document.getElementById('periodDisplay').textContent = data.tariff_period;
+                    // Example regex to find FPPCA % from text like "FPPCA 19.235%"
+                    const fppcaMatch = data.tariff_period.match(/FPPCA\s*([\d.]+)/i);
+                    if (fppcaMatch) {
+                        document.getElementById('fppcaBadge').textContent = `FPPCA ${fppcaMatch[1]}% ACTIVE`;
+                    }
+                }
+                
+                // Store rates globally for the calculator
+                currentSlabs.domestic = data.domestic || [];
+                currentSlabs.agriculture = data.agriculture || [];
+
+                renderTariffCards(data);
+            } catch (err) {
+                console.error("Error loading electricity data:", err);
+                document.getElementById('tariffContainer').innerHTML = `
+                    <div class="bg-white p-6 rounded-2xl text-center text-xs text-red-500 border border-red-100 shadow-sm">
+                        ⚠️ Unable to load dynamic tariff data. Please check <b>electricity_data.json</b> in the repository.
+                    </div>`;
+            }
+        }
+
+        // Helper to format currency
+        function formatIndianPrice(num) {
+            return `₹${Number(num).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
+        // Helper for slab color coding
+        const slabThemes = [
+            { bg: "bg-emerald-50", badge: "bg-white text-emerald-800", border: "border-emerald-100" },
+            { bg: "bg-blue-50", badge: "bg-white text-blue-800", border: "border-blue-100" },
+            { bg: "bg-amber-50", badge: "bg-white text-amber-800", border: "border-amber-100" },
+            { bg: "bg-orange-50", badge: "bg-white text-orange-800", border: "border-orange-100" },
+            { bg: "bg-rose-50", badge: "bg-white text-rose-800", border: "border-rose-100" }
+        ];
+
+        // 2. Render Cards based on JSON data
+        function renderTariffCards(data) {
+            const container = document.getElementById('tariffContainer');
+            container.innerHTML = ''; // Clear loading message
+
+            // Render DOMESTIC (LTDS-II)
+            const ltds2 = data.domestic ? data.domestic.find(c => c.category && c.category.includes('LTDS-II')) : null;
+            if (ltds2) {
+                const ltds2Card = document.createElement('div');
+                ltds2Card.className = "bg-white p-4 rounded-2xl border border-slate-100 shadow-sm";
+                ltds2Card.innerHTML = `
+                    <div class="flex items-center gap-3 mb-3 pb-2 border-b border-slate-100">
+                        <div class="text-2xl">🏠</div>
+                        <div>
+                            <h3 class="font-extrabold text-xs text-slate-800 leading-snug">${ltds2.category}</h3>
+                            <p class="text-[10px] text-slate-400">${ltds2.desc || 'Standard Domestic (Telescopic Slabs)'}</p>
+                        </div>
+                    </div>
+                    <div class="space-y-1.5 text-xs text-slate-700">
+                        ${ltds2.slabs.map((s, idx) => {
+                            const theme = slabThemes[idx % slabThemes.length];
+                            return `
+                                <div class="${theme.bg} ${theme.border} border p-2 rounded-xl flex items-center justify-between">
+                                    <div class="pr-2">
+                                        <div class="font-bold">${s.range}</div>
+                                        <div class="text-[10px] text-slate-400">Base ₹${s.base_rate.toFixed(2)} + FPPCA ₹${s.fppca.toFixed(2)}</div>
+                                    </div>
+                                    <span class="${theme.badge} font-extrabold text-xs px-2.5 py-1 rounded-lg border ${theme.border}">
+                                        ${formatIndianPrice(s.total_rate)} <span class="text-[9px] font-normal text-slate-400">/ unit</span>
+                                    </span>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+                container.appendChild(ltds2Card);
+            }
+
+            // Render Other Domestic (e.g., LIG)
+            const ltds1 = data.domestic ? data.domestic.find(c => c.category && c.category.includes('LTDS-I')) : null;
+            if (ltds1 && ltds1.slabs && ltds1.slabs.length > 0) {
+                const ltds1Card = document.createElement('div');
+                ltds1Card.className = "bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between";
+                const s = ltds1.slabs[0]; // Assuming LIG has only one flat slab entry
+                ltds1Card.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center text-xl border border-teal-100">💡</div>
+                        <div>
+                            <h3 class="font-extrabold text-xs text-slate-800 leading-snug">${ltds1.category}</h3>
+                            <p class="text-[10px] text-slate-400">${ltds1.desc || ''}</p>
+                        </div>
+                    </div>
+                    <span class="bg-teal-50 text-teal-700 font-extrabold text-xs px-2.5 py-1 rounded-lg border border-teal-100">
+                        ${formatIndianPrice(s.total_rate)}
+                    </span>
+                `;
+                container.appendChild(ltds1Card);
+            }
+
+            // Render Agriculture Section Header
+            if (data.agriculture && data.agriculture.length > 0) {
+                const agHeader = document.createElement('h2');
+                agHeader.className = "font-extrabold text-xs text-slate-700 uppercase tracking-wider flex items-center gap-1.5 pt-2";
+                agHeader.innerHTML = `<i class="fas fa-seedling text-emerald-500"></i> Agricultural (Farmer) Unit Rates`;
+                container.appendChild(agHeader);
+
+                // Render Agriculture Cards
+                data.agriculture.forEach((ag, idx) => {
+                    const theme = slabThemes[idx % slabThemes.length];
+                    const agCard = document.createElement('div');
+                    agCard.className = "bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between hover:shadow-md transition";
+                    agCard.innerHTML = `
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 ${theme.bg} ${theme.border} border rounded-2xl flex items-center justify-center text-2xl">
+                                ${ag.icon || '🚜'}
+                            </div>
+                            <div>
+                                <h3 class="font-extrabold text-xs text-slate-800 leading-tight">${ag.name}</h3>
+                                <p class="text-[10px] text-slate-400 mt-0.5">${ag.desc || ag.range || 'Flat Rate (All Units)'}</p>
+                                <span class="text-[9px] text-slate-400">Base ₹${ag.base_rate.toFixed(2)} + FPPCA ₹${ag.fppca.toFixed(2)}</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="${theme.badge} font-extrabold text-xs px-3 py-1.5 rounded-xl border ${theme.border}">
+                                ${formatIndianPrice(ag.total_rate)} <span class="text-[9px] font-normal text-slate-400">/ unit</span>
+                            </span>
+                        </div>
+                    `;
+                    container.appendChild(agCard);
+                });
+            }
+        }
+
+        // 3. Calculator Logic
+        function calculateEstimatedBill() {
+            const unitsStr = document.getElementById('calcUnits').value;
+            const units = parseFloat(unitsStr) || 0;
+            const type = document.getElementById('calcType').value;
+            let total = 0;
+
+            if (units <= 0) {
+                document.getElementById('calcResult').textContent = "₹0.00";
+                return;
+            }
+
+            if (type === 'ltds2') {
+                // Telescopic slab calculation for Standard Domestic Household
+                const ltds2Data = currentSlabs.domestic.find(c => c.category && c.category.includes('LTDS-II'));
+                if (ltds2Data && ltds2Data.slabs) {
+                    let remainingUnits = units;
+                    const slabs = ltds2Data.slabs;
+
+                    // Assumption on Goa standard slab tiers: 0-100, 101-200, 201-300, 301-400, Above 400
+                    if (remainingUnits > 400) { total += (remainingUnits - 400) * slabs[4].total_rate; remainingUnits = 400; }
+                    if (remainingUnits > 300) { total += (remainingUnits - 300) * slabs[3].total_rate; remainingUnits = 300; }
+                    if (remainingUnits > 200) { total += (remainingUnits - 200) * slabs[2].total_rate; remainingUnits = 200; }
+                    if (remainingUnits > 100) { total += (remainingUnits - 100) * slabs[1].total_rate; remainingUnits = 100; }
+                    if (remainingUnits > 0)   { total += remainingUnits * slabs[0].total_rate; }
+                }
+            } else if (type === 'ltas1') {
+                const ag = currentSlabs.agriculture.find(a => a.name && a.name.includes('LTAS-I'));
+                if (ag) total = units * ag.total_rate;
+            } else if (type === 'ltas2') {
+                const ag = currentSlabs.agriculture.find(a => a.name && a.name.includes('LTAS-II'));
+                if (ag) total = units * ag.total_rate;
+            } else if (type === 'ltas3') {
+                const ag = currentSlabs.agriculture.find(a => a.name && a.name.includes('LTAS-III'));
+                if (ag) total = units * ag.total_rate;
+            } else if (type === 'ltds1') {
+                const d1 = currentSlabs.domestic.find(c => c.category && c.category.includes('LTDS-I'));
+                if (d1 && d1.slabs && d1.slabs.length > 0) total = units * d1.slabs[0].total_rate;
+            }
+
+            // Round the final value to Indian Rupees format
+            document.getElementById('calcResult').textContent = formatIndianPrice(total);
+        }
+
+        // Add event listeners to calculator inputs
+        document.getElementById('calcUnits').addEventListener('input', calculateEstimatedBill);
+        document.getElementById('calcType').addEventListener('change', calculateEstimatedBill);
+
+        // Initial Load
+        document.addEventListener('DOMContentLoaded', loadElectricityData);
+    </script>
+</body>
+</html>
