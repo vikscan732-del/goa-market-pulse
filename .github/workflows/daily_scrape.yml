@@ -56,7 +56,12 @@ jobs:
         run: |
           python scraper/fuel_scraper.py || echo "Fuel scraper encountered an issue, proceeding..."
 
-      # Step 9: Commit and push all updated JSON files and image
+      # Step 9: Run Gold & Silver Metal Scraper
+      - name: Run Gold & Silver Scraper
+        run: |
+          python scraper/metal_scraper.py || echo "Metal scraper encountered an issue, proceeding..."
+
+      # Step 10: Commit and push all updated JSON files and image
       - name: Commit and Push Updated Data & Latest Photo
         run: |
           git config --global user.name "github-actions[bot]"
@@ -65,6 +70,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes today."
           else
-            git commit -m "Auto-update market rates and replace latest_price.jpg [$(date +'%Y-%m-%d')]"
+            git commit -m "Auto-update market rates, fuel, gold and silver [$(date +'%Y-%m-%d')]"
             git push
           fi
