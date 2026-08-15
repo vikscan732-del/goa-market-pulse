@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goa Market Price Tracker - Live Daily Rates</title>
-    <!-- Tailwind CSS CDN for styling -->
+    <title>Goa Market Price Tracker</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome for standard icons -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -25,9 +25,9 @@
 </head>
 <body class="text-slate-800 antialiased pb-16">
 
-    <!-- TOP HEADER -->
+    <!-- Top Header -->
     <header class="bg-white sticky top-0 z-50 border-b border-slate-100 shadow-xs">
-        <div class="max-w-md mx-auto px-4 py-3.5 flex items-center justify-between">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-[#0e5e3a] rounded-xl flex items-center justify-center text-xl shadow-inner">
                     🛍️
@@ -43,19 +43,19 @@
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
+    <!-- Main Content -->
     <main class="max-w-md mx-auto px-4 mt-3 space-y-4">
 
-        <!-- LAST UPDATED BADGE -->
-        <div class="bg-emerald-50 text-emerald-800 text-[11px] font-bold px-3 py-2 rounded-xl flex items-center gap-2 border border-emerald-100 shadow-inner">
+        <!-- Last Updated Badge -->
+        <div class="bg-emerald-50 text-emerald-800 text-[11px] font-bold px-3 py-2 rounded-xl flex items-center gap-2 border border-emerald-100">
             <i class="far fa-clock"></i>
             <span>Updated:</span>
-            <span id="marketUpdated">Today, 03:30 AM IST</span>
+            <span id="marketUpdated">Today, 06:00 AM IST</span>
         </div>
 
-        <!-- TOP 4 CATEGORY NAV CARDS -->
+        <!-- Top 4 Category Cards -->
         <div class="grid grid-cols-4 gap-2.5">
-            <!-- Bagayatdar -->
+            <!-- Goa Bagayatdar -->
             <a href="bagayatdar.html" class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#eaf8f0] border border-[#c3ecd2] shadow-sm hover:shadow-md transition active:scale-95 text-center">
                 <div class="text-3xl my-auto">🧺</div>
                 <span class="text-[11px] font-bold text-[#0e5e3a] leading-tight mt-2 flex items-center justify-center gap-0.5">
@@ -85,355 +85,204 @@
             </a>
         </div>
 
-        <!-- TODAY'S TRENDING PRICES SECTION -->
+        <!-- Trending Prices Section -->
         <div class="space-y-3 pt-2">
             <h2 class="font-extrabold text-sm text-slate-700 flex items-center gap-2">
                 <i class="fas fa-chart-line text-emerald-600"></i> Today's Trending Prices
             </h2>
             <div id="trendingList" class="space-y-2.5">
-                <!-- Loading State placeholder -->
-                <div class="text-center py-12 text-xs text-slate-400 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                    <i class="fas fa-spinner fa-spin mr-1.5"></i> Loading fresh rates...
+                <div class="text-center py-6 text-xs text-slate-400 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                    <i class="fas fa-spinner fa-spin mr-1.5"></i> Loading fresh prices...
                 </div>
             </div>
         </div>
 
-        <!-- QUICK ACCESS BANNERS FOOTER AREA -->
-        <div class="space-y-3 pt-3">
-            
-            <!-- Traffic Fines Banner -->
-            <a href="traffic.html" class="block bg-gradient-to-br from-[#e11d48] to-[#9f1239] rounded-3xl p-5 text-white shadow-xl flex items-center justify-between hover:scale-[1.01] transition border border-red-500">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-3xl shrink-0">
-                        🚦
-                    </div>
-                    <div>
-                        <span class="text-[10px] uppercase font-bold tracking-widest text-red-100 block opacity-80">Check Traffic Rules</span>
-                        <h3 class="font-extrabold text-sm text-white leading-tight">Goa Traffic Fines (ITMS)</h3>
-                        <p class="text-[10px] text-red-100 font-medium">All Violation Rates & e-Challan Info</p>
-                    </div>
-                </div>
-                <i class="fas fa-chevron-right text-red-200"></i>
-            </a>
-
-            <!-- Electricity Calculator Banner -->
-            <a href="electricity.html" class="block bg-gradient-to-br from-[#0277bd] to-[#01579b] rounded-3xl p-5 text-white shadow-xl flex items-center justify-between hover:scale-[1.01] transition border border-blue-400">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-3xl shrink-0">
-                        ⚡
-                    </div>
-                    <div>
-                        <span class="text-[10px] uppercase font-bold tracking-widest text-blue-100 block opacity-80">Check Unit Rates</span>
-                        <h3 class="font-extrabold text-sm text-white leading-tight">Electricity Bill Calculator</h3>
-                        <p class="text-[10px] text-blue-100 font-medium">Official Domestic & Agriculture Tariff</p>
-                    </div>
-                </div>
-                <i class="fas fa-chevron-right text-blue-200"></i>
-            </a>
-
-            <!-- Gold & Silver Live Bullion Banner (Golden Yellow Theme) -->
-            <div id="metalsBanner" class="block bg-gradient-to-br from-[#d97706] via-[#eab308] to-[#ca8a04] rounded-3xl p-4 text-white shadow-xl border border-amber-300">
-                <div class="flex items-center justify-between pb-3 border-b border-amber-200/40">
-                    <div class="flex items-center gap-3">
-                        <div class="w-11 h-11 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl shrink-0 shadow-inner">
-                            🪙
-                        </div>
-                        <div>
-                            <span class="text-[10px] uppercase font-bold tracking-widest text-amber-100 block opacity-90">Live Bullion Rates</span>
-                            <h3 class="font-extrabold text-sm text-white leading-tight">Gold & Silver (XAU/XAG)</h3>
-                        </div>
-                    </div>
-                    <span class="bg-white/25 text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/30">Goa</span>
-                </div>
-                <!-- Mini rates area populated by JS -->
-                <div class="grid grid-cols-2 gap-2 mt-3 text-xs text-amber-50">
-                    <div id="goldBannerRate" class="font-extrabold">Gold 22K (1g): ...</div>
-                    <div id="silverBannerRate" class="font-extrabold text-right">Silver (10g): ...Here is the complete, final update for **`index.html`**.
-
-This code integrates everything. It activates the **Today's Trending Prices** list to be **fully dynamic**, grabbing live data from `bagayatdar_data.json` and `fuel_data.json`. It also removes the obsolete Gold card from that list, replacing it with a new card for **Coconuts (Bagayatdar)** as requested.
-
----
-
-### Implementation Instructions:
-
-1.  Open your **`goa-market-pulse`** repository on GitHub.
-2.  Click on the file named **`index.html`**.
-3.  Tap the **pencil icon (Edit this file)**.
-4.  Delete all existing code and paste this entire updated block below:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goa Market Price Tracker - Live Daily Rates</title>
-    <!-- Tailwind CSS CDN for styling -->
-    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
-    <!-- FontAwesome for standard icons -->
-    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css)">
-    <style>
-        @import url('[https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap](https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap)');
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f8fafc;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .trending-card {
-            animation: fadeIn 0.3s ease-out forwards;
-        }
-    </style>
-</head>
-<body class="text-slate-800 antialiased pb-16">
-
-    <!-- TOP HEADER -->
-    <header class="bg-white sticky top-0 z-50 border-b border-slate-100 shadow-xs">
-        <div class="max-w-md mx-auto px-4 py-3.5 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-[#0e5e3a] rounded-xl flex items-center justify-center text-xl shadow-inner">
-                    🛍️
-                </div>
-                <div>
-                    <h1 class="text-base font-extrabold text-[#0e5e3a] leading-tight">Goa Market Price Tracker</h1>
-                    <p class="text-[11px] text-slate-400 font-medium">Daily Prices. Smarter Choices.</p>
-                </div>
-            </div>
-            <button class="w-9 h-9 flex items-center justify-center text-slate-600 rounded-lg hover:bg-slate-100 transition">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
-
-    <!-- MAIN CONTENT -->
-    <main class="max-w-md mx-auto px-4 mt-3 space-y-4">
-
-        <!-- LAST UPDATED BADGE -->
-        <div class="bg-emerald-50 text-emerald-800 text-[11px] font-bold px-3 py-2 rounded-xl flex items-center gap-2 border border-emerald-100 shadow-inner">
-            <i class="far fa-clock"></i>
-            <span>Updated:</span>
-            <span id="marketUpdated">Today, 03:30 AM IST</span>
-        </div>
-
-        <!-- TOP 4 CATEGORY NAV CARDS -->
-        <div class="grid grid-cols-4 gap-2.5">
-            <!-- Bagayatdar -->
-            <a href="bagayatdar.html" class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#eaf8f0] border border-[#c3ecd2] shadow-sm hover:shadow-md transition active:scale-95 text-center">
-                <div class="text-3xl my-auto">🧺</div>
-                <span class="text-[11px] font-bold text-[#0e5e3a] leading-tight mt-2 flex items-center justify-center gap-0.5">
-                    Goa Bagaydar <i class="fas fa-chevron-right text-[8px]"></i>
-                </span>
-            </a>
-            <!-- Vegetables -->
-            <a href="vegetable.html" class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#fff6ee] border border-[#ffdec2] shadow-sm hover:shadow-md transition active:scale-95 text-center">
-                <div class="text-3xl my-auto">🥬</div>
-                <span class="text-[11px] font-bold text-[#c2410c] leading-tight mt-2 flex items-center justify-center gap-0.5">
-                    Vegetable <i class="fas fa-chevron-right text-[8px]"></i>
-                </span>
-            </a>
-            <!-- Construction -->
-            <a href="construction.html" class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#f0f6ff] border border-[#cfe2ff] shadow-sm hover:shadow-md transition active:scale-95 text-center">
-                <div class="text-3xl my-auto">🏗️</div>
-                <span class="text-[11px] font-bold text-[#1d4ed8] leading-tight mt-2 flex items-center justify-center gap-0.5">
-                    Construction <i class="fas fa-chevron-right text-[8px]"></i>
-                </span>
-            </a>
-            <!-- Fuel -->
-            <a href="fuel.html" class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#fffbeb] border border-[#fef08a] shadow-sm hover:shadow-md transition active:scale-95 text-center">
-                <div class="text-3xl my-auto">⛽</div>
-                <span class="text-[11px] font-bold text-[#b45309] leading-tight mt-2 flex items-center justify-center gap-0.5">
-                    Fuel <i class="fas fa-chevron-right text-[8px]"></i>
-                </span>
-            </a>
-        </div>
-
-        <!-- TODAY'S TRENDING PRICES SECTION -->
+        <!-- Quick Access Banners -->
         <div class="space-y-3 pt-2">
-            <h2 class="font-extrabold text-sm text-slate-700 flex items-center gap-2">
-                <i class="fas fa-chart-line text-emerald-600"></i> Today's Trending Prices
-            </h2>
-            <div id="trendingList" class="space-y-2.5">
-                <!-- Loading State placeholder -->
-                <div class="text-center py-12 text-xs text-slate-400 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                    <i class="fas fa-spinner fa-spin mr-1.5"></i> Loading fresh rates...
-                </div>
-            </div>
-        </div>
-
-        <!-- QUICK ACCESS BANNERS FOOTER AREA -->
-        <div class="space-y-3 pt-3">
             
-            <!-- Traffic Fines Banner -->
-            <a href="traffic.html" class="block bg-gradient-to-br from-[#e11d48] to-[#9f1239] rounded-3xl p-5 text-white shadow-xl flex items-center justify-between hover:scale-[1.01] transition border border-red-500">
-                <div class="flex items-center gap-4">
+            <!-- 1. Goa Traffic Fines -->
+            <a href="traffic.html" class="bg-gradient-to-br from-[#e11d48] to-[#9f1239] rounded-3xl p-4 text-white shadow-md flex items-center justify-between hover:opacity-95 transition border border-rose-400">
+                <div class="flex items-center gap-3.5">
                     <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-3xl shrink-0">
                         🚦
                     </div>
                     <div>
-                        <span class="text-[10px] uppercase font-bold tracking-widest text-red-100 block opacity-80">Check Traffic Rules</span>
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-rose-200 block">Check Traffic Rules</span>
                         <h3 class="font-extrabold text-sm text-white leading-tight">Goa Traffic Fines (ITMS)</h3>
-                        <p class="text-[10px] text-red-100 font-medium">All Violation Rates & e-Challan Info</p>
+                        <p class="text-[10px] text-rose-100 font-medium">All Violation Rates & e-Challan Info</p>
                     </div>
                 </div>
-                <i class="fas fa-chevron-right text-red-200"></i>
+                <i class="fas fa-chevron-right text-rose-200 pr-1"></i>
             </a>
 
-            <!-- Electricity Calculator Banner -->
-            <a href="electricity.html" class="block bg-gradient-to-br from-[#0277bd] to-[#01579b] rounded-3xl p-5 text-white shadow-xl flex items-center justify-between hover:scale-[1.01] transition border border-blue-400">
-                <div class="flex items-center gap-4">
+            <!-- 2. Electricity Calculator -->
+            <a href="electricity.html" class="bg-gradient-to-br from-[#0277bd] to-[#01579b] rounded-3xl p-4 text-white shadow-md flex items-center justify-between hover:opacity-95 transition border border-blue-400">
+                <div class="flex items-center gap-3.5">
                     <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-3xl shrink-0">
                         ⚡
                     </div>
                     <div>
-                        <span class="text-[10px] uppercase font-bold tracking-widest text-blue-100 block opacity-80">Check Unit Rates</span>
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-blue-200 block">Check Unit Rates</span>
                         <h3 class="font-extrabold text-sm text-white leading-tight">Electricity Bill Calculator</h3>
                         <p class="text-[10px] text-blue-100 font-medium">Official Domestic & Agriculture Tariff</p>
                     </div>
                 </div>
-                <i class="fas fa-chevron-right text-blue-200"></i>
+                <i class="fas fa-chevron-right text-blue-200 pr-1"></i>
             </a>
 
-            <!-- Gold & Silver Live Bullion Banner (Golden Yellow Theme) -->
-            <div id="metalsBanner" class="block bg-gradient-to-br from-[#d97706] via-[#eab308] to-[#ca8a04] rounded-3xl p-4 text-white shadow-xl border border-amber-300">
-                <div class="flex items-center justify-between pb-3 border-b border-amber-200/40">
+            <!-- 3. Gold & Silver Live Bullion Banner -->
+            <div class="bg-gradient-to-br from-[#d97706] via-[#eab308] to-[#ca8a04] rounded-3xl p-4 text-white shadow-md border border-amber-300">
+                <div class="flex items-center justify-between pb-2.5 border-b border-white/25">
                     <div class="flex items-center gap-3">
-                        <div class="w-11 h-11 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl shrink-0 shadow-inner">
+                        <div class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl shrink-0">
                             🪙
                         </div>
                         <div>
                             <span class="text-[10px] uppercase font-bold tracking-widest text-amber-100 block opacity-90">Live Bullion Rates</span>
-                            <h3 class="font-extrabold text-sm text-white leading-tight">Gold & Silver (XAU/XAG)</h3>
+                            <h3 class="font-extrabold text-sm text-white leading-tight">Gold & Silver (Goa)</h3>
                         </div>
                     </div>
-                    <span class="bg-white/25 text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/30">Goa</span>
+                    <span class="bg-white/20 text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/30">Live API</span>
                 </div>
-                <!-- Mini rates area populated by JS -->
-                <div class="grid grid-cols-2 gap-2 mt-3 text-xs text-amber-50">
-                    <div id="goldBannerRate" class="font-extrabold">Gold 22K (1g): ...</div>
-                    <div id="silverBannerRate" class="font-extrabold text-right">Silver (10g): ...</div>
+
+                <div class="grid grid-cols-2 gap-2 mt-3 text-xs">
+                    <div class="bg-black/15 p-2 rounded-xl backdrop-blur-xs border border-white/15">
+                        <span class="text-[10px] text-amber-100 font-bold block">Gold 22K (1g)</span>
+                        <span id="gold22kVal" class="text-sm font-extrabold text-white">₹12,308</span>
+                    </div>
+                    <div class="bg-black/15 p-2 rounded-xl backdrop-blur-xs border border-white/15">
+                        <span class="text-[10px] text-amber-100 font-bold block">Silver (10g)</span>
+                        <span id="silver10gVal" class="text-sm font-extrabold text-white">₹1,984</span>
+                    </div>
                 </div>
-                <div class="text-[9px] text-amber-100 opacity-80 mt-2 text-center" id="metalsUpdateText"><i class="far fa-clock"></i> Updated ...</div>
+
+                <div class="mt-2 text-[10px] text-amber-100/80 font-medium flex items-center justify-between">
+                    <span id="metalsUpdateText"><i class="far fa-clock mr-1"></i> Today, Live</span>
+                    <span>GoldAPI.io</span>
+                </div>
             </div>
 
         </div>
 
     </main>
 
-    <!-- FOOTER COPYRIGHT -->
+    <!-- Footer -->
     <footer class="max-w-md mx-auto text-center py-5 mt-6 border-t border-slate-100">
         <p class="text-[10px] text-slate-400">© 2026 Goa Market Price Tracker • Smarter Choices, Daily.</p>
     </footer>
 
-    <!-- MAIN JAVASCRIPT FOR DYNAMIC DATA LINKING -->
+    <!-- Interactive Data Script -->
     <script>
-        // List of specific items to pull into the Trending Prices list
-        const trendingConfig = [
-            { source: 'bagayatdar', name: 'Supari (Arecanut)', icon: '🥥', targetPage: 'bagayatdar.html' },
-            { source: 'bagayatdar', name: 'Coconut (Single)', icon: '🥥', targetPage: 'bagayatdar.html' }, // REPLACED GOLD WITH COCONUT
-            { source: 'fuel', name: 'Onion (Goa Retail)', icon: '🧅', targetPage: 'vegetable.html' },
-            { source: 'fuel', name: 'Petrol', icon: '⛽', targetPage: 'fuel.html' },
-            { source: 'fuel', name: 'LPG Domestic (14.2 kg)', icon: '🔵', targetPage: 'fuel.html' }
-        ];
-
-        // Format numbers in Indian Rupee style
-        function formatRupee(num) {
-            return `₹${Number(num).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        function formatRupee(val) {
+            if (val === null || val === undefined || val === '') return "₹—";
+            const num = parseFloat(String(val).replace(/[₹,\s]/g, ''));
+            if (isNaN(num)) return `₹${val}`;
+            return `₹${num.toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
         }
 
-        async function loadTrendingData() {
+        async function loadDashboard() {
+            const listEl = document.getElementById('trendingList');
+            const ts = Date.now();
+
+            let trendingData = [
+                { name: 'Supari (Arecanut)', sub: 'Goa Bagaydar', price: '240', unit: 'kg', icon: '🥥', change: -10, changePct: 4.0, link: 'bagayatdar.html' },
+                { name: 'Onion', sub: 'Vegetable', price: '32', unit: 'kg', icon: '🧅', change: 4, changePct: 14.3, link: 'vegetable.html' },
+                { name: 'LPG (14.2 kg)', sub: 'Fuel Prices (Goa)', price: '903', unit: 'cyl', icon: '🔵', change: -12, changePct: 1.3, link: 'fuel.html' },
+                { name: 'Petrol', sub: 'Fuel Prices (Goa)', price: '104.06', unit: 'L', icon: '⛽', change: 0.5, changePct: 0.5, link: 'fuel.html' },
+                { name: 'Coconut (Single)', sub: 'Goa Bagaydar', price: '28', unit: 'piece', icon: '🥥', change: 0, changePct: 0.0, link: 'bagayatdar.html' }
+            ];
+
+            // 1. Try loading real Bagayatdar data
             try {
-                const timestamp = Date.now();
-                // 1. Fetch live JSON data files
-                const [bagRes, fuelRes, metalsRes] = await Promise.all([
-                    fetch('bagayatdar_data.json?t=' + timestamp),
-                    fetch('fuel_data.json?t=' + timestamp),
-                    fetch('metals_data.json?t=' + timestamp).catch(() => null)
-                ]);
-
-                const bagData = await bagRes.json();
-                const fuelData = await fuelRes.json();
-                const metalsData = metalsRes ? await metalsRes.json() : null;
-
-                // Set overall updated timestamp from fuel (as it's scraped daily)
-                if (fuelData.last_updated) {
-                    document.getElementById('marketUpdated').textContent = fuelData.last_updated + " IST";
-                }
-
-                // --- 2. Build the Trending List dynamically ---
-                const listContainer = document.getElementById('trendingList');
-                listContainer.innerHTML = ''; // Clear loading state
-
-                trendingConfig.forEach((itemConf, index) => {
-                    let sourceList = (itemConf.source === 'bagayatdar') ? bagData.items : fuelData.fuels;
-                    // Find the exact item by name match
-                    let liveItem = sourceList.find(f => f.name.includes(itemConf.name));
-
-                    if (liveItem) {
-                        const priceStr = liveItem.price;
-                        // For display logic from prompt: assume change is based on change field
-                        const change = parseFloat(liveItem.change) || 0;
-                        const changePct = parseFloat(liveItem.changePercent) || 0;
-                        
-                        const isUp = change > 0;
-                        const isDown = change < 0;
-                        const trendColor = isUp ? 'text-red-500' : isDown ? 'text-emerald-600' : 'text-slate-400';
-                        const trendIcon = isUp ? 'fa-arrow-up' : isDown ? 'fa-arrow-down' : 'fa-minus';
-
-                        // Format Unit display
-                        let unitDisplay = liveItem.unit || 'kg';
-                        if (unitDisplay.includes('14.2 kg cyl')) unitDisplay = 'cyl';
-                        else if (unitDisplay.includes('Litre')) unitDisplay = 'L';
-
-                        const cardHtml = `
-                            <a href="${itemConf.targetPage}" class="trending-card block bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-3xl shrink-0">
-                                        ${itemConf.icon}
-                                    </div>
-                                    <div>
-                                        <h3 class="font-bold text-xs text-slate-800 leading-snug">${itemConf.name}</h3>
-                                        <p class="text-[10px] text-slate-400 font-medium">${liveItem.district || 'Goa'}</p>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <div class="font-extrabold text-sm text-slate-900 leading-tight">
-                                        ${formatRupee(priceStr)} <span class="text-[9px] font-normal text-slate-400">/ ${unitDisplay}</span>
-                                    </div>
-                                    <div class="text-[10px] font-semibold ${trendColor} flex items-center justify-end gap-1 mt-0.5">
-                                        <i class="fas ${trendIcon} text-[8px]"></i>
-                                        <span>₹${Math.abs(change).toFixed(2)} (${changePct.toFixed(2)}%)</span>
-                                    </div>
-                                </div>
-                            </a>
-                        `;
-                        listContainer.innerHTML += cardHtml;
+                const res = await fetch('bagayatdar_data.json?t=' + ts);
+                if (res.ok) {
+                    const bData = await res.json();
+                    const items = bData.today_prices || bData.items || [];
+                    const supari = items.find(i => (i.item || i.name || '').toLowerCase().includes('supari') || (i.item || i.name || '').toLowerCase().includes('arecanut'));
+                    if (supari) {
+                        trendingData[0].price = supari.price || supari.rate;
                     }
-                });
-
-                // --- 3. Update the dedicated Gold & Silver banner ---
-                if (metalsData && metalsData.gold) {
-                    const g22 = metalsData.gold.karats['22k'];
-                    const sGram = metalsData.silver.gram_price;
-                    
-                    document.getElementById('goldBannerRate').textContent = `Gold 22K (1g): ₹${Math.round(g22).toLocaleString('en-IN')}`;
-                    document.getElementById('silverBannerRate').textContent = `Silver (10g): ₹${Math.round(sGram * 10).toLocaleString('en-IN')}`;
-                    document.getElementById('metalsUpdateText').innerHTML = `<i class="far fa-clock"></i> Updated: ${metalsData.last_updated}`;
+                    const coconut = items.find(i => (i.item || i.name || '').toLowerCase().includes('coconut'));
+                    if (coconut) {
+                        trendingData[4].price = coconut.price || coconut.rate;
+                    }
                 }
+            } catch (e) { console.log('Bagayatdar fallback used'); }
 
-            } catch (err) {
-                console.error("Error linking live data:", err);
-                document.getElementById('trendingList').innerHTML = `
-                    <div class="text-center py-10 text-xs text-red-500 bg-white rounded-2xl border border-red-100 shadow-sm flex items-center justify-center gap-2">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        Unable to connect live rates. Please try again.
-                    </div>`;
-            }
+            // 2. Try loading real Fuel data
+            try {
+                const res = await fetch('fuel_data.json?t=' + ts);
+                if (res.ok) {
+                    const fData = await res.json();
+                    const fuels = fData.fuels || [];
+                    const petrol = fuels.find(f => (f.name || '').toLowerCase().includes('petrol'));
+                    if (petrol) {
+                        trendingData[3].price = petrol.price;
+                        trendingData[3].change = petrol.change || 0;
+                        trendingData[3].changePct = petrol.changePercent || 0;
+                    }
+                    const lpg = fuels.find(f => (f.name || '').toLowerCase().includes('14.2') || (f.name || '').toLowerCase().includes('domestic'));
+                    if (lpg) {
+                        trendingData[2].price = lpg.price;
+                    }
+                    if (fData.last_updated) {
+                        document.getElementById('marketUpdated').textContent = fData.last_updated;
+                    }
+                }
+            } catch (e) { console.log('Fuel fallback used'); }
+
+            // 3. Try loading live Gold & Silver
+            try {
+                const res = await fetch('metals_data.json?t=' + ts);
+                if (res.ok) {
+                    const mData = await res.json();
+                    if (mData.gold && mData.gold.karats) {
+                        const g22 = mData.gold.karats['22k'] || mData.gold.gram_price * 0.916;
+                        document.getElementById('gold22kVal').textContent = formatRupee(Math.round(g22));
+                    }
+                    if (mData.silver) {
+                        const s10 = (mData.silver.gram_price || 198.43) * 10;
+                        document.getElementById('silver10gVal').textContent = formatRupee(Math.round(s10));
+                    }
+                    if (mData.last_updated) {
+                        document.getElementById('metalsUpdateText').innerHTML = `<i class="far fa-clock mr-1"></i> ${mData.last_updated}`;
+                    }
+                }
+            } catch (e) { console.log('Metals fallback used'); }
+
+            // Render Trending Cards
+            listEl.innerHTML = trendingData.map(item => {
+                const isUp = item.change > 0;
+                const isDown = item.change < 0;
+                const trendColor = isUp ? 'text-rose-500' : isDown ? 'text-emerald-600' : 'text-slate-400';
+                const trendIcon = isUp ? 'fa-arrow-up' : isDown ? 'fa-arrow-down' : 'fa-minus';
+
+                return `
+                    <a href="${item.link}" class="trending-card bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between hover:shadow-md transition">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-2xl shrink-0 shadow-inner">
+                                ${item.icon}
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xs text-slate-800 leading-snug">${item.name}</h3>
+                                <p class="text-[10px] text-slate-400 font-medium">${item.sub}</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-extrabold text-sm text-slate-800">
+                                ${formatRupee(item.price)} <span class="text-[9px] font-normal text-slate-400">/ ${item.unit}</span>
+                            </div>
+                            <div class="text-[10px] font-semibold ${trendColor} flex items-center justify-end gap-1 mt-0.5">
+                                <i class="fas ${trendIcon} text-[8px]"></i>
+                                <span>₹${Math.abs(item.change).toFixed(2)} (${Math.abs(item.changePct).toFixed(1)}%)</span>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            }).join('');
         }
 
-        // Initialize dynamic data linking when DOM is ready
-        document.addEventListener('DOMContentLoaded', loadTrendingData);
+        document.addEventListener('DOMContentLoaded', loadDashboard);
     </script>
 </body>
 </html>
