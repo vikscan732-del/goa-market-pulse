@@ -51,7 +51,12 @@ jobs:
         run: |
           python scraper/construction_scraper.py || echo "Construction scraper encountered an issue, proceeding..."
 
-      # Step 8: Commit and push all updated JSON files and image
+      # Step 8: Run Fuel & LPG Scraper
+      - name: Run Fuel Scraper
+        run: |
+          python scraper/fuel_scraper.py || echo "Fuel scraper encountered an issue, proceeding..."
+
+      # Step 9: Commit and push all updated JSON files and image
       - name: Commit and Push Updated Data & Latest Photo
         run: |
           git config --global user.name "github-actions[bot]"
