@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0e5e3a">
+    <title>Goa Government Official Directory & Portals</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+        .portal-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .portal-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased pb-24">
+
+    <!-- Top Sticky Header -->
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-50 shadow-xs">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition active:scale-95">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <h1 class="text-base font-extrabold text-[#0e5e3a] leading-tight">Official Govt Portals</h1>
+                    <p class="text-[11px] text-slate-400 font-medium">Departments, Services & Recruitment</p>
+                </div>
+            </div>
+            <span class="bg-emerald-50 text-[#0e5e3a] text-[10px] font-bold px-2.5 py-1 rounded-full border border-emerald-200">
+                Goa State Directory
+            </span>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-md mx-auto px-4 mt-3 space-y-4">
+
+        <!-- Search Bar -->
+        <div class="relative">
+            <i class="fas fa-search absolute left-3.5 top-3.5 text-slate-400 text-xs"></i>
+            <input type="text" id="q" oninput="filterSites()" placeholder="Search: gssc, jobs, land, police, rto, electricity, iti..." 
+                   class="w-full bg-white border border-slate-200 rounded-2xl pl-9 pr-4 py-2.5 text-xs text-slate-700 placeholder-slate-400 focus:outline-none focus:border-emerald-600 shadow-sm transition">
+        </div>
+
+        <!-- Note & Counter -->
+        <div class="bg-emerald-50 border border-emerald-100 px-3.5 py-2 rounded-xl text-xs flex items-center justify-between">
+            <span class="text-emerald-800 font-bold text-[11px] flex items-center gap-1.5">
+                <i class="fas fa-check-circle text-emerald-600"></i> Direct Verified Official Web Portals
+            </span>
+            <span id="count" class="bg-white text-emerald-700 text-[10px] font-extrabold px-2 py-0.5 rounded-md border border-emerald-100">0 Portals</span>
+        </div>
+
+        <!-- 1. JOBS, SELECTIONS & CITIZEN PORTALS -->
+        <div class="site-section space-y-2">
+            <h2 class="sect-title font-extrabold text-xs text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                <span>💼</span> Recruitment, Staff Selection & Citizen Portals
+            </h2>
+            <div class="space-y-2">
+                <!-- GSSC -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://gssc.goa.gov.in/" target="_blank" data-name="goa staff selection commission gssc recruitment direct selected staff merit list results vacancies exam cbt">
+                    <div class="flex items-center gap-3">
+                        <span class="w-11 h-11 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-xl shrink-0 shadow-inner">🧑‍💼</span>
+                        <div>
+                            <div class="flex items-center gap-1.5">
+                                <b class="text-xs text-slate-800 block leading-tight">Goa Staff Selection Commission (GSSC)</b>
+                            </div>
+                            <small class="text-[10px] text-indigo-600 font-semibold">Direct Recruitment & Selected Staff Lists</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-black text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-xl border border-indigo-100">VISIT ›</span>
+                </a>
+
+                <!-- GPSC -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://gpsc.goa.gov.in/" target="_blank" data-name="goa public service commission gpsc recruitment examinations gazetted officers results interviews">
+                    <div class="flex items-center gap-3">
+                        <span class="w-11 h-11 rounded-2xl bg-purple-50 border border-purple-100 flex items-center justify-center text-xl shrink-0 shadow-inner">🏛️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Goa Public Service Commission (GPSC)</b>
+                            <small class="text-[10px] text-purple-600 font-semibold">Gazetted Officer Examinations & Results</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-black text-purple-700 bg-purple-50 px-2.5 py-1 rounded-xl border border-purple-100">VISIT ›</span>
+                </a>
+
+                <!-- Goa Online -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://goaonline.gov.in/" target="_blank" data-name="goa online single window citizen e-services certificates income residence caste ddayanand samajik suraksha">
+                    <div class="flex items-center gap-3">
+                        <span class="w-11 h-11 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-xl shrink-0 shadow-inner">🌐</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Goa Online Citizen Services Portal</b>
+                            <small class="text-[10px] text-emerald-600 font-semibold">Official Single Window E-Services & Certificates</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-black text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-xl border border-emerald-100">VISIT ›</span>
+                </a>
+
+                <!-- Govt Jobs Page -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa.gov.in/citizen/recruitment/" target="_blank" data-name="official government jobs recruitment vacancies advertisements notifications">
+                    <div class="flex items-center gap-3">
+                        <span class="w-11 h-11 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center text-xl shrink-0 shadow-inner">📢</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Govt Department Job Notices</b>
+                            <small class="text-[10px] text-slate-400 font-medium">All State Dept Vacancy Notifications</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-black text-amber-700 bg-amber-50 px-2.5 py-1 rounded-xl border border-amber-100">VISIT ›</span>
+                </a>
+
+                <!-- DSLR Land Records -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dslr.goa.gov.in/" target="_blank" data-name="directorate of settlement and land records dslr form 14 11 map survey property records">
+                    <div class="flex items-center gap-3">
+                        <span class="w-11 h-11 rounded-2xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-xl shrink-0 shadow-inner">🗺️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Land Records & Maps (DSLR)</b>
+                            <small class="text-[10px] text-cyan-700 font-semibold">Form I & XIV, 11E Survey & Land Maps</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-black text-cyan-700 bg-cyan-50 px-2.5 py-1 rounded-xl border border-cyan-100">VISIT ›</span>
+                </a>
+
+                <!-- Transport Dept -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goatransport.gov.in/" target="_blank" data-name="transport department rto driving licence vehicle registration rc transfer permit road tax">
+                    <div class="flex items-center gap-3">
+                        <span class="w-11 h-11 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center text-xl shrink-0 shadow-inner">🚗</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Directorate of Transport (RTO)</b>
+                            <small class="text-[10px] text-rose-600 font-semibold">Driving Licence, Vehicle RC & Road Tax</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-black text-rose-700 bg-rose-50 px-2.5 py-1 rounded-xl border border-rose-100">VISIT ›</span>
+                </a>
+
+                <!-- Goa Police Citizen Portal -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://citizen.goapolice.gov.in/" target="_blank" data-name="goa police citizen portal fir complaint character verification tenant verification police clearances">
+                    <div class="flex items-center gap-3">
+                        <span class="w-11 h-11 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-xl shrink-0 shadow-inner">👮</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Goa Police Citizen Portal</b>
+                            <small class="text-[10px] text-blue-600 font-semibold">Online FIR, Tenant & Character Verification</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-black text-blue-700 bg-blue-50 px-2.5 py-1 rounded-xl border border-blue-100">VISIT ›</span>
+                </a>
+
+                <!-- Public Grievances -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dpg.goa.gov.in/" target="_blank" data-name="directorate of public grievances dpg complaints tracking portal chief minister">
+                    <div class="flex items-center gap-3">
+                        <span class="w-11 h-11 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center text-xl shrink-0 shadow-inner">📢</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Directorate of Public Grievances (DPG)</b>
+                            <small class="text-[10px] text-orange-600 font-semibold">State Official Public Complaint Redressal</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-black text-orange-700 bg-orange-50 px-2.5 py-1 rounded-xl border border-orange-100">VISIT ›</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 2. CORE GOVERNMENT DEPARTMENTS -->
+        <div class="site-section space-y-2">
+            <h2 class="sect-title font-extrabold text-xs text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                <span>🏛️</span> State Government Departments
+            </h2>
+            <div class="space-y-2">
+                <!-- Agriculture -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.agri.goa.gov.in/" target="_blank" data-name="directorate of agriculture farmers krishi card schemes organic farming subsidies">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center text-lg shrink-0">🌾</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Directorate of Agriculture</b>
+                            <small class="text-[10px] text-slate-400">Krishi Cards, Crop Schemes & Subsidies</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Electricity -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goaelectricity.gov.in/" target="_blank" data-name="electricity department power tariffs meter bill payment fppca outages">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-lg shrink-0">⚡</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Electricity Department</b>
+                            <small class="text-[10px] text-slate-400">Power Connections, Tariffs & Bill Sync</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- DHS -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dhsgoa.gov.in/" target="_blank" data-name="directorate of health services dhs hospitals public health primary health centres phc chd">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-lg shrink-0">🏥</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Directorate of Health Services (DHS)</b>
+                            <small class="text-[10px] text-slate-400">Hospitals, Clinics & Deen Dayal Swasthya</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Education -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.education.goa.gov.in/" target="_blank" data-name="directorate of education schools admissions scholarships circulars teachers">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-lg shrink-0">🎓</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Directorate of Education</b>
+                            <small class="text-[10px] text-slate-400">School Admissions, Grants & Curriculums</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Higher Education -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dhe.goa.gov.in/" target="_blank" data-name="directorate of higher education dhe colleges degree admissions samarth portal scholarships">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-lg shrink-0">🏛️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Directorate of Higher Education (DHE)</b>
+                            <small class="text-[10px] text-slate-400">College Admissions, Grants & Samarth Portal</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Technical Education -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dte.goa.gov.in/" target="_blank" data-name="directorate of technical education dte polytechnic engineering pharmacy admissions gcet">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-lg shrink-0">📐</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Technical Education (DTE)</b>
+                            <small class="text-[10px] text-slate-400">Polytechnic & Degree Engineering Admissions</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Skill Development (DSDE) -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.dsde.goa.gov.in/" target="_blank" data-name="directorate of skill development entrepreneurship dsde iti admissions vocational training apprenticeship">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-lg shrink-0">🔧</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Skill Development (DSDE)</b>
+                            <small class="text-[10px] text-slate-400">ITI Admissions, Vocational & Apprenticeships</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Civil Supplies -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://goacivilsupplies.gov.in/" target="_blank" data-name="civil supplies consumer affairs ration card quota fps fair price shops food grains">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-lg shrink-0">🍚</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Civil Supplies & Consumer Affairs</b>
+                            <small class="text-[10px] text-slate-400">Ration Cards & Fair Price Shops</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Panchayats -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://panchayatsgoa.gov.in/" target="_blank" data-name="directorate of panchayats village panchayat local bodies certificates construction licences">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-lg shrink-0">🏡</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Directorate of Panchayats</b>
+                            <small class="text-[10px] text-slate-400">Village Panchayats & Village Clearances</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Urban Development (DMA) -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://goaulbservice.gov.in/" target="_blank" data-name="urban development municipal administration municipality trade licenses house tax sanitation">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-lg shrink-0">🏙️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Urban Development (DMA)</b>
+                            <small class="text-[10px] text-slate-400">Municipal Services, Trade Permits & Taxes</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Registration (Deeds & Stamps) -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://registration.goa.gov.in/" target="_blank" data-name="property registration department sale deed mortgage marriage registration stamp duty sub registrar">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">📑</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Registration Department</b>
+                            <small class="text-[10px] text-slate-400">Property Deeds, Stamp Duty & Sub-Registrar</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Commercial Taxes / GST -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://goagst.gov.in/" target="_blank" data-name="commercial taxes gst goa eway bills value added tax returns">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-lg shrink-0">📈</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Commercial Taxes (Goa GST)</b>
+                            <small class="text-[10px] text-slate-400">State GST Portal, Returns & E-Way Bills</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- PWD -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://pwd.goa.gov.in/" target="_blank" data-name="public works department pwd roads highways water supply pipelines sewage tenders">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">🛣️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Public Works Department (PWD)</b>
+                            <small class="text-[10px] text-slate-400">Roads, Highways, Water Connections & Tenders</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- WRD -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://goawrd.gov.in/" target="_blank" data-name="water resources department wrd dams rivers irrigation wells borewells">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-lg shrink-0">💧</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Water Resources (WRD)</b>
+                            <small class="text-[10px] text-slate-400">Dams, Irrigation Projects & River Management</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- TCP -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://tcp.goa.gov.in/" target="_blank" data-name="town and country planning tcp zoning regional plan 2021 land conversions NOC construction">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-lg shrink-0">📐</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Town & Country Planning (TCP)</b>
+                            <small class="text-[10px] text-slate-400">Zoning Certificates & Land Approvals</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Forest -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.forest.goa.gov.in/" target="_blank" data-name="forest department wildlife sanctuaries cotigao bhagwan mahaveer tree transit permissions">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-lg shrink-0">🌲</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Forest Department</b>
+                            <small class="text-[10px] text-slate-400">Wildlife Sanctuaries & Tree Transit Passes</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Fisheries -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://fisheries.goa.gov.in/" target="_blank" data-name="directorate of fisheries trawlers boat subsidies aquaculture fish markets">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-lg shrink-0">🐟</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Directorate of Fisheries</b>
+                            <small class="text-[10px] text-slate-400">Fishing Subsidies, Boat Passes & Aquaculture</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Labour & Employment -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://labour.goa.gov.in/" target="_blank" data-name="labour employment job card registration factory licenses minimum wages">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-lg shrink-0">👷</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Labour & Employment</b>
+                            <small class="text-[10px] text-slate-400">Employment Card Registration & Labor Laws</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Women & Child -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dwcd.goa.gov.in/" target="_blank" data-name="directorate of women child development ladli laxmi griha adhar mamta anganwadi">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center text-lg shrink-0">👩‍👧</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Women & Child Development (DWCD)</b>
+                            <small class="text-[10px] text-slate-400">Griha Aadhar, Laadli Laxmi & Anganwadi Schemes</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Tribal Welfare -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://tribalwelfare.goa.gov.in/" target="_blank" data-name="directorate of tribal welfare scheduled tribes st grants scholarships housing assistance">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-lg shrink-0">🤝</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Directorate of Tribal Welfare</b>
+                            <small class="text-[10px] text-slate-400">ST Scholarships & Community Financial Aid</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Social Welfare -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa.gov.in/departments/" target="_blank" data-name="directorate of social welfare dsw dss disability pension senior citizens sc obc">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-violet-50 border border-violet-100 flex items-center justify-center text-lg shrink-0">♿</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Directorate of Social Welfare</b>
+                            <small class="text-[10px] text-slate-400">Dayanand Samajik Suraksha (DSSY) & Pensions</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Tourism Department -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://goatourism.gov.in/" target="_blank" data-name="goa tourism department shack policy water sports hotel registration travel guidelines">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-lg shrink-0">🌴</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Directorate of Tourism</b>
+                            <small class="text-[10px] text-slate-400">Shack Allotments, Water Sports & Hotel Reg.</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Fire & Emergency -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dfes.goa.gov.in/" target="_blank" data-name="directorate of fire and emergency services dfes fire noc fire safety building clearances rescue">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-lg shrink-0">🚒</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Fire & Emergency Services (DFES)</b>
+                            <small class="text-[10px] text-slate-400">Fire Safety Clearances & Emergency NOCs</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Ports & Waterways -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.ports.goa.gov.in/" target="_blank" data-name="captain of ports inland vessels maritime jetties boat registration passenger ferries">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-lg shrink-0">⚓</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Captain of Ports (COP)</b>
+                            <small class="text-[10px] text-slate-400">Inland Navigation, Ferry Jetties & Vessels</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- River Navigation -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa.gov.in/departments/" target="_blank" data-name="river navigation department rnd ferries ferry passes river routes timetable">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-lg shrink-0">⛴️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">River Navigation Department (RND)</b>
+                            <small class="text-[10px] text-slate-400">Ferry Boat Services & Island Ferry Routes</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Excise -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://excise.goa.gov.in/" target="_blank" data-name="excise department liquor transport permits bar licenses border checkpost">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-lg shrink-0">🏷️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Excise Department</b>
+                            <small class="text-[10px] text-slate-400">Liquor Transport Permits & Commercial Licenses</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- FDA -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.dfda.goa.gov.in/" target="_blank" data-name="directorate of food and drugs administration fda fssai licenses food safety medical pharmacy licenses">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-lg shrink-0">💊</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Food & Drugs Administration (FDA)</b>
+                            <small class="text-[10px] text-slate-400">FSSAI Food Licenses, Hygiene & Drug Safety</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Animal Husbandry -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.ahvs.goa.gov.in/" target="_blank" data-name="animal husbandry veterinary services ahvs kamdhenu dairy cattle subsidy pets rabies vaccination">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-lime-50 border border-lime-100 flex items-center justify-center text-lg shrink-0">🐄</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Animal Husbandry & Veterinary (AHVS)</b>
+                            <small class="text-[10px] text-slate-400">Kamdhenu Dairy Scheme, Cattle Aid & Clinics</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Industries & Mines -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://ditc.goa.gov.in/" target="_blank" data-name="directorate of industries trade commerce ditc msme registration industrial clearances">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">🏭</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Industries, Trade & Commerce</b>
+                            <small class="text-[10px] text-slate-400">MSME Subsidies, Trade & Investment Approvals</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Mines & Geology -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dmg.goa.gov.in/" target="_blank" data-name="directorate of mines geology dmg iron ore quarry permits sand transit passes">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-stone-50 border border-stone-100 flex items-center justify-center text-lg shrink-0">⛏️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Directorate of Mines & Geology (DMG)</b>
+                            <small class="text-[10px] text-slate-400">Mineral Leases, Quarry Passes & Sand Permits</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Printing & Stationery -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://goaprintingpress.gov.in/" target="_blank" data-name="printing stationery government gazette official extraordinary gazettes publications">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">🖨️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Printing Press & Official Gazette</b>
+                            <small class="text-[10px] text-slate-400">Weekly Official Gazette & Govt Notifications</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Information & Publicity (DIP) -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dip.goa.gov.in/" target="_blank" data-name="department of information publicity dip press notes media releases govt bulletins">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-lg shrink-0">📰</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Information & Publicity (DIP)</b>
+                            <small class="text-[10px] text-slate-400">Official Government Press Releases & Bulletins</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Environment & Climate Change -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://envcc.goa.gov.in/" target="_blank" data-name="department of environment climate change czma coastal zone clearances eco projects">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-lg shrink-0">🌿</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Environment & Climate Change</b>
+                            <small class="text-[10px] text-slate-400">State Ecological Clearances & Action Plans</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 3. AUTONOMOUS CORPORATIONS & AGENCIES -->
+        <div class="site-section space-y-2">
+            <h2 class="sect-title font-extrabold text-xs text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                <span>🏢</span> State Corporations, Boards & Authorities
+            </h2>
+            <div class="space-y-2">
+                <!-- KTCL -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://ktclgoa.com/" target="_blank" data-name="kadamba transport corporation ktcl kadamba bus passes routes inter-state bookings ev buses">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-lg shrink-0">🚌</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Kadamba Transport Corp (KTCL)</b>
+                            <small class="text-[10px] text-slate-400">Bus Timetables, Passes & Online Bookings</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- GTDC -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa-tourism.com/" target="_blank" data-name="goa tourism development corporation gtdc mandovi boat cruise hotel residency booking tour packages">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-lg shrink-0">🏖️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Tourism Development Corp (GTDC)</b>
+                            <small class="text-[10px] text-slate-400">Residency Stays, Mandovi Cruise & Tours</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Housing Board -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://ghb.goa.gov.in/" target="_blank" data-name="goa housing board ghb residential flats plots auction affordable housing">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-lg shrink-0">🏡</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Goa Housing Board (GHB)</b>
+                            <small class="text-[10px] text-slate-400">Affordable Housing & Land Plot Allotments</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- GIDC -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goaidc.com/" target="_blank" data-name="goa industrial development corporation gidc industrial estates verma kundaim tuem plots sublease">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">🏭</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Industrial Development Corp (GIDC)</b>
+                            <small class="text-[10px] text-slate-400">Industrial Estate Plots & Factory Allotments</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- IPB (Investment Promotion Board) -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://goaipb.goa.gov.in/" target="_blank" data-name="goa investment promotion facilitation board goa ipb single window clearances commercial investments projects">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-lg shrink-0">💼</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Investment Promotion Board (Goa IPB)</b>
+                            <small class="text-[10px] text-slate-400">Single Window Business & Project Clearances</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- EDC -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://edc-goa.com/" target="_blank" data-name="economic development corporation edc cmry chief minister rozgar yojana loans finance business subsidies">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center text-lg shrink-0">💰</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Economic Development Corp (EDC)</b>
+                            <small class="text-[10px] text-slate-400">CMRY Business Loans & Entrepreneur Financing</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Pollution Control Board (GSPCB) -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goaspcb.gov.in/" target="_blank" data-name="goa state pollution control board gspcb consent to establish operate air water pollution reports">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-lg shrink-0">🍃</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Pollution Control Board (GSPCB)</b>
+                            <small class="text-[10px] text-slate-400">Environmental NOCs & Pollution Consents</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- GWMC Waste Management -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://gwmc.goa.gov.in/" target="_blank" data-name="goa waste management corporation gwmc saligao plant cacora plant garbage treatment recycling">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-lg shrink-0">♻️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Waste Management Corp (GWMC)</b>
+                            <small class="text-[10px] text-slate-400">Solid Waste Processing & Recycling Plants</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- GSIDC Infrastructure -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.gsidcltd.com/" target="_blank" data-name="goa state infrastructure development corporation gsidc bridges flyovers government buildings tenders">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">🏗️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Infrastructure Corp (GSIDC)</b>
+                            <small class="text-[10px] text-slate-400">State Bridges, Hospitals & Public Infrastructure</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- GEL (Goa Electronics) -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://goaelectronics.co.in/" target="_blank" data-name="goa electronics limited gel it solutions software hardware e-governance tenders">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-lg shrink-0">💻</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Goa Electronics Limited (GEL)</b>
+                            <small class="text-[10px] text-slate-400">State IT Systems & Government Software</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Info Tech Corp (ITG) -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://infotech.goa.gov.in/" target="_blank" data-name="info tech corporation of goa itg it park electronic city start up policy digital">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-lg shrink-0">🌐</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Info Tech Corp of Goa (ITG)</b>
+                            <small class="text-[10px] text-slate-400">Goa Start-up Mission & IT Parks</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- City of Panaji (CCP) -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://ccpgoa.com/" target="_blank" data-name="corporation of city of panaji ccp municipal taxes trade licenses garbage fee panjim city">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-lg shrink-0">🏛️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">City of Panaji (CCP)</b>
+                            <small class="text-[10px] text-slate-400">Panaji City Municipal Taxes & Trade Permits</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Imagine Panaji Smart City -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://imaginepanaji.com/" target="_blank" data-name="imagine panaji smart city mission ipsdcl smart roads urban infrastructure cctv development">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-lg shrink-0">🏙️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Imagine Panaji Smart City</b>
+                            <small class="text-[10px] text-slate-400">Smart Roads & Urban Transformation Works</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Energy Dev (GEDA) -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://geda.goa.gov.in/" target="_blank" data-name="goa energy development agency geda solar rooftop subsidy renewable energy solar pumps">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-lg shrink-0">☀️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Energy Development Agency (GEDA)</b>
+                            <small class="text-[10px] text-slate-400">Solar Rooftop Subsidies & Renewable Power</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 4. COMMISSIONS, COURTS & TRIBUNALS -->
+        <div class="site-section space-y-2">
+            <h2 class="sect-title font-extrabold text-xs text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                <span>⚖️</span> Commissions, Courts & Autonomous Bodies
+            </h2>
+            <div class="space-y-2">
+                <!-- North Goa Courts -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dcngoa.dcourts.gov.in/" target="_blank" data-name="north goa district judiciary ecourts case status cause list mapusa panaji bicholim judicial court">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">⚖️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">North Goa District Courts</b>
+                            <small class="text-[10px] text-slate-400">E-Courts, Daily Cause Lists & Case Status</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- South Goa Courts -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dcsgoa.dcourts.gov.in/" target="_blank" data-name="south goa district judiciary ecourts case status margao vasco quepem court order">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">⚖️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">South Goa District Courts</b>
+                            <small class="text-[10px] text-slate-400">Margao Court Cause Lists & Online Orders</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Legislative Assembly -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goavidhansabha.gov.in/" target="_blank" data-name="goa legislative assembly vidhansabha mlas bills assembly session questions acts">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-lg shrink-0">🏛️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Goa Legislative Assembly</b>
+                            <small class="text-[10px] text-slate-400">Assembly Sessions, Passed Bills & MLAs</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- State Election Commission -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.sec.goa.gov.in/" target="_blank" data-name="goa state election commission sec voter list panchayat elections municipal elections ward reservations">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-lg shrink-0">🗳️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">State Election Commission (SEC)</b>
+                            <small class="text-[10px] text-slate-400">Voter Rolls & Local Body Elections</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Goa Board (GBSHSE) -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.gbshse.in/" target="_blank" data-name="goa board of secondary higher secondary education gbshse ssc hssc 10th 12th board results syllabus hall tickets">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-lg shrink-0">📚</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Goa Board (GBSHSE)</b>
+                            <small class="text-[10px] text-slate-400">SSC & HSSC Board Results & Timetables</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Disaster Management (SDMA) -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://sdma.goa.gov.in/" target="_blank" data-name="goa state disaster management authority sdma cyclone flood alerts helpline emergency contacts relief">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-lg shrink-0">⚠️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Disaster Management (SDMA)</b>
+                            <small class="text-[10px] text-slate-400">Flood / Cyclone Emergency Alerts & Helplines</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Human Rights Commission -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://goahumanrightscommission.goa.gov.in/" target="_blank" data-name="goa human rights commission ghrc human rights complaints online case hearing">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-lg shrink-0">🕊️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Human Rights Commission (GHRC)</b>
+                            <small class="text-[10px] text-slate-400">Human Rights Violations & Legal Cases</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Police Complaints Authority -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa.gov.in/departments/" target="_blank" data-name="state police complaints authority spca police misconduct grievances complaints">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">🛡️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Police Complaints Authority (SPCA)</b>
+                            <small class="text-[10px] text-slate-400">Independent Police Grievance Redressal</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Consumer Disputes Redressal Commission -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa.gov.in/departments/" target="_blank" data-name="goa state consumer disputes redressal commission consumer court e-daakhil complaints fraud redressal">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-lg shrink-0">⚖️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Consumer Disputes Commission</b>
+                            <small class="text-[10px] text-slate-400">State Consumer Court & E-Daakhil Cases</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 5. COLLEGES, UNIVERSITIES & ITIs -->
+        <div class="site-section space-y-2">
+            <h2 class="sect-title font-extrabold text-xs text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                <span>📚</span> Colleges, Universities & Government ITIs
+            </h2>
+            <div class="space-y-2">
+                <!-- GMC -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa.gov.in/departments/" target="_blank" data-name="goa medical college hospital gmc bambolim opd appointments mbbs admissions superspeciality">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-lg shrink-0">🏥</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Goa Medical College (GMC Bambolim)</b>
+                            <small class="text-[10px] text-slate-400">State Hospital, MBBS & OPD Services</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Dental College -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa.gov.in/departments/" target="_blank" data-name="goa dental college hospital gdc bambolim bds mds dental treatments">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-lg shrink-0">🦷</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Goa Dental College & Hospital</b>
+                            <small class="text-[10px] text-slate-400">BDS / MDS Education & Dental Care</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Goa University -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.unigoa.ac.in/" target="_blank" data-name="goa university taleigao plateau unigoa gu art pg admissions degrees syllabus">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-lg shrink-0">🎓</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Goa University (Taleigao Plateau)</b>
+                            <small class="text-[10px] text-slate-400">Undergraduate & Post-Graduate Degrees</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- GEC -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.gec.ac.in/" target="_blank" data-name="goa college of engineering gec farmagudi btech mtech engineering admissions ponda">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-lg shrink-0">⚙️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Goa College of Engineering (GEC Farmagudi)</b>
+                            <small class="text-[10px] text-slate-400">Degree Engineering & Technical Studies</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Architecture College -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa.gov.in/departments/" target="_blank" data-name="goa college of architecture gca altinho panaji barch nata admissions">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-lg shrink-0">🏛️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Goa College of Architecture (Altinho)</b>
+                            <small class="text-[10px] text-slate-400">B.Arch Architecture Degree Studies</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- College of Art -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa.gov.in/departments/" target="_blank" data-name="goa college of art altinho panaji bfa fine arts applied art painting">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center text-lg shrink-0">🎨</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Goa College of Art (Altinho)</b>
+                            <small class="text-[10px] text-slate-400">Bachelor of Fine Arts & Applied Art</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- College of Pharmacy -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa.gov.in/departments/" target="_blank" data-name="goa college of pharmacy gcp panaji bpharm mpharm pharmacy admissions">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-lg shrink-0">💊</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Goa College of Pharmacy (Panaji)</b>
+                            <small class="text-[10px] text-slate-400">B.Pharm & M.Pharm Pharmacy Education</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Individual ITIs -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.dsde.goa.gov.in/" target="_blank" data-name="panaji government iti industrial training institute altinho technical courses electrician fitter welder">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">🔧</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Panaji Government ITI</b>
+                            <small class="text-[10px] text-slate-400">Electrician, Fitter & Technical Trades</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.dsde.goa.gov.in/" target="_blank" data-name="farmagudi government iti ponda technical training">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">🔧</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Farmagudi Government ITI (Ponda)</b>
+                            <small class="text-[10px] text-slate-400">Vocational Trades & Mechanical Certifications</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.dsde.goa.gov.in/" target="_blank" data-name="bicholim government iti north goa industrial training">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">🔧</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Bicholim Government ITI</b>
+                            <small class="text-[10px] text-slate-400">North Goa Industrial & IT Training</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.dsde.goa.gov.in/" target="_blank" data-name="cacora government iti south goa quepem curchorem">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">🔧</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Cacora Government ITI (Curchorem)</b>
+                            <small class="text-[10px] text-slate-400">South Goa Vocational Skill Courses</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.dsde.goa.gov.in/" target="_blank" data-name="canacona government iti south goa vocational training">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">🔧</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Canacona Government ITI</b>
+                            <small class="text-[10px] text-slate-400">Technical Courses & Trade Certifications</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.dsde.goa.gov.in/" target="_blank" data-name="vasco government iti mormugao industrial training port">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">🔧</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Vasco Government ITI (Bogda)</b>
+                            <small class="text-[10px] text-slate-400">Marine, Mechanical & Electrical Trades</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Government Colleges (DHE) -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dhe.goa.gov.in/" target="_blank" data-name="government college of arts science and commerce khandola marcela higher education">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-violet-50 border border-violet-100 flex items-center justify-center text-lg shrink-0">🏫</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Government College, Khandola</b>
+                            <small class="text-[10px] text-slate-400">Arts, Science & Commerce Degrees</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dhe.goa.gov.in/" target="_blank" data-name="government college of arts science and commerce sanquelim higher education">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-violet-50 border border-violet-100 flex items-center justify-center text-lg shrink-0">🏫</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Government College, Sanquelim</b>
+                            <small class="text-[10px] text-slate-400">Degree Programmes & Post-Graduation</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dhe.goa.gov.in/" target="_blank" data-name="government college of arts science and commerce quepem higher education south goa">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-violet-50 border border-violet-100 flex items-center justify-center text-lg shrink-0">🏫</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Government College, Quepem</b>
+                            <small class="text-[10px] text-slate-400">Arts, Science & Commerce Campus</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://dhe.goa.gov.in/" target="_blank" data-name="government college of arts science and commerce pernem higher education">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-violet-50 border border-violet-100 flex items-center justify-center text-lg shrink-0">🏫</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Government College, Pernem</b>
+                            <small class="text-[10px] text-slate-400">Undergraduate Degree Programs</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- State Central Library -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://centrallibrary.goa.gov.in/" target="_blank" data-name="goa state central library krishnadas shama central library patto panaji public books membership">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-lg shrink-0">📖</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">State Central Library (Patto Panaji)</b>
+                            <small class="text-[10px] text-slate-400">Krishnadas Shama Library & Memberships</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Sports Authority (SAG) -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa.gov.in/departments/" target="_blank" data-name="sports authority of goa sag stadiums sports grounds coaching campuda national games fatorda">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-lime-50 border border-lime-100 flex items-center justify-center text-lg shrink-0">⚽</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Sports Authority of Goa (SAG)</b>
+                            <small class="text-[10px] text-slate-400">Stadium Bookings, Coaching & Sports Facilities</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 6. ALL REMAINING DEPARTMENTS DIRECTORY -->
+        <div class="site-section space-y-2">
+            <h2 class="sect-title font-extrabold text-xs text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                <span>📚</span> Other Directorate & State Boards
+            </h2>
+            <div class="space-y-2">
+                <!-- Red Cross -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa.gov.in/departments/" target="_blank" data-name="indian red cross society goa branch blood bank medical assistance">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-lg shrink-0">🩸</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Indian Red Cross Society (Goa)</b>
+                            <small class="text-[10px] text-slate-400">Emergency Aid, First Aid & Blood Services</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Provedoria -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa.gov.in/departments/" target="_blank" data-name="institute of public assistance provedoria old age homes financial aid senior citizens destitute">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-lg shrink-0">🤝</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Institute of Public Assistance (Provedoria)</b>
+                            <small class="text-[10px] text-slate-400">Old Age Homes & Destitute Welfare Aid</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Archives & Archaeology -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://daa.goa.gov.in/" target="_blank" data-name="directorate of archives archaeology historical records portuguese records land historical deeds">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-stone-50 border border-stone-100 flex items-center justify-center text-lg shrink-0">📜</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Directorate of Archives & Archaeology</b>
+                            <small class="text-[10px] text-slate-400">Historical Portuguese Records & Deeds</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Legal Metrology -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://clm.goa.gov.in/" target="_blank" data-name="department of legal metrology weights measures stamping verification consumer packing rules">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">⚖️</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">Legal Metrology Department</b>
+                            <small class="text-[10px] text-slate-400">Weights & Measures Stamping & Clearances</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">OPEN ›</span>
+                </a>
+
+                <!-- Full Master Goa Directory -->
+                <a class="portal-card bg-white p-3 rounded-2xl border border-slate-100 flex items-center justify-between shadow-xs" href="https://www.goa.gov.in/departments/" target="_blank" data-name="all remaining departments bal bhavan khadi board konkani akademi tiatr gazetteer">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-lg shrink-0">📋</span>
+                        <div>
+                            <b class="text-xs text-slate-800 block leading-tight">All Remaining Goa State Directories</b>
+                            <small class="text-[10px] text-slate-400">Bal Bhavan, Konkani Akademi, Tiatr Academy & More</small>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">EXPLORE ›</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Empty Results Message -->
+        <div id="empty" class="hidden text-center py-10 text-xs text-slate-400 bg-white rounded-2xl border border-slate-100 shadow-sm">
+            <i class="fas fa-search mb-1.5 text-base block text-slate-300"></i>
+            No matching government department or portal found.
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-md mx-auto text-center py-6 mt-6 border-t border-slate-100">
+        <p class="text-[10px] text-slate-400 leading-relaxed">
+            Source directory: Government of Goa official portal • Verified August 2026[span_8](start_span)[span_8](end_span)[span_9](start_span)[span_9](end_span)<br>
+            All cards open official Government of Goa websites and e-service portals directly.
+        </p>
+    </footer>
+
+    <!-- Instant Search & Dynamic Section Filter Script -->
+    <script>
+        function filterSites() {
+            const query = document.getElementById('q').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.portal-card');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const searchKeys = (card.getAttribute('data-name') || '') + ' ' + card.innerText.toLowerCase();
+                const matches = !query || searchKeys.includes(query);
+                card.style.display = matches ? 'flex' : 'none';
+                if (matches) visibleCount++;
+            });
+
+            // Automatically hide section headings if all cards inside are hidden
+            document.querySelectorAll('.site-section').forEach(section => {
+                const hasVisible = [...section.querySelectorAll('.portal-card')].some(c => c.style.display !== 'none');
+                section.style.display = hasVisible ? 'block' : 'none';
+            });
+
+            document.getElementById('count').textContent = `${visibleCount} Portals`;
+            document.getElementById('empty').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', filterSites);
+    </script>
+</body>
+</html>
