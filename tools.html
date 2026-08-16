@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1264e8">
+<title>Goa Useful Tools - 80+ Free Online Calculators</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+:root{--blue:#1264e8;--purple:#7138e8;--pink:#e51d73;--green:#0aa84f;--orange:#ff7200;--cyan:#009eb5;--bg:#f8fafc;--text:#172033;--muted:#64748b;--border:#e2e8f0}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text)}
+.categories{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none}
+.categories::-webkit-scrollbar{display:none}
+.cat{border:1px solid #e2e8f0;background:#fff;border-radius:14px;padding:8px 14px;white-space:nowrap;cursor:pointer;font-size:12px;font-weight:700;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.04);transition:all .2s}
+.cat.active{background:linear-gradient(135deg,#1264e8,#7138e8);color:white;border-color:transparent;box-shadow:0 4px 12px rgba(18,100,232,0.3)}
+.grid{display:grid;grid-template-columns:1fr;gap:12px}
+.tool{background:#fff;border:1px solid var(--border);border-radius:18px;padding:15px;box-shadow:0 2px 8px rgba(20,33,61,0.04);position:relative;overflow:hidden;transition:transform .2s}
+.tool:hover{transform:translateY(-2px)}
+.tool:before{content:"";position:absolute;left:0;top:0;width:5px;height:100%;background:var(--accent,#1264e8)}
+.tool h3{font-size:15px;font-weight:800;margin:0 0 4px;color:#1e293b}
+.tool p{font-size:11.5px;color:var(--muted);margin:0 0 10px}
+.tool input,.tool select,.tool textarea{width:100%;padding:9px 12px;border:1px solid #e2e8f0;border-radius:10px;margin:4px 0;font-size:13px;background:#f8fafc;outline:none}
+.tool input:focus,.tool select:focus,.tool textarea:focus{border-color:#4c7ff0;background:#fff;box-shadow:0 0 0 3px rgba(76,127,240,0.15)}
+.tool button{border:0;background:var(--accent,#1264e8);color:white;padding:8px 14px;border-radius:10px;cursor:pointer;font-weight:700;font-size:12px;margin-top:6px;width:100%;transition:opacity .2s}
+.tool button:hover{opacity:.9}
+.result{margin-top:8px;background:#eff6ff;border:1px solid #dbeafe;border-radius:10px;padding:8px 10px;font-weight:700;min-height:18px;font-size:12px;color:#1e40af;word-break:break-all}
+</style>
+</head>
+<body class="pb-20 antialiased">
+
+<!-- Sticky Header -->
+<header class="bg-white border-b border-slate-100 sticky top-0 z-50 shadow-xs">
+    <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition active:scale-95">
+                <i class="fas fa-arrow-left text-sm"></i>
+            </a>
+            <div>
+                <h1 class="text-base font-extrabold text-[#1264e8] leading-tight">Useful Tools & Calculators</h1>
+                <p class="text-[11px] text-slate-400 font-medium">80+ Free Utilities for Daily Life</p>
+            </div>
+        </div>
+        <span class="bg-blue-50 text-[#1264e8] text-[10px] font-bold px-2.5 py-1 rounded-full border border-blue-200">
+            80+ Tools
+        </span>
+    </div>
+</header>
+
+<main class="max-w-md mx-auto px-4 mt-3 space-y-3">
+
+    <!-- Search Input -->
+    <div class="relative">
+        <i class="fas fa-search absolute left-3.5 top-3.5 text-slate-400 text-xs"></i>
+        <input id="search" placeholder="Search: age, bmi, gst, emi, sip, fuel, unit..." 
+               class="w-full bg-white border border-slate-200 rounded-2xl pl-9 pr-4 py-2.5 text-xs text-slate-700 placeholder-slate-400 focus:outline-none focus:border-blue-500 shadow-sm transition">
+    </div>
+
+    <!-- Category Tabs -->
+    <div id="cats" class="categories"></div>
+
+    <!-- Section Header -->
+    <div class="flex items-center justify-between px-1">
+        <h2 class="font-extrabold text-xs text-slate-500 uppercase tracking-wider">🔥 Calculators & Tools</h2>
+        <span class="text-[10px] font-bold text-slate-400" id="toolCount"></span>
+    </div>
+
+    <!-- Tools Grid -->
+    <div id="grid" class="grid"></div>
+</main>
+
+<footer class="max-w-md mx-auto text-center py-6 mt-6 border-t border-slate-100">
+    <p class="text-[10px] text-slate-400">Free online tools • No login required • Calculations run securely in browser</p>
+</footer>
+
+<script>
+const tools=[
+["Age Calculator","Personal","Calculate exact age from date of birth.",["date"],d=>{let b=new Date(d[0]),n=new Date();let y=n.getFullYear()-b.getFullYear(),m=n.getMonth()-b.getMonth(),day=n.getDate()-b.getDate();if(day<0){m--;day+=new Date(n.getFullYear(),n.getMonth(),0).getDate()}if(m<0){y--;m+=12}return `${y} years, ${m} months, ${day} days`;}],
+["Date Difference","Date","Find days between two dates.",["date","date"],d=>`${Math.abs((new Date(d[1])-new Date(d[0]))/86400000)} days`],
+["Days Until Date","Date","Count days from today.",["date"],d=>{let x=(new Date(d[0])-new Date())/86400000;return `${Math.ceil(x)} days`;}],
+["BMI Calculator","Health","Calculate body mass index.",["number:Weight (kg)","number:Height (cm)"],d=>{let b=d[0]/((d[1]/100)**2);return `BMI: ${b.toFixed(1)} — ${b<18.5?"Underweight":b<25?"Normal":b<30?"Overweight":"Obesity"}`;}],
+["BMR Calculator","Health","Estimate basal metabolic rate.",["number:Weight kg","number:Height cm","number:Age years","select:Sex|Male|Female"],d=>{let b=d[3]=="Male"?10*d[0]+6.25*d[1]-5*d[2]+5:10*d[0]+6.25*d[1]-5*d[2]-161;return `${b.toFixed(0)} kcal/day`;}],
+["Calorie Maintenance","Health","Estimate daily calorie needs.",["number:Weight kg","number:Height cm","number:Age","select:Sex|Male|Female","select:Activity|1.2|1.375|1.55|1.725|1.9"],d=>{let b=d[3]=="Male"?10*d[0]+6.25*d[1]-5*d[2]+5:10*d[0]+6.25*d[1]-5*d[2]-161;return `${(b*+d[4]).toFixed(0)} kcal/day`;}],
+["GST Calculator","Finance","Calculate GST amount and total.",["number:Amount","number:GST %"],d=>{let g=d[0]*d[1]/100;return `GST: ₹${g.toFixed(2)} | Total: ₹${(d[0]+g).toFixed(2)}`;}],
+["GST Inclusive Price","Finance","Extract GST from an inclusive price.",["number:Inclusive amount","number:GST %"],d=>{let base=d[0]/(1+d[1]/100);return `Base: ₹${base.toFixed(2)} | GST: ₹${(d[0]-base).toFixed(2)}`;}],
+["Discount Calculator","Finance","Calculate discount and final price.",["number:Price","number:Discount %"],d=>{let x=d[0]*d[1]/100;return `Discount: ₹${x.toFixed(2)} | Final: ₹${(d[0]-x).toFixed(2)}`;}],
+["Percentage Calculator","Math","Find percentage of a number.",["number:Number","number:Percentage"],d=>`${(d[0]*d[1]/100).toFixed(2)}`],
+["Percentage Change","Math","Calculate increase or decrease.",["number:Old value","number:New value"],d=>`${(((d[1]-d[0])/d[0])*100).toFixed(2)}%`],
+["Average Calculator","Math","Average of numbers separated by commas.",["text:Numbers e.g. 10,20,30"],d=>{let a=d[0].split(",").map(Number);return (a.reduce((x,y)=>x+y,0)/a.length).toFixed(2)}],
+["Simple Interest","Finance","Calculate simple interest.",["number:Principal","number:Rate %","number:Time years"],d=>`Interest: ₹${(d[0]*d[1]*d[2]/100).toFixed(2)} | Total: ₹${(d[0]*(1+d[1]*d[2]/100)).toFixed(2)}`],
+["Compound Interest","Finance","Calculate compound interest.",["number:Principal","number:Rate %","number:Years"],d=>{let t=d[0]*(1+d[1]/100)**d[2];return `Interest: ₹${(t-d[0]).toFixed(2)} | Total: ₹${t.toFixed(2)}`;}],
+["Loan EMI","Finance","Estimate monthly EMI.",["number:Loan amount","number:Annual rate %","number:Years"],d=>{let r=d[1]/1200,n=d[2]*12,e=d[0]*r*(1+r)**n/((1+r)**n-1);return `EMI: ₹${e.toFixed(2)} | Total: ₹${(e*n).toFixed(2)}`;}],
+["SIP Calculator","Finance","Estimate SIP maturity value.",["number:Monthly SIP","number:Annual return %","number:Years"],d=>{let r=d[1]/1200,n=d[2]*12,v=d[0]*(((1+r)**n-1)/r)*(1+r);return `Value: ₹${v.toFixed(2)} | Invested: ₹${(d[0]*n).toFixed(2)}`;}],
+["FD Calculator","Finance","Estimate fixed-deposit maturity.",["number:Principal","number:Annual rate %","number:Years"],d=>`Maturity: ₹${(d[0]*(1+d[1]/400)**(4*d[2])).toFixed(2)}`],
+["Profit & Loss","Finance","Calculate profit or loss.",["number:Cost price","number:Selling price"],d=>{let x=d[1]-d[0];return `${x>=0?"Profit":"Loss"}: ₹${Math.abs(x).toFixed(2)} (${Math.abs(x/d[0]*100).toFixed(2)}%)`;}],
+["Unit Price","Finance","Compare price per unit.",["number:Total price","number:Quantity"],d=>`₹${(d[0]/d[1]).toFixed(2)} per unit`],
+["Fuel Cost","Travel","Calculate fuel cost for a trip.",["number:Distance km","number:Mileage km/L","number:Fuel price/L"],d=>`Fuel: ${(d[0]/d[1]).toFixed(2)} L | Cost: ₹${(d[0]/d[1]*d[2]).toFixed(2)}`],
+["Travel Time","Travel","Estimate travel time.",["number:Distance km","number:Speed km/h"],d=>`${(d[0]/d[1]).toFixed(2)} hours`],
+["Pace Calculator","Fitness","Running pace per kilometre.",["number:Distance km","number:Minutes"],d=>`${(d[1]/d[0]).toFixed(2)} min/km`],
+["Calories Burned","Fitness","Rough exercise calorie estimate.",["number:Weight kg","number:Minutes","number:METS"],d=>`${(d[2]*3.5*d[0]/200*d[1]).toFixed(0)} kcal`],
+["Water Intake","Health","Simple daily water estimate.",["number:Weight kg"],d=>`${(d[0]*35).toFixed(0)} ml/day`],
+["Ideal Weight","Health","Estimate healthy weight range by height.",["number:Height cm"],d=>`${(18.5*(d[0]/100)**2).toFixed(1)}–${(24.9*(d[0]/100)**2).toFixed(1)} kg`],
+["Body Surface Area","Health","Estimate BSA using Mosteller formula.",["number:Weight kg","number:Height cm"],d=>`${Math.sqrt(d[0]*d[1]/3600).toFixed(2)} m²`],
+["Temperature Converter","Conversion","Convert Celsius, Fahrenheit and Kelvin.",["number:Temperature","select:From|Celsius|Fahrenheit|Kelvin","select:To|Celsius|Fahrenheit|Kelvin"],d=>{let c=d[1]=="Celsius"?d[0]:d[1]=="Fahrenheit"?(d[0]-32)*5/9:d[0]-273.15;let x=d[2]=="Celsius"?c:d[2]=="Fahrenheit"?c*9/5+32:c+273.15;return `${x.toFixed(2)} ${d[2]}`;}],
+["Kilometre ↔ Mile","Conversion","Convert distance.",["number:Value","select:Direction|km to miles|miles to km"],d=>`${(d[1]=="km to miles"?d[0]*.621371:d[0]/.621371).toFixed(3)}`],
+["Kg ↔ Pound","Conversion","Convert weight.",["number:Value","select:Direction|kg to lb|lb to kg"],d=>`${(d[1]=="kg to lb"?d[0]*2.20462:d[0]/2.20462).toFixed(3)}`],
+["Metre ↔ Feet","Conversion","Convert length.",["number:Value","select:Direction|m to ft|ft to m"],d=>`${(d[1]=="m to ft"?d[0]*3.28084:d[0]/3.28084).toFixed(3)}`],
+["Litres ↔ Gallons","Conversion","Convert volume.",["number:Value","select:Direction|L to gal|gal to L"],d=>`${(d[1]=="L to gal"?d[0]*.264172:d[0]/.264172).toFixed(3)}`],
+["Square Feet ↔ Square Metre","Conversion","Convert area.",["number:Value","select:Direction|sqft to sqm|sqm to sqft"],d=>`${(d[1]=="sqft to sqm"?d[0]*.092903:d[0]/.092903).toFixed(3)}`],
+["Inches ↔ Centimetres","Conversion","Convert length.",["number:Value","select:Direction|in to cm|cm to in"],d=>`${(d[1]=="in to cm"?d[0]*2.54:d[0]/2.54).toFixed(3)}`],
+["BMI Prime","Health","Compare BMI with 25.",["number:BMI"],d=>(d[0]/25).toFixed(2)],
+["Tip Calculator","Finance","Split a restaurant bill.",["number:Bill","number:Tip %","number:People"],d=>`Tip: ₹${(d[0]*d[1]/100).toFixed(2)} | Each: ₹${((d[0]*(1+d[1]/100))/d[2]).toFixed(2)}`],
+["Split Bill","Finance","Split bill equally.",["number:Bill","number:People"],d=>`₹${(d[0]/d[1]).toFixed(2)} each`],
+["Salary After Raise","Finance","Calculate salary after a raise.",["number:Current salary","number:Raise %"],d=>`New salary: ₹${(d[0]*(1+d[1]/100)).toFixed(2)}`],
+["Hourly Wage","Finance","Find hourly wage.",["number:Monthly salary","number:Work hours/month"],d=>`₹${(d[0]/d[1]).toFixed(2)}/hour`],
+["Overtime Pay","Finance","Calculate overtime earnings.",["number:Hourly rate","number:OT hours","number:Multiplier"],d=>`₹${(d[0]*d[1]*d[2]).toFixed(2)}`],
+["Savings Goal","Finance","Months needed to reach a target.",["number:Target","number:Current savings","number:Monthly saving"],d=>`${Math.ceil((d[0]-d[1])/d[2])} months`],
+["Budget Split 50/30/20","Finance","Split income into needs, wants and savings.",["number:Monthly income"],d=>`Needs ₹${(d[0]*.5).toFixed(0)} | Wants ₹${(d[0]*.3).toFixed(0)} | Savings ₹${(d[0]*.2).toFixed(0)}`],
+["Electricity Cost","Home","Estimate electricity bill.",["number:Units kWh","number:Rate per unit"],d=>`₹${(d[0]*d[1]).toFixed(2)}`],
+["Power Consumption","Home","Estimate appliance energy use.",["number:Watts","number:Hours/day","number:Days"],d=>`${(d[0]/1000*d[1]*d[2]).toFixed(2)} kWh`],
+["Paint Required","Home","Estimate paint quantity.",["number:Wall area m²","number:Coverage m²/L"],d=>`${(d[0]/d[1]).toFixed(2)} L`],
+["Tiles Required","Home","Estimate tiles needed.",["number:Floor area m²","number:Tile area m²"],d=>`${Math.ceil(d[0]/d[1]*1.1)} tiles incl. 10% waste`],
+["Concrete Volume","Construction","Calculate slab concrete volume.",["number:Length m","number:Width m","number:Depth m"],d=>`${(d[0]*d[1]*d[2]).toFixed(3)} m³`],
+["Brick Estimate","Construction","Rough brick count from wall volume.",["number:Wall volume m³","number:Bricks per m³"],d=>`${Math.ceil(d[0]*d[1])} bricks`],
+["Area Calculator","Math","Calculate rectangle area.",["number:Length","number:Width"],d=>`${(d[0]*d[1]).toFixed(2)} square units`],
+["Triangle Area","Math","Calculate triangle area.",["number:Base","number:Height"],d=>`${(d[0]*d[1]/2).toFixed(2)} square units`],
+["Circle Area","Math","Calculate circle area.",["number:Radius"],d=>`${(Math.PI*d[0]**2).toFixed(2)} square units`],
+["Circle Circumference","Math","Calculate circumference.",["number:Radius"],d=>`${(2*Math.PI*d[0]).toFixed(2)} units`],
+["Cube Volume","Math","Calculate cube volume.",["number:Side"],d=>`${(d[0]**3).toFixed(2)} cubic units`],
+["Cylinder Volume","Math","Calculate cylinder volume.",["number:Radius","number:Height"],d=>`${(Math.PI*d[0]**2*d[1]).toFixed(2)} cubic units`],
+["Speed Calculator","Math","Calculate speed from distance and time.",["number:Distance","number:Hours"],d=>`${(d[0]/d[1]).toFixed(2)} units/hour`],
+["Time Calculator","Date","Add hours and minutes to a time.",["time","number:Hours","number:Minutes"],d=>{let [h,m]=d[0].split(":").map(Number);let x=h*60+m+d[1]*60+d[2];return `${String(Math.floor(x/60)%24).padStart(2,"0")}:${String(x%60).padStart(2,"0")}`;}],
+["Unix Timestamp","Date","Convert current time to Unix timestamp.",[],()=>Math.floor(Date.now()/1000)],
+["Leap Year Checker","Date","Check whether a year is leap year.",["number:Year"],d=>`${d[0]} is ${((d[0]%4==0&&d[0]%100!=0)||d[0]%400==0)?"a leap":"not a leap"} year`],
+["Days in Year","Date","Find number of days in a year.",["number:Year"],d=>(((d[0]%4==0&&d[0]%100!=0)||d[0]%400==0)?366:365)],
+["Weekday Finder","Date","Find the day of week for a date.",["date"],d=>new Date(d[0]).toLocaleDateString("en-IN",{weekday:"long"})],
+["Age in Days","Date","Approximate age in days.",["date"],d=>`${Math.floor((Date.now()-new Date(d[0]))/86400000)} days`],
+["Countdown to Birthday","Date","Days until your next birthday.",["date"],d=>{let b=new Date(d[0]),n=new Date(),x=new Date(n.getFullYear(),b.getMonth(),b.getDate());if(x<n)x.setFullYear(n.getFullYear()+1);return `${Math.ceil((x-n)/86400000)} days`; }],
+["Text Counter","Text","Count characters and words.",["textarea:Enter text"],d=>{let s=d[0];return `Characters: ${s.length} | Words: ${s.trim()?s.trim().split(/\\s+/).length:0}`;}],
+["Uppercase Converter","Text","Convert text to uppercase.",["textarea:Text"],d=>d[0].toUpperCase()],
+["Lowercase Converter","Text","Convert text to lowercase.",["textarea:Text"],d=>d[0].toLowerCase()],
+["Remove Extra Spaces","Text","Clean repeated spaces.",["textarea:Text"],d=>d[0].replace(/\\s+/g," ").trim()],
+["Password Generator","Security","Generate a random strong password.",["number:Length"],d=>{let c="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%";let s="";for(let i=0;i<Math.max(4,d[0]);i++)s+=c[Math.floor(Math.random()*c.length)];return s;}],
+["Random Number","Math","Generate a random number in a range.",["number:Minimum","number:Maximum"],d=>Math.floor(Math.random()*(d[1]-d[0]+1))+d[0]],
+["Dice Roller","Fun","Roll one or more dice.",["number:Number of dice"],d=>Array.from({length:Math.max(1,d[0])},()=>Math.floor(Math.random()*6)+1).join(", ")],
+["Coin Toss","Fun","Flip a virtual coin.",[],()=>Math.random()<.5?"Heads":"Tails"],
+["GST Split CGST/SGST","Finance","Split GST equally into CGST and SGST.",["number:GST amount"],d=>`CGST: ₹${(d[0]/2).toFixed(2)} | SGST: ₹${(d[0]/2).toFixed(2)}`],
+["Markup Calculator","Finance","Calculate selling price from cost and markup.",["number:Cost","number:Markup %"],d=>`Selling price: ₹${(d[0]*(1+d[1]/100)).toFixed(2)}`],
+["Commission Calculator","Finance","Calculate commission.",["number:Sales amount","number:Commission %"],d=>`Commission: ₹${(d[0]*d[1]/100).toFixed(2)}`],
+["VAT Calculator","Finance","Calculate VAT amount.",["number:Amount","number:VAT %"],d=>`VAT: ₹${(d[0]*d[1]/100).toFixed(2)} | Total: ₹${(d[0]*(1+d[1]/100)).toFixed(2)}`],
+["Ratio Calculator","Math","Simplify a two-number ratio.",["number:A","number:B"],d=>{let a=d[0],b=d[1];while(b){[a,b]=[b,a%b]}return `${d[0]/a}:${d[1]/a}`;}],
+["GCD Calculator","Math","Find greatest common divisor.",["number:A","number:B"],d=>{let a=Math.abs(d[0]),b=Math.abs(d[1]);while(b)[a,b]=[b,a%b];return a;}],
+["LCM Calculator","Math","Find least common multiple.",["number:A","number:B"],d=>{let a=Math.abs(d[0]),b=Math.abs(d[1]),x=a,y=b;while(y)[x,y]=[y,x%y];return Math.abs(a*b/x);}],
+["Binary Converter","Tech","Convert decimal number to binary.",["number:Decimal"],d=>Number(d[0]).toString(2)],
+["Hex Converter","Tech","Convert decimal number to hexadecimal.",["number:Decimal"],d=>Number(d[0]).toString(16).toUpperCase()],
+["BMI Category","Health","Check BMI category.",["number:BMI"],d=>d[0]<18.5?"Underweight":d[0]<25?"Normal":d[0]<30?"Overweight":"Obesity"],
+["Mortgage/Loan Interest","Finance","Estimate total interest on a loan.",["number:Principal","number:Rate %","number:Years"],d=>{let r=d[1]/1200,n=d[2]*12,e=d[0]*r*(1+r)**n/((1+r)**n-1);return `Total paid: ₹${(e*n).toFixed(2)} | Interest: ₹${(e*n-d[0]).toFixed(2)}`;}],
+["Investment Return","Finance","Calculate investment return percentage.",["number:Invested","number:Final value"],d=>`${((d[1]-d[0])/d[0]*100).toFixed(2)}% return`],
+["Inflation Calculator","Finance","Estimate future value using inflation.",["number:Current amount","number:Inflation %","number:Years"],d=>`Future cost: ₹${(d[0]*(1+d[1]/100)**d[2]).toFixed(2)}`],
+["Rule of 72","Finance","Estimate years to double money.",["number:Interest rate %"],d=>`${(72/d[0]).toFixed(1)} years`],
+["Break-even Units","Business","Find units needed to break even.",["number:Fixed costs","number:Price/unit","number:Variable cost/unit"],d=>`${Math.ceil(d[0]/(d[1]-d[2]))} units`],
+["Markup from Margin","Business","Convert profit margin to markup.",["number:Margin %"],d=>`${(d[0]/(100-d[0])*100).toFixed(2)}% markup`],
+["Gross Margin","Business","Calculate gross margin.",["number:Revenue","number:Cost"],d=>`${((d[0]-d[1])/d[0]*100).toFixed(2)}%`],
+["ROI Calculator","Business","Calculate return on investment.",["number:Gain","number:Cost"],d=>`${(d[0]/d[1]*100).toFixed(2)}% ROI`],
+["Age at Future Date","Date","Find age on a selected date.",["date:DOB","date:Future date"],d=>{let b=new Date(d[0]),x=new Date(d[1]);let a=x.getFullYear()-b.getFullYear();if(x.getMonth()<b.getMonth()||(x.getMonth()==b.getMonth()&&x.getDate()<b.getDate()))a--;return `${a} years`; }],
+["Hours to Minutes","Conversion","Convert hours to minutes.",["number:Hours"],d=>`${d[0]*60} minutes`],
+["Minutes to Hours","Conversion","Convert minutes to hours.",["number:Minutes"],d=>`${(d[0]/60).toFixed(2)} hours`],
+["Bytes to KB/MB","Tech","Convert bytes to KB and MB.",["number:Bytes"],d=>`${(d[0]/1024).toFixed(2)} KB | ${(d[0]/1048576).toFixed(2)} MB`],
+["QR Text Generator","Tech","Generate a QR code from text.",["text:Text or URL"],d=>`QR_DATA:${encodeURIComponent(d[0])}`]
+];
+
+const grid=document.getElementById("grid"), cats=document.getElementById("cats"), search=document.getElementById("search");
+let active="All";
+const categories=["All",...new Set(tools.map(x=>x[1]))];
+cats.innerHTML=categories.map(c=>`<button class="cat ${c==="All"?"active":""}" onclick="setCat('${c.replaceAll("'","\\\\'")}')">${c}</button>`).join("");
+
+function render(){
+ let q=search.value.toLowerCase().trim();
+ grid.innerHTML="";
+ let count=0;
+ tools.forEach((t,i)=>{
+   if(active!="All"&&t[1]!=active)return;
+   if(q&&!(`${t[0]} ${t[1]} ${t[2]}`.toLowerCase().includes(q)))return;
+   count++;
+   let box=document.createElement("div");box.className="tool";
+   let fields=t[3].map((f,j)=>{
+     let [type,label]=f.split(":"); if(type=="select"){let parts=label.split("|");return `<select id="v${i}_${j}">${parts.slice(1).map(x=>`<option>${x}</option>`).join("")}</select>`}
+     if(type=="textarea")return `<textarea id="v${i}_${j}" rows="3" placeholder="${label}"></textarea>`;
+     if(type=="time")return `<input id="v${i}_${j}" type="time">`;
+     if(type=="date")return `<input id="v${i}_${j}" type="date">`;
+     if(type=="text")return `<input id="v${i}_${j}" type="text" placeholder="${label}">`;
+     return `<input id="v${i}_${j}" type="number" placeholder="${label}" step="any">`;
+   }).join("");
+   const accents={"Business":"#ff7200","Finance":"#0aa84f","Health":"#e11d48","Conversion":"#7c3aed","Text":"#0284c7","Fun":"#ec4899","Date":"#0d9488","Math":"#9333ea","Travel":"#0891b2","Fitness":"#f43f5e","Home":"#16a34a","Construction":"#ea580c","Tech":"#2563eb","Security":"#e11d48"};
+   box.style.setProperty("--accent",accents[t[1]]||"#1264e8");
+   box.innerHTML=`<h3>${t[0]}</h3><p>${t[2]}</p>${fields}<button onclick="calc(${i})">Calculate</button><div id="r${i}" class="result"></div>`;
+   grid.appendChild(box);
+ });
+ document.getElementById("toolCount").textContent=count+" tools available";
+}
+function calc(i){
+ let t=tools[i],d=t[3].map((f,j)=>{let el=document.getElementById(`v${i}_${j}`),type=f.split(":")[0];return type=="number"?Number(el.value):el.value});
+ try{document.getElementById("r"+i).textContent=t[4](d)}catch(e){document.getElementById("r"+i).textContent="Please enter valid values."}
+}
+function setCat(c){active=c;document.querySelectorAll(".cat").forEach(x=>x.classList.toggle("active",x.textContent==c));render()}
+search.addEventListener("input",render);render();
+</script>
+</body>
+</html>
