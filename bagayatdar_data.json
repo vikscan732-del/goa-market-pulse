@@ -3,37 +3,37 @@
     "products": [
         {
             "name": "Supari Old  / सुपारी जुनी",
-            "price": "402",
+            "price": "397",
             "icon": "🥥"
         },
         {
             "name": "Supari Raas Old / सुपारी रास जुनी",
-            "price": "387",
+            "price": "382",
             "icon": "🥥"
         },
         {
             "name": "Safed Khoka Old / सफेद खोका जुना",
-            "price": "352",
+            "price": "347",
             "icon": "🥥"
         },
         {
             "name": "Lal Khoka Old / लाल खोका जुना",
-            "price": "342",
+            "price": "337",
             "icon": "🥥"
         },
         {
             "name": "Vench Old  / वेच जुना",
-            "price": "300",
+            "price": "298",
             "icon": "🥥"
         },
         {
             "name": "Tukada Old / तुकडा जुना",
-            "price": "329",
+            "price": "326",
             "icon": "🥥"
         },
         {
             "name": "Bad Vench Old / बादवेच जुना",
-            "price": "206",
+            "price": "204",
             "icon": "🥥"
         },
         {
@@ -43,7 +43,7 @@
         },
         {
             "name": "Kharad Old / खरड जुना",
-            "price": "300",
+            "price": "298",
             "icon": "📦"
         },
         {
@@ -88,57 +88,57 @@
         },
         {
             "name": "Coconut Raas / नारळ राशी",
-            "price": "14000 - 23000",
+            "price": "15500 - 24500",
             "icon": "🥥"
         },
         {
             "name": "Coconut Raas (Small) / नारळ रास - लहान",
-            "price": "11000 - 13000",
+            "price": "12000 - 14000",
             "icon": "🥥"
         },
         {
             "name": "Coconut 80/Bag / नारळ ८० भ.",
-            "price": "39000",
+            "price": "37500",
             "icon": "🥥"
         },
         {
             "name": "Coconut 90/Bag / नारळ ९० भ.",
-            "price": "37000",
+            "price": "35500",
             "icon": "🥥"
         },
         {
             "name": "Coconut 100/Bag / नारळ १०० भ.",
-            "price": "36000",
+            "price": "34500",
             "icon": "🥥"
         },
         {
             "name": "Coconut 120/Bag / नारळ १२० भ.",
-            "price": "34000",
+            "price": "32500",
             "icon": "🥥"
         },
         {
             "name": "Coconut 180/Bag / नारळ १८० भ.",
-            "price": "31000",
+            "price": "30000",
             "icon": "🥥"
         },
         {
             "name": "Coconut 250/Bag / नारळ २५० भ.",
-            "price": "26000",
+            "price": "25000",
             "icon": "🥥"
         },
         {
             "name": "Coconut 300/Bag / नारळ ३०० भ.",
-            "price": "21000",
+            "price": "20000",
             "icon": "🥥"
         },
         {
             "name": "Coconut 400/Bag / नारळ ४०० भ.",
-            "price": "15500",
+            "price": "14500",
             "icon": "🥥"
         },
         {
             "name": "Sollela Naral / सोललेला नारळ",
-            "price": "51",
+            "price": "49",
             "icon": "🥥"
         }
     ]
