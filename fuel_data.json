@@ -1,5 +1,5 @@
 {
-  "last_updated": "Today, 09:50 PM",
+  "last_updated": "Today, 09:53 PM",
   "city": "Panjim",
   "state": "Goa",
   "fuels": [
@@ -26,12 +26,12 @@
     {
       "name": "CNG (Panjim)",
       "category": "cng",
-      "price": 94.5,
+      "price": 98.0,
       "unit": "kg",
       "district": "Goa (Panjim)",
       "icon": "🟢",
-      "change": 0.0,
-      "changePercent": 0.0
+      "change": 3.5,
+      "changePercent": 3.57
     },
     {
       "name": "Auto Gas (Panjim)",
