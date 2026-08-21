@@ -1,5 +1,5 @@
 {
-  "last_updated": "Today, 09:53 PM",
+  "last_updated": "Today, 09:50 PM",
   "city": "Panjim",
   "state": "Goa",
   "fuels": [
@@ -30,8 +30,8 @@
       "unit": "kg",
       "district": "Goa (Panjim)",
       "icon": "🟢",
-      "change": 3.5,
-      "changePercent": 3.57
+      "change": 0.0,
+      "changePercent": 0.0
     },
     {
       "name": "Auto Gas (Panjim)",
