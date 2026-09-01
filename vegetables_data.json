@@ -3,21 +3,21 @@
   "vegetables": [
     {
       "name": "Bhendi",
-      "price": 35,
+      "price": 32,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🌿",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -3,
+      "changePercent": -8.6
     },
     {
       "name": "Cabbage",
-      "price": 23,
+      "price": 22,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🥬",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -1,
+      "changePercent": -4.3
     },
     {
       "name": "Carrot",
@@ -48,21 +48,21 @@
     },
     {
       "name": "Cluster Beans",
-      "price": 47,
+      "price": 48,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 1,
+      "changePercent": 2.1
     },
     {
       "name": "French Beans",
-      "price": 37,
+      "price": 43,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 6,
+      "changePercent": 16.2
     },
     {
       "name": "Onion",
@@ -84,12 +84,12 @@
     },
     {
       "name": "Tomato",
-      "price": 22,
+      "price": 24,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🍅",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 2,
+      "changePercent": 9.1
     }
   ]
 }
