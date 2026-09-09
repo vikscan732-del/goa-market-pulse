@@ -1,14 +1,14 @@
 {
-  "last_updated": "GSHCL 08 Sep, Today",
+  "last_updated": "GSHCL 09 Sep, Today",
   "vegetables": [
     {
       "name": "Bhendi",
-      "price": 37,
+      "price": 36,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🌿",
       "change": -1,
-      "changePercent": -2.6
+      "changePercent": -2.7
     },
     {
       "name": "Cabbage",
@@ -16,26 +16,26 @@
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🥬",
-      "change": 1,
-      "changePercent": 4.2
+      "change": 0,
+      "changePercent": 0.0
     },
     {
       "name": "Carrot",
-      "price": 45,
+      "price": 46,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🥕",
-      "change": -2,
-      "changePercent": -4.3
+      "change": 1,
+      "changePercent": 2.2
     },
     {
       "name": "Cauliflower",
-      "price": 30,
+      "price": 32,
       "unit": "pc",
       "market": "GSHCL Goa",
       "icon": "🥦",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 2,
+      "changePercent": 6.7
     },
     {
       "name": "Chilli",
@@ -43,8 +43,8 @@
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🌶️",
-      "change": -3,
-      "changePercent": -6.0
+      "change": 0,
+      "changePercent": 0.0
     },
     {
       "name": "Cluster Beans",
@@ -52,8 +52,8 @@
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": 1,
-      "changePercent": 2.3
+      "change": 0,
+      "changePercent": 0.0
     },
     {
       "name": "French Beans",
@@ -61,17 +61,17 @@
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": 14,
-      "changePercent": 30.4
+      "change": 0,
+      "changePercent": 0.0
     },
     {
       "name": "Onion",
-      "price": 64,
+      "price": 59,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🧅",
-      "change": -3,
-      "changePercent": -4.5
+      "change": -5,
+      "changePercent": -7.8
     },
     {
       "name": "Potato",
