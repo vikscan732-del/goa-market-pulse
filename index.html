@@ -4,248 +4,723 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Goa Market Price Tracker</title>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f8fafc;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .trending-card {
             animation: fadeIn 0.3s ease-out forwards;
         }
+
+        /* ==========================================
+           🏍️ BIKE ROAD PRICE BANNER
+           ========================================== */
+
+        .bike-road-banner {
+            display: block;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            margin: 4px 0 14px;
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            text-decoration: none;
+            transform: translateZ(0);
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .bike-road-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 32px rgba(0, 0, 0, 0.18);
+        }
+
+        .bike-road-banner:active {
+            transform: scale(0.975);
+        }
+
+        .bike-banner-image-wrap {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 28px;
+        }
+
+        .bike-road-banner-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3072 / 1202;
+            object-fit: cover;
+        }
+
+        /* Animated tap indicator */
+        .bike-tap-indicator {
+            position: absolute;
+            left: 5%;
+            bottom: 9%;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 9px 13px;
+            border-radius: 12px;
+
+            background: linear-gradient(
+                90deg,
+                #ff7200,
+                #ff9800,
+                #08a866
+            );
+
+            color: white;
+            font-size: 12px;
+            font-weight: 900;
+
+            box-shadow:
+                0 7px 18px rgba(0, 0, 0, 0.22),
+                0 0 0 rgba(255, 132, 0, 0);
+
+            animation:
+                bikeTapFloat 2s ease-in-out infinite,
+                bikeTapGlow 2s ease-in-out infinite;
+
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .bike-tap-arrow {
+            font-size: 17px;
+            font-weight: 900;
+            animation: bikeArrowMove 0.9s ease-in-out infinite;
+        }
+
+        .bike-tap-dot {
+            position: absolute;
+            left: 5%;
+            bottom: 9%;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: white;
+            pointer-events: none;
+            animation: bikeTapPulse 1.8s ease-out infinite;
+            z-index: 4;
+        }
+
+        @keyframes bikeTapFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+        }
+
+        @keyframes bikeTapGlow {
+            0%, 100% {
+                box-shadow:
+                    0 7px 18px rgba(0, 0, 0, 0.22),
+                    0 0 0 rgba(255, 132, 0, 0);
+            }
+
+            50% {
+                box-shadow:
+                    0 9px 22px rgba(0, 0, 0, 0.25),
+                    0 0 20px rgba(255, 132, 0, 0.45);
+            }
+        }
+
+        @keyframes bikeArrowMove {
+            0%, 100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes bikeTapPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(7);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile banner */
+        @media (max-width: 480px) {
+
+            .bike-road-banner {
+                border-radius: 23px;
+                margin-bottom: 13px;
+            }
+
+            .bike-banner-image-wrap {
+                border-radius: 23px;
+            }
+
+            .bike-tap-indicator {
+                left: 5%;
+                bottom: 9%;
+                padding: 7px 10px;
+                gap: 5px;
+                font-size: 10px;
+                border-radius: 9px;
+            }
+
+            .bike-tap-arrow {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
+
 <body class="text-slate-800 antialiased pb-16">
 
     <!-- Top Header -->
     <header class="bg-white sticky top-0 z-50 border-b border-slate-100 shadow-xs">
         <div class="max-w-md mx-auto px-4 py-3.5 flex items-center justify-between">
+
             <div class="flex items-center gap-3">
+
                 <div class="w-10 h-10 bg-[#0e5e3a] rounded-xl flex items-center justify-center text-xl shadow-inner">
                     🛍️
                 </div>
+
                 <div>
-                    <h1 class="text-base font-extrabold text-[#0e5e3a] leading-tight">Goa Market Price Tracker</h1>
-                    <p class="text-[11px] text-slate-400 font-medium">Daily Prices. Smarter Choices.</p>
+                    <h1 class="text-base font-extrabold text-[#0e5e3a] leading-tight">
+                        Goa Market Price Tracker
+                    </h1>
+
+                    <p class="text-[11px] text-slate-400 font-medium">
+                        Daily Prices. Smarter Choices.
+                    </p>
                 </div>
+
             </div>
+
             <button class="w-9 h-9 flex items-center justify-center text-slate-600 rounded-lg hover:bg-slate-100 transition">
                 <i class="fas fa-bars"></i>
             </button>
+
         </div>
     </header>
+
 
     <!-- Main Content -->
     <main class="max-w-md mx-auto px-4 mt-3 space-y-4">
 
         <!-- Last Updated Badge -->
         <div class="bg-emerald-50 text-emerald-800 text-[11px] font-bold px-3 py-2 rounded-xl flex items-center gap-2 border border-emerald-100">
+
             <i class="far fa-clock"></i>
+
             <span>Updated:</span>
-            <span id="marketUpdated">Today, Live Rates</span>
+
+            <span id="marketUpdated">
+                Today, Live Rates
+            </span>
+
         </div>
+
 
         <!-- Top 4 Category Cards -->
         <div class="grid grid-cols-4 gap-2.5">
+
             <!-- Goa Bagayatdar -->
-            <a href="bagayatdar.html" class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#eaf8f0] border border-[#c3ecd2] shadow-sm hover:shadow-md transition active:scale-95 text-center">
-                <div class="text-3xl my-auto">🧺</div>
+            <a href="bagayatdar.html"
+               class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#eaf8f0] border border-[#c3ecd2] shadow-sm hover:shadow-md transition active:scale-95 text-center">
+
+                <div class="text-3xl my-auto">
+                    🧺
+                </div>
+
                 <span class="text-[11px] font-bold text-[#0e5e3a] leading-tight mt-2 flex items-center justify-center gap-0.5">
-                    Goa Bagaydar <i class="fas fa-chevron-right text-[8px]"></i>
+                    Goa Bagaydar
+                    <i class="fas fa-chevron-right text-[8px]"></i>
                 </span>
+
             </a>
+
+
             <!-- Vegetables -->
-            <a href="vegetable.html" class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#fff6ee] border border-[#ffdec2] shadow-sm hover:shadow-md transition active:scale-95 text-center">
-                <div class="text-3xl my-auto">🥬</div>
+            <a href="vegetable.html"
+               class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#fff6ee] border border-[#ffdec2] shadow-sm hover:shadow-md transition active:scale-95 text-center">
+
+                <div class="text-3xl my-auto">
+                    🥬
+                </div>
+
                 <span class="text-[11px] font-bold text-[#c2410c] leading-tight mt-2 flex items-center justify-center gap-0.5">
-                    Vegetable <i class="fas fa-chevron-right text-[8px]"></i>
+                    Vegetable
+                    <i class="fas fa-chevron-right text-[8px]"></i>
                 </span>
+
             </a>
+
+
             <!-- Construction -->
-            <a href="construction.html" class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#f0f6ff] border border-[#cfe2ff] shadow-sm hover:shadow-md transition active:scale-95 text-center">
-                <div class="text-3xl my-auto">🏗️</div>
+            <a href="construction.html"
+               class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#f0f6ff] border border-[#cfe2ff] shadow-sm hover:shadow-md transition active:scale-95 text-center">
+
+                <div class="text-3xl my-auto">
+                    🏗️
+                </div>
+
                 <span class="text-[11px] font-bold text-[#1d4ed8] leading-tight mt-2 flex items-center justify-center gap-0.5">
-                    Construction <i class="fas fa-chevron-right text-[8px]"></i>
+                    Construction
+                    <i class="fas fa-chevron-right text-[8px]"></i>
                 </span>
+
             </a>
+
+
             <!-- Fuel -->
-            <a href="fuel.html" class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#fffbeb] border border-[#fef08a] shadow-sm hover:shadow-md transition active:scale-95 text-center">
-                <div class="text-3xl my-auto">⛽</div>
+            <a href="fuel.html"
+               class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#fffbeb] border border-[#fef08a] shadow-sm hover:shadow-md transition active:scale-95 text-center">
+
+                <div class="text-3xl my-auto">
+                    ⛽
+                </div>
+
                 <span class="text-[11px] font-bold text-[#b45309] leading-tight mt-2 flex items-center justify-center gap-0.5">
-                    Fuel <i class="fas fa-chevron-right text-[8px]"></i>
+                    Fuel
+                    <i class="fas fa-chevron-right text-[8px]"></i>
                 </span>
+
             </a>
+
         </div>
 
+
         <!-- Official Goa Govt Portals Animated Banner -->
-<a href="gov.html" class="relative overflow-hidden block bg-gradient-to-r from-[#065f46] via-[#047857] to-[#0f766e] rounded-3xl p-4 text-white shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:scale-[0.98] border border-emerald-400/40 group">
-    <!-- Background Glow Effect -->
-    <div class="absolute -right-8 -top-8 w-28 h-28 bg-white/10 rounded-full blur-xl group-hover:scale-125 transition-transform duration-500"></div>
-    
-    <div class="relative z-10 flex items-center justify-between">
-        <div class="flex items-center gap-3.5">
-            <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl shrink-0 shadow-inner group-hover:rotate-6 transition-transform">
-                🏛️
-            </div>
-            <div>
-                <div class="flex items-center gap-1.5">
-                    <span class="text-[9px] uppercase font-black tracking-widest text-emerald-200 bg-emerald-900/40 px-2 py-0.5 rounded-full border border-emerald-300/30">Official</span>
-                    <span class="inline-flex items-center text-[9px] text-emerald-100 font-semibold">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1 animate-pulse"></span> 88+ Sites
-                    </span>
+        <a href="gov.html"
+           class="relative overflow-hidden block bg-gradient-to-r from-[#065f46] via-[#047857] to-[#0f766e] rounded-3xl p-4 text-white shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:scale-[0.98] border border-emerald-400/40 group">
+
+            <div class="absolute -right-8 -top-8 w-28 h-28 bg-white/10 rounded-full blur-xl group-hover:scale-125 transition-transform duration-500"></div>
+
+            <div class="relative z-10 flex items-center justify-between">
+
+                <div class="flex items-center gap-3.5">
+
+                    <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl shrink-0 shadow-inner group-hover:rotate-6 transition-transform">
+                        🏛️
+                    </div>
+
+                    <div>
+
+                        <div class="flex items-center gap-1.5">
+
+                            <span class="text-[9px] uppercase font-black tracking-widest text-emerald-200 bg-emerald-900/40 px-2 py-0.5 rounded-full border border-emerald-300/30">
+                                Official
+                            </span>
+
+                            <span class="inline-flex items-center text-[9px] text-emerald-100 font-semibold">
+
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1 animate-pulse"></span>
+
+                                88+ Sites
+
+                            </span>
+
+                        </div>
+
+                        <h3 class="font-black text-sm text-white leading-tight mt-0.5">
+                            Goa Government Portals
+                        </h3>
+
+                        <p class="text-[10px] text-emerald-100/90 font-medium">
+                            GSSC, Land, RTO, Police & Schemes
+                        </p>
+
+                    </div>
+
                 </div>
-                <h3 class="font-black text-sm text-white leading-tight mt-0.5">Goa Government Portals</h3>
-                <p class="text-[10px] text-emerald-100/90 font-medium">GSSC, Land, RTO, Police & Schemes</p>
+
+
+                <div class="flex items-center gap-1 bg-white/20 group-hover:bg-white text-white group-hover:text-emerald-900 text-xs font-black px-3 py-2 rounded-xl transition duration-300 shrink-0">
+
+                    <span>
+                        Open
+                    </span>
+
+                    <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
+
+                </div>
+
             </div>
-        </div>
-        
-        <div class="flex items-center gap-1 bg-white/20 group-hover:bg-white text-white group-hover:text-emerald-900 text-xs font-black px-3 py-2 rounded-xl transition duration-300 shrink-0">
-            <span>Open</span>
-            <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
-        </div>
-    </div>
-</a>
+
+        </a>
 
 
         <!-- Trending Prices Section -->
         <div class="space-y-3 pt-2">
+
             <h2 class="font-extrabold text-sm text-slate-700 flex items-center gap-2">
-                <i class="fas fa-chart-line text-emerald-600"></i> Today's Trending Prices
+
+                <i class="fas fa-chart-line text-emerald-600"></i>
+
+                Today's Trending Prices
+
             </h2>
+
+
             <div id="trendingList" class="space-y-2.5">
+
                 <div class="text-center py-6 text-xs text-slate-400 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                    <i class="fas fa-spinner fa-spin mr-1.5"></i> Loading fresh prices...
+
+                    <i class="fas fa-spinner fa-spin mr-1.5"></i>
+
+                    Loading fresh prices...
+
                 </div>
+
             </div>
+
         </div>
+
+
+        <!-- ==============================================
+             🏍️ BIKE ROAD PRICE IN GOA BANNER
+             ============================================== -->
+
+        <a href="bike-price.html"
+           class="bike-road-banner"
+           aria-label="Open Bike Road Price in Goa">
+
+            <div class="bike-banner-image-wrap">
+
+                <img
+                    src="bike-road-price-goa-banner.png"
+                    alt="Bike Road Price in Goa"
+                    class="bike-road-banner-image"
+                    loading="lazy"
+                >
+
+                <!-- Animated Click Indicator -->
+                <div class="bike-tap-indicator">
+
+                    <span>
+                        Tap to View
+                    </span>
+
+                    <span class="bike-tap-arrow">
+                        →
+                    </span>
+
+                </div>
+
+                <!-- Pulse -->
+                <div class="bike-tap-dot"></div>
+
+            </div>
+
+        </a>
+
 
         <!-- Quick Access Banners -->
         <div class="space-y-3 pt-2">
-            
-                       <!-- START: Useful Tools & Calculators Bright Animated Banner -->
-            <a href="tools.html" class="relative overflow-hidden block bg-gradient-to-r from-[#1264e8] via-[#6366f1] to-[#d946ef] rounded-3xl p-4 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 active:scale-[0.98] border border-indigo-300/40 group">
-                <!-- Floating Animated Light Flare -->
+
+
+            <!-- START: Useful Tools & Calculators Bright Animated Banner -->
+
+            <a href="tools.html"
+               class="relative overflow-hidden block bg-gradient-to-r from-[#1264e8] via-[#6366f1] to-[#d946ef] rounded-3xl p-4 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 active:scale-[0.98] border border-indigo-300/40 group">
+
                 <div class="absolute -right-8 -top-8 w-28 h-28 bg-white/20 rounded-full blur-xl group-hover:scale-125 transition-transform duration-500"></div>
-                
+
                 <div class="relative z-10 flex items-center justify-between">
+
                     <div class="flex items-center gap-3.5">
+
                         <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl shrink-0 shadow-inner group-hover:rotate-12 transition-transform">
                             🧮
                         </div>
+
                         <div>
+
                             <div class="flex items-center gap-1.5">
-                                <span class="text-[9px] uppercase font-black tracking-widest text-indigo-100 bg-indigo-950/40 px-2 py-0.5 rounded-full border border-indigo-200/30">Free Tools</span>
-                                <span class="inline-flex items-center text-[9px] text-indigo-100 font-semibold">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-pink-300 mr-1 animate-pulse"></span> 80+ Calculators
+
+                                <span class="text-[9px] uppercase font-black tracking-widest text-indigo-100 bg-indigo-950/40 px-2 py-0.5 rounded-full border border-indigo-200/30">
+                                    Free Tools
                                 </span>
+
+                                <span class="inline-flex items-center text-[9px] text-indigo-100 font-semibold">
+
+                                    <span class="w-1.5 h-1.5 rounded-full bg-pink-300 mr-1 animate-pulse"></span>
+
+                                    80+ Calculators
+
+                                </span>
+
                             </div>
-                            <h3 class="font-black text-sm text-white leading-tight mt-0.5">Useful Everyday Tools</h3>
-                            <p class="text-[10px] text-indigo-100/90 font-medium">EMI, GST, Age, SIP, BMI & Converters</p>
+
+                            <h3 class="font-black text-sm text-white leading-tight mt-0.5">
+                                Useful Everyday Tools
+                            </h3>
+
+                            <p class="text-[10px] text-indigo-100/90 font-medium">
+                                EMI, GST, Age, SIP, BMI & Converters
+                            </p>
+
                         </div>
+
                     </div>
-                    
+
+
                     <div class="flex items-center gap-1 bg-white/20 group-hover:bg-white text-white group-hover:text-indigo-900 text-xs font-black px-3 py-2 rounded-xl transition duration-300 shrink-0">
-                        <span>Open</span>
+
+                        <span>
+                            Open
+                        </span>
+
                         <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
+
                     </div>
+
                 </div>
+
             </a>
+
+
             <!-- END: Useful Tools & Calculators Bright Animated Banner -->
-            
-            
+
+
             <!-- 1. Goa Traffic Fines -->
-            <a href="traffic.html" class="bg-gradient-to-br from-[#e11d48] to-[#9f1239] rounded-3xl p-4 text-white shadow-md flex items-center justify-between hover:opacity-95 transition border border-rose-400">
+
+            <a href="traffic.html"
+               class="bg-gradient-to-br from-[#e11d48] to-[#9f1239] rounded-3xl p-4 text-white shadow-md flex items-center justify-between hover:opacity-95 transition border border-rose-400">
+
                 <div class="flex items-center gap-3.5">
+
                     <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-3xl shrink-0">
                         🚦
                     </div>
+
                     <div>
-                        <span class="text-[10px] uppercase font-bold tracking-widest text-rose-200 block">Check Traffic Rules</span>
-                        <h3 class="font-extrabold text-sm text-white leading-tight">Goa Traffic Fines (ITMS)</h3>
-                        <p class="text-[10px] text-rose-100 font-medium">All Violation Rates & e-Challan Info</p>
+
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-rose-200 block">
+                            Check Traffic Rules
+                        </span>
+
+                        <h3 class="font-extrabold text-sm text-white leading-tight">
+                            Goa Traffic Fines (ITMS)
+                        </h3>
+
+                        <p class="text-[10px] text-rose-100 font-medium">
+                            All Violation Rates & e-Challan Info
+                        </p>
+
                     </div>
+
                 </div>
+
                 <i class="fas fa-chevron-right text-rose-200 pr-1"></i>
+
             </a>
 
+
             <!-- 2. Electricity Calculator -->
-            <a href="electricity.html" class="bg-gradient-to-br from-[#0277bd] to-[#01579b] rounded-3xl p-4 text-white shadow-md flex items-center justify-between hover:opacity-95 transition border border-blue-400">
+
+            <a href="electricity.html"
+               class="bg-gradient-to-br from-[#0277bd] to-[#01579b] rounded-3xl p-4 text-white shadow-md flex items-center justify-between hover:opacity-95 transition border border-blue-400">
+
                 <div class="flex items-center gap-3.5">
+
                     <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-3xl shrink-0">
                         ⚡
                     </div>
+
                     <div>
-                        <span class="text-[10px] uppercase font-bold tracking-widest text-blue-200 block">Check Unit Rates</span>
-                        <h3 class="font-extrabold text-sm text-white leading-tight">Electricity Bill Calculator</h3>
-                        <p class="text-[10px] text-blue-100 font-medium">Official Domestic & Agriculture Tariff</p>
+
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-blue-200 block">
+                            Check Unit Rates
+                        </span>
+
+                        <h3 class="font-extrabold text-sm text-white leading-tight">
+                            Electricity Bill Calculator
+                        </h3>
+
+                        <p class="text-[10px] text-blue-100 font-medium">
+                            Official Domestic & Agriculture Tariff
+                        </p>
+
                     </div>
+
                 </div>
+
                 <i class="fas fa-chevron-right text-blue-200 pr-1"></i>
+
             </a>
 
+
             <!-- 3. Gold & Silver Live Bullion Banner -->
+
             <div class="bg-gradient-to-br from-[#d97706] via-[#eab308] to-[#ca8a04] rounded-3xl p-4 text-white shadow-md border border-amber-300">
+
                 <div class="flex items-center justify-between pb-2.5 border-b border-white/25">
+
                     <div class="flex items-center gap-3">
+
                         <div class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl shrink-0">
                             🪙
                         </div>
+
                         <div>
-                            <span class="text-[10px] uppercase font-bold tracking-widest text-amber-100 block opacity-90">Live Bullion Rates</span>
-                            <h3 class="font-extrabold text-sm text-white leading-tight">Gold & Silver (Goa)</h3>
+
+                            <span class="text-[10px] uppercase font-bold tracking-widest text-amber-100 block opacity-90">
+                                Live Bullion Rates
+                            </span>
+
+                            <h3 class="font-extrabold text-sm text-white leading-tight">
+                                Gold & Silver (Goa)
+                            </h3>
+
                         </div>
+
                     </div>
-                    <span class="bg-white/20 text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/30">Live API</span>
+
+                    <span class="bg-white/20 text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/30">
+                        Live API
+                    </span>
+
                 </div>
+
 
                 <div class="grid grid-cols-2 gap-2 mt-3 text-xs">
+
                     <div class="bg-black/15 p-2 rounded-xl backdrop-blur-xs border border-white/15">
-                        <span class="text-[10px] text-amber-100 font-bold block">Gold 22K (1g)</span>
-                        <span id="gold22kVal" class="text-sm font-extrabold text-white">₹12,308</span>
+
+                        <span class="text-[10px] text-amber-100 font-bold block">
+                            Gold 22K (1g)
+                        </span>
+
+                        <span id="gold22kVal" class="text-sm font-extrabold text-white">
+                            ₹12,308
+                        </span>
+
                     </div>
+
+
                     <div class="bg-black/15 p-2 rounded-xl backdrop-blur-xs border border-white/15">
-                        <span class="text-[10px] text-amber-100 font-bold block">Silver (10g)</span>
-                        <span id="silver10gVal" class="text-sm font-extrabold text-white">₹1,984</span>
+
+                        <span class="text-[10px] text-amber-100 font-bold block">
+                            Silver (10g)
+                        </span>
+
+                        <span id="silver10gVal" class="text-sm font-extrabold text-white">
+                            ₹1,984
+                        </span>
+
                     </div>
+
                 </div>
 
+
                 <div class="mt-2 text-[10px] text-amber-100/80 font-medium flex items-center justify-between">
-                    <span id="metalsUpdateText"><i class="far fa-clock mr-1"></i> Today, Live</span>
-                    <span>GoldAPI.io</span>
+
+                    <span id="metalsUpdateText">
+                        <i class="far fa-clock mr-1"></i>
+                        Today, Live
+                    </span>
+
+                    <span>
+                        GoldAPI.io
+                    </span>
+
                 </div>
+
             </div>
 
         </div>
 
     </main>
 
+
     <!-- Footer -->
+
     <footer class="max-w-md mx-auto text-center py-5 mt-6 border-t border-slate-100">
-        <p class="text-[10px] text-slate-400">© 2026 Goa Market Price Tracker • Smarter Choices, Daily.</p>
+
+        <p class="text-[10px] text-slate-400">
+            © 2026 Goa Market Price Tracker • Smarter Choices, Daily.
+        </p>
+
     </footer>
 
+
     <!-- Interactive Data Script -->
+
     <script>
+
         function formatRupee(val) {
-            if (val === null || val === undefined || val === '') return "₹—";
-            const num = parseFloat(String(val).replace(/[₹,\s]/g, ''));
-            if (isNaN(num)) return `₹${val}`;
-            return `₹${num.toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
+
+            if (
+                val === null ||
+                val === undefined ||
+                val === ''
+            ) {
+                return "₹—";
+            }
+
+            const num = parseFloat(
+                String(val).replace(/[₹,\s]/g, '')
+            );
+
+            if (isNaN(num)) {
+                return `₹${val}`;
+            }
+
+            return `₹${num.toLocaleString(
+                'en-IN',
+                {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 2
+                }
+            )}`;
         }
 
+
         async function loadDashboard() {
-            const listEl = document.getElementById('trendingList');
+
+            const listEl =
+                document.getElementById('trendingList');
+
             const ts = Date.now();
 
+
             let trendingItems = [
+
                 {
                     key: 'supari',
                     name: 'Supari (Juni)',
@@ -257,6 +732,7 @@
                     changePercent: 1.77,
                     link: 'bagayatdar.html'
                 },
+
                 {
                     key: 'onion',
                     name: 'Onion',
@@ -268,6 +744,7 @@
                     changePercent: 12.5,
                     link: 'vegetable.html'
                 },
+
                 {
                     key: 'lpg',
                     name: 'LPG (14.2 kg)',
@@ -279,6 +756,7 @@
                     changePercent: 0.0,
                     link: 'fuel.html'
                 },
+
                 {
                     key: 'petrol',
                     name: 'Petrol (Panjim)',
@@ -290,6 +768,7 @@
                     changePercent: 0.0,
                     link: 'fuel.html'
                 },
+
                 {
                     key: 'coconut',
                     name: 'Sollera Nal (Coconut)',
@@ -301,129 +780,441 @@
                     changePercent: 6.25,
                     link: 'bagayatdar.html'
                 }
+
             ];
 
-            // 1. Fetch Bagayatdar JSON
+
+            /* ======================================
+               1. BAGAYATDAR JSON
+               ====================================== */
+
             try {
-                const res = await fetch('bagayatdar_data.json?t=' + ts);
+
+                const res =
+                    await fetch(
+                        'bagayatdar_data.json?t=' + ts
+                    );
+
                 if (res.ok) {
-                    const bData = await res.json();
-                    const list = bData.today_prices || bData.items || [];
-                    
-                    // Match Supari Juni
-                    const supari = list.find(i => (i.name || '').toLowerCase().includes('supari') || (i.name || '').toLowerCase().includes('juni'));
+
+                    const bData =
+                        await res.json();
+
+                    const list =
+                        bData.today_prices ||
+                        bData.items ||
+                        [];
+
+
+                    const supari =
+                        list.find(i =>
+                            (i.name || '')
+                            .toLowerCase()
+                            .includes('supari') ||
+
+                            (i.name || '')
+                            .toLowerCase()
+                            .includes('juni')
+                        );
+
+
                     if (supari) {
-                        trendingItems[0].price = supari.price;
-                        trendingItems[0].change = supari.change ?? 0;
-                        trendingItems[0].changePercent = supari.changePercent ?? 0;
+
+                        trendingItems[0].price =
+                            supari.price;
+
+                        trendingItems[0].change =
+                            supari.change ?? 0;
+
+                        trendingItems[0].changePercent =
+                            supari.changePercent ?? 0;
+
                     }
 
-                    // Match Sollera Nal / Coconut
-                    const coconut = list.find(i => (i.name || '').toLowerCase().includes('sollera') || (i.name || '').toLowerCase().includes('coconut') || (i.name || '').toLowerCase().includes('nal'));
+
+                    const coconut =
+                        list.find(i =>
+                            (i.name || '')
+                            .toLowerCase()
+                            .includes('sollera') ||
+
+                            (i.name || '')
+                            .toLowerCase()
+                            .includes('coconut') ||
+
+                            (i.name || '')
+                            .toLowerCase()
+                            .includes('nal')
+                        );
+
+
                     if (coconut) {
-                        trendingItems[4].price = coconut.price;
-                        trendingItems[4].name = coconut.name;
-                        trendingItems[4].change = coconut.change ?? 0;
-                        trendingItems[4].changePercent = coconut.changePercent ?? 0;
-                    }
-                }
-            } catch (e) { console.log('Using default Bagayatdar rates'); }
 
-            // 2. Fetch Vegetables JSON (Onion)
+                        trendingItems[4].price =
+                            coconut.price;
+
+                        trendingItems[4].name =
+                            coconut.name;
+
+                        trendingItems[4].change =
+                            coconut.change ?? 0;
+
+                        trendingItems[4].changePercent =
+                            coconut.changePercent ?? 0;
+
+                    }
+
+                }
+
+            } catch (e) {
+
+                console.log(
+                    'Using default Bagayatdar rates'
+                );
+
+            }
+
+
+            /* ======================================
+               2. VEGETABLE JSON
+               ====================================== */
+
             try {
-                const res = await fetch('vegetables_data.json?t=' + ts);
+
+                const res =
+                    await fetch(
+                        'vegetables_data.json?t=' + ts
+                    );
+
                 if (res.ok) {
-                    const vData = await res.json();
-                    const vList = vData.vegetables || vData.items || [];
-                    const onion = vList.find(i => (i.name || '').toLowerCase().includes('onion') || (i.name || '').toLowerCase().includes('kanda'));
+
+                    const vData =
+                        await res.json();
+
+                    const vList =
+                        vData.vegetables ||
+                        vData.items ||
+                        [];
+
+
+                    const onion =
+                        vList.find(i =>
+                            (i.name || '')
+                            .toLowerCase()
+                            .includes('onion') ||
+
+                            (i.name || '')
+                            .toLowerCase()
+                            .includes('kanda')
+                        );
+
+
                     if (onion) {
-                        trendingItems[1].price = onion.price;
-                        trendingItems[1].change = onion.change ?? 0;
-                        trendingItems[1].changePercent = onion.changePercent ?? 0;
-                    }
-                }
-            } catch (e) { console.log('Using default Vegetable rates'); }
 
-            // 3. Fetch Fuel JSON
+                        trendingItems[1].price =
+                            onion.price;
+
+                        trendingItems[1].change =
+                            onion.change ?? 0;
+
+                        trendingItems[1].changePercent =
+                            onion.changePercent ?? 0;
+
+                    }
+
+                }
+
+            } catch (e) {
+
+                console.log(
+                    'Using default Vegetable rates'
+                );
+
+            }
+
+
+            /* ======================================
+               3. FUEL JSON
+               ====================================== */
+
             try {
-                const res = await fetch('fuel_data.json?t=' + ts);
+
+                const res =
+                    await fetch(
+                        'fuel_data.json?t=' + ts
+                    );
+
                 if (res.ok) {
-                    const fData = await res.json();
-                    const fuels = fData.fuels || [];
-                    const petrol = fuels.find(f => (f.name || '').toLowerCase().includes('petrol'));
+
+                    const fData =
+                        await res.json();
+
+                    const fuels =
+                        fData.fuels || [];
+
+
+                    const petrol =
+                        fuels.find(f =>
+                            (f.name || '')
+                            .toLowerCase()
+                            .includes('petrol')
+                        );
+
+
                     if (petrol) {
-                        trendingItems[3].price = petrol.price;
-                        trendingItems[3].change = petrol.change ?? 0;
-                        trendingItems[3].changePercent = petrol.changePercent ?? 0;
+
+                        trendingItems[3].price =
+                            petrol.price;
+
+                        trendingItems[3].change =
+                            petrol.change ?? 0;
+
+                        trendingItems[3].changePercent =
+                            petrol.changePercent ?? 0;
+
                     }
-                    const lpg = fuels.find(f => (f.name || '').toLowerCase().includes('14.2') || (f.name || '').toLowerCase().includes('domestic'));
+
+
+                    const lpg =
+                        fuels.find(f =>
+                            (f.name || '')
+                            .toLowerCase()
+                            .includes('14.2') ||
+
+                            (f.name || '')
+                            .toLowerCase()
+                            .includes('domestic')
+                        );
+
+
                     if (lpg) {
-                        trendingItems[2].price = lpg.price;
-                        trendingItems[2].change = lpg.change ?? 0;
-                        trendingItems[2].changePercent = lpg.changePercent ?? 0;
+
+                        trendingItems[2].price =
+                            lpg.price;
+
+                        trendingItems[2].change =
+                            lpg.change ?? 0;
+
+                        trendingItems[2].changePercent =
+                            lpg.changePercent ?? 0;
+
                     }
+
+
                     if (fData.last_updated) {
-                        document.getElementById('marketUpdated').textContent = fData.last_updated;
-                    }
-                }
-            } catch (e) { console.log('Using default Fuel rates'); }
 
-            // 4. Fetch Metals JSON
+                        document.getElementById(
+                            'marketUpdated'
+                        ).textContent =
+                            fData.last_updated;
+
+                    }
+
+                }
+
+            } catch (e) {
+
+                console.log(
+                    'Using default Fuel rates'
+                );
+
+            }
+
+
+            /* ======================================
+               4. METALS JSON
+               ====================================== */
+
             try {
-                const res = await fetch('metals_data.json?t=' + ts);
+
+                const res =
+                    await fetch(
+                        'metals_data.json?t=' + ts
+                    );
+
                 if (res.ok) {
-                    const mData = await res.json();
-                    if (mData.gold && mData.gold.karats) {
-                        const g22 = mData.gold.karats['22k'] || mData.gold.gram_price * 0.916;
-                        document.getElementById('gold22kVal').textContent = formatRupee(Math.round(g22));
+
+                    const mData =
+                        await res.json();
+
+
+                    if (
+                        mData.gold &&
+                        mData.gold.karats
+                    ) {
+
+                        const g22 =
+                            mData.gold.karats['22k'] ||
+                            mData.gold.gram_price * 0.916;
+
+
+                        document.getElementById(
+                            'gold22kVal'
+                        ).textContent =
+                            formatRupee(
+                                Math.round(g22)
+                            );
+
                     }
+
+
                     if (mData.silver) {
-                        const s10 = (mData.silver.gram_price || 198.43) * 10;
-                        document.getElementById('silver10gVal').textContent = formatRupee(Math.round(s10));
+
+                        const s10 =
+                            (
+                                mData.silver.gram_price ||
+                                198.43
+                            ) * 10;
+
+
+                        document.getElementById(
+                            'silver10gVal'
+                        ).textContent =
+                            formatRupee(
+                                Math.round(s10)
+                            );
+
                     }
+
+
                     if (mData.last_updated) {
-                        document.getElementById('metalsUpdateText').innerHTML = `<i class="far fa-clock mr-1"></i> ${mData.last_updated}`;
+
+                        document.getElementById(
+                            'metalsUpdateText'
+                        ).innerHTML =
+                            `<i class="far fa-clock mr-1"></i> ${mData.last_updated}`;
+
                     }
+
                 }
-            } catch (e) { console.log('Using default Metal rates'); }
 
-            // Render the items
-            listEl.innerHTML = trendingItems.map(item => {
-                const change = parseFloat(item.change) || 0;
-                const changePercent = parseFloat(item.changePercent) || 0;
-                const isUp = change > 0;
-                const isDown = change < 0;
+            } catch (e) {
 
-                // Price increase = red, Price decrease = green (market standard for consumers)
-                const trendColor = isUp ? 'text-emerald-600' : isDown ? 'text-rose-500' : 'text-slate-400';
-                const trendIcon = isUp ? 'fa-arrow-up' : isDown ? 'fa-arrow-down' : 'fa-minus';
+                console.log(
+                    'Using default Metal rates'
+                );
 
-                return `
-                    <a href="${item.link}" class="trending-card bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between hover:shadow-md transition">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-2xl shrink-0 shadow-inner">
-                                ${item.icon}
+            }
+
+
+            /* ======================================
+               RENDER TRENDING ITEMS
+               ====================================== */
+
+            listEl.innerHTML =
+                trendingItems.map(item => {
+
+                    const change =
+                        parseFloat(item.change) || 0;
+
+                    const changePercent =
+                        parseFloat(item.changePercent) || 0;
+
+                    const isUp =
+                        change > 0;
+
+                    const isDown =
+                        change < 0;
+
+
+                    const trendColor =
+                        isUp
+                            ? 'text-emerald-600'
+                            : isDown
+                                ? 'text-rose-500'
+                                : 'text-slate-400';
+
+
+                    const trendIcon =
+                        isUp
+                            ? 'fa-arrow-up'
+                            : isDown
+                                ? 'fa-arrow-down'
+                                : 'fa-minus';
+
+
+                    return `
+
+                        <a
+                            href="${item.link}"
+                            class="trending-card bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between hover:shadow-md transition"
+                        >
+
+                            <div class="flex items-center gap-3">
+
+                                <div class="w-12 h-12 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-2xl shrink-0 shadow-inner">
+
+                                    ${item.icon}
+
+                                </div>
+
+
+                                <div>
+
+                                    <h3 class="font-bold text-xs text-slate-800 leading-snug">
+
+                                        ${item.name}
+
+                                    </h3>
+
+
+                                    <p class="text-[10px] text-slate-400 font-medium">
+
+                                        ${item.sub}
+
+                                    </p>
+
+                                </div>
+
                             </div>
-                            <div>
-                                <h3 class="font-bold text-xs text-slate-800 leading-snug">${item.name}</h3>
-                                <p class="text-[10px] text-slate-400 font-medium">${item.sub}</p>
+
+
+                            <div class="text-right">
+
+                                <div class="font-extrabold text-sm text-slate-800">
+
+                                    ${formatRupee(item.price)}
+
+                                    <span class="text-[9px] font-normal text-slate-400">
+
+                                        / ${item.unit}
+
+                                    </span>
+
+                                </div>
+
+
+                                <div class="text-[10px] font-semibold ${trendColor} flex items-center justify-end gap-1 mt-0.5">
+
+                                    <i class="fas ${trendIcon} text-[8px]"></i>
+
+                                    <span>
+
+                                        ₹${Math.abs(change).toFixed(2)}
+
+                                        (${Math.abs(changePercent).toFixed(1)}%)
+
+                                    </span>
+
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="text-right">
-                            <div class="font-extrabold text-sm text-slate-800">
-                                ${formatRupee(item.price)} <span class="text-[9px] font-normal text-slate-400">/ ${item.unit}</span>
-                            </div>
-                            <div class="text-[10px] font-semibold ${trendColor} flex items-center justify-end gap-1 mt-0.5">
-                                <i class="fas ${trendIcon} text-[8px]"></i>
-                                <span>₹${Math.abs(change).toFixed(2)} (${Math.abs(changePercent).toFixed(1)}%)</span>
-                            </div>
-                        </div>
-                    </a>
-                `;
-            }).join('');
+
+                        </a>
+
+                    `;
+
+                }).join('');
+
         }
 
-        document.addEventListener('DOMContentLoaded', loadDashboard);
+
+        document.addEventListener(
+            'DOMContentLoaded',
+            loadDashboard
+        );
+
     </script>
+
 </body>
 </html>
