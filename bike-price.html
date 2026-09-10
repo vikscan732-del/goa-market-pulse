@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Bike Road Price in Goa</title>
+<style>
+*{box-sizing:border-box}
+:root{
+  --bg:#f5f7fb;--card:#fff;--ink:#14171b;--muted:#737b84;--line:#e6e9ee;
+  --blue:#1769e8;--blue2:#0d55c7;--green:#008f86;--green2:#006f69;
+  --soft:#f7f9fc;--shadow:0 14px 40px rgba(24,35,55,.08);
+}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#f7f9fc 0,#f3f6fa 100%);color:var(--ink);
+font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+button,select,input{font:inherit}
+button{cursor:pointer}
+.top{height:68px;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);
+display:flex;align-items:center;padding:0 18px;gap:13px;position:sticky;top:0;z-index:50}
+.back{font-size:35px;font-weight:300;line-height:1;cursor:pointer;width:28px}
+.brand-title{font-size:25px;font-weight:820;letter-spacing:-.6px}
+.top-location{margin-left:auto;color:#737b84;font-size:14px;font-weight:600}
+.page{max-width:940px;margin:0 auto;padding:22px 18px 55px}
+.mode-title{font-size:31px;font-weight:850;margin:12px 0 7px;letter-spacing:-1px}
+.mode-sub{color:var(--muted);margin:0 0 22px}
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.mode-card{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:24px;padding:27px 23px;
+text-align:left;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s,border-color .25s}
+.mode-card:before{content:"";position:absolute;inset:-80px auto auto -60px;width:170px;height:170px;border-radius:50%;
+background:rgba(23,105,232,.08);transition:.35s}
+.mode-card:nth-child(2):before{background:rgba(0,143,134,.09)}
+.mode-card:hover{transform:translateY(-3px);box-shadow:0 20px 45px rgba(24,35,55,.12);border-color:#d5dce5}
+.mode-icon{position:relative;width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:#eef4ff;color:var(--blue);
+margin-bottom:17px;box-shadow:inset 0 0 0 1px rgba(23,105,232,.08)}
+.mode-card:nth-child(2) .mode-icon{background:#eaf9f7;color:var(--green)}
+.mode-icon svg{width:32px;height:32px}
+.mode-card h2{margin:0 0 7px;font-size:23px;letter-spacing:-.4px}.mode-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+.panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:20px;margin-bottom:18px;box-shadow:var(--shadow)}
+label{display:block;color:#747c85;font-size:14px;font-weight:750;margin:0 0 8px}
+select,input{width:100%;height:54px;border:1px solid #dfe4e9;border-radius:15px;background:#fff;color:#24282d;padding:0 15px;outline:0;
+transition:.2s;box-shadow:0 1px 2px rgba(0,0,0,.02)}
+select:focus,input:focus{border-color:#82b2f1;box-shadow:0 0 0 4px rgba(23,105,232,.11)}
+.field{margin-bottom:15px}
+.loc{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:15px;padding:15px;background:#fafbfc}
+.loc b{font-size:18px}.loc span{color:#858d95;font-size:13px}
+.hidden{display:none!important}.loading{text-align:center;color:#777;padding:36px 8px}.error{background:#fff0f0;color:#983a3a;padding:16px;border-radius:15px;line-height:1.5}
+.electric-toolbar{display:flex;gap:10px;align-items:center;margin:12px 0 13px}
+.count{color:var(--muted);font-size:13px;font-weight:650;margin-right:auto}
+.search{height:45px;max-width:270px}
+.brand-tabs{display:flex;gap:8px;overflow-x:auto;padding:3px 2px 12px;margin:2px 0 2px;scrollbar-width:none}
+.brand-tabs::-webkit-scrollbar{display:none}
+.brand-tab{flex:0 0 auto;border:1px solid #e1e6eb;background:#fff;color:#626a72;border-radius:999px;padding:9px 14px;font-size:13px;font-weight:750;
+transition:.2s;box-shadow:0 2px 7px rgba(20,35,50,.04)}
+.brand-tab.active{background:#14181d;color:#fff;border-color:#14181d;box-shadow:0 7px 18px rgba(20,25,30,.16)}
+.brand-tab .tab-count{opacity:.65;margin-left:4px;font-weight:650}
+.model-picker{display:flex;gap:9px;overflow-x:auto;padding:3px 1px 15px;scrollbar-width:none}
+.model-picker::-webkit-scrollbar{display:none}
+.model-pill{flex:0 0 auto;border:1px solid #e2e7ec;background:#f9fafc;border-radius:13px;padding:9px 12px;color:#4e565e;font-size:13px;
+transition:.2s}.model-pill.active{background:#eaf2ff;border-color:#a7c9fa;color:#125ecf;font-weight:750}
+.e-card{background:#fff;border:1px solid #dfe5e9;border-radius:21px;margin:0 0 16px;overflow:hidden;box-shadow:0 8px 24px rgba(20,35,50,.07);
+animation:cardIn .45s ease both}
+@keyframes cardIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.e-card:hover{box-shadow:0 15px 34px rgba(20,35,50,.1)}
+.e-main{display:grid;grid-template-columns:285px 1fr;min-height:205px}
+.e-photo{display:flex;align-items:center;justify-content:center;padding:16px;background:linear-gradient(135deg,#fff,#f8fafc)}
+.e-photo img,.e-photo .electric-bike-img{width:100%;height:178px;object-fit:contain;display:block;transition:transform .35s}
+.e-card:hover .e-photo img{transform:scale(1.035)}
+.e-photo .noimg{font-size:50px;color:#b6bec5}
+.e-info{padding:20px 20px 11px;position:relative}
+.rating{display:inline-flex;align-items:center;gap:4px;background:#008f86;color:#fff;padding:5px 8px;border-radius:7px;font-size:12px;font-weight:800;float:right}
+.brand{color:#737b83;font-size:18px;margin-top:4px;font-weight:550}.ename{font-size:27px;font-weight:850;margin-top:3px;letter-spacing:-.7px}
+.price{font-size:22px;font-weight:850;margin-top:10px}.price span{font-size:14px;font-weight:550;color:#7a8289}
+.evtag{display:inline-flex;align-items:center;gap:5px;border:1px solid #76cfc9;color:#008f86;border-radius:8px;padding:5px 8px;font-size:12px;font-weight:800;margin-top:11px;background:#f2fbfa}
+.specs{border-top:1px solid var(--line);padding:11px 18px;display:flex;flex-wrap:wrap;gap:7px 0;font-size:14px;color:#3f474e}
+.spec{white-space:nowrap}.spec:not(:last-child):after{content:"•";margin:0 9px;color:#b1b7bd}.spec small{font-size:11px;color:#818990}
+.features{padding:2px 18px 15px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;background:#f6f8fa;border:1px solid #edf0f3;border-radius:10px;padding:8px 10px;color:#4e565d;font-size:12px;
+animation:chipIn .45s ease both}
+@keyframes chipIn{from{opacity:0;transform:translateY(5px) scale(.97)}to{opacity:1;transform:none}}
+.chip svg{width:15px;height:15px;color:#69727a}
+.variant-toggle{width:100%;border:0;border-top:1px solid var(--line);background:#fff;text-align:left;padding:14px 18px;font-size:14px;
+font-weight:750;color:#30363c;transition:.2s}.variant-toggle:hover{background:#fafbfc}
+.variant-toggle .vleft{display:inline-flex;align-items:center;gap:8px}.variant-toggle svg{width:17px;height:17px}
+.variant-toggle .chev{float:right;transition:transform .25s}.variant-toggle.open .chev{transform:rotate(180deg)}
+.variants{display:none;border-top:1px dashed #b8c0c7;padding:0 18px 14px;background:#fcfdfe}.variants.open{display:block;animation:variantOpen .25s ease}
+.vloading{display:flex;align-items:center;gap:10px;padding:18px 0;color:#737b82;font-size:13px}.vloading:before{content:"";width:18px;height:18px;border:2px solid #d8dde2;border-top-color:#15933d;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes variantOpen{from{opacity:0;max-height:0}to{opacity:1;max-height:900px}}
+.vrow{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #eef1f3;font-size:13px}.vrow:last-child{border-bottom:0}
+.vprice{font-weight:800;white-space:nowrap}
+.more{width:100%;height:50px;border:0;border-radius:14px;background:var(--blue);color:#fff;font-weight:800;box-shadow:0 9px 20px rgba(23,105,232,.18);transition:.2s}
+.more:hover{background:var(--blue2);transform:translateY(-1px)}
+.petro-result{margin-top:16px}.pricebox{border:1px solid var(--line);border-radius:19px;padding:18px;background:#fff;overflow:hidden;box-shadow:0 8px 24px rgba(20,35,50,.06)}
+.bike-head{display:flex;gap:18px;align-items:center;margin-bottom:16px}.bike-visual{width:250px;flex:0 0 250px}.bike-image{width:250px;height:165px;object-fit:contain;display:block}
+.bike-image-placeholder{width:250px;height:165px;display:flex;align-items:center;justify-content:center;color:#9aa2a7;font-size:45px;background:#f5f7f8;border-radius:14px}
+.watch-bike{width:100%;margin-top:8px;border:0;border-radius:11px;padding:11px 12px;background:var(--blue);color:#fff;font-size:14px;font-weight:750;cursor:pointer}
+.heading{font-size:14px;color:#70787e}.model{font-size:29px;font-weight:850;margin-top:3px;letter-spacing:-.7px}.variant-name{font-size:15px;color:#737b82;margin-top:4px}
+.rows{border-top:1px solid var(--line);margin-top:12px}.row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);font-size:16px}
+.row.total{border-bottom:0;padding:16px 0 3px;font-weight:750}.row.total strong{font-size:26px}.variants-p{margin-top:20px}.variants-p h2{font-size:21px;margin:0 0 8px}
+.variant-p{display:flex;justify-content:space-between;gap:12px;padding:13px 4px;border-top:1px solid var(--line);font-size:15px}
+.note{font-size:12px;color:#899197;line-height:1.45;margin-top:15px}
+.image-modal{position:fixed;inset:0;background:rgba(8,11,15,.95);display:none;align-items:center;justify-content:center;z-index:1000;padding:18px}
+.image-modal.open{display:flex}.image-modal img{max-width:96vw;max-height:90vh;object-fit:contain;border-radius:12px}.image-close{position:absolute;top:16px;right:18px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:30px}
+.image-caption{position:absolute;bottom:14px;left:0;right:0;text-align:center;color:#ddd;font-size:13px}
+
+/* ===== GOA PREMIUM THEMING + PRICE LOADING ===== */
+.top{height:70px}
+.brand-title{font-size:25px;letter-spacing:-.9px}
+.brand-title span{font-weight:500;color:#7a8188}
+.mode-title em{font-style:normal;background:linear-gradient(90deg,#ff7a18,#ff4d00);-webkit-background-clip:text;background-clip:text;color:transparent}
+.loading-state{min-height:150px;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;margin:10px 0;padding:25px 15px;animation:loadCardIn .35s ease both}
+.loading-state b{font-size:18px;letter-spacing:-.2px}
+.loading-state span{font-size:13px;color:#7b838a}
+.petrol-loading{background:linear-gradient(145deg,#fff8f2,#fff1e6);border:1px solid #ffe0c7;color:#e75d10}
+.electric-loading{background:linear-gradient(145deg,#f5fff5,#e7fbea);border:1px solid #cceecf;color:#15933d}
+.loader-ring{width:48px;height:48px;border-radius:50%;border:4px solid rgba(0,0,0,.08);border-top-color:currentColor;animation:spin .8s linear infinite;position:relative}
+.loader-ring:after{content:"";position:absolute;inset:8px;border-radius:50%;border:2px dashed currentColor;opacity:.35;animation:spin 1.5s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes loadCardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+body.petrol-active .panel{border-top:3px solid #ff7a18;box-shadow:0 16px 40px rgba(255,105,20,.10)}
+body.petrol-active select:focus,body.petrol-active input:focus{border-color:#ff9b59;box-shadow:0 0 0 4px rgba(255,122,24,.13)}
+body.electric-active .panel{border-top:3px solid #20a83b;box-shadow:0 16px 40px rgba(32,168,59,.10)}
+body.electric-active select:focus,body.electric-active input:focus{border-color:#64c875;box-shadow:0 0 0 4px rgba(32,168,59,.13)}
+body.electric-active .brand-tab.active{background:#15933d;border-color:#15933d}
+body.electric-active .model-pill.active{background:#e8f8eb;border-color:#8bd69a;color:#128337}
+body.electric-active .e-card{border-color:#d4ead8;box-shadow:0 9px 26px rgba(22,130,48,.08)}
+body.electric-active .evtag{color:#15933d;border-color:#82d493;background:#f0fbf2}
+body.petrol-active .watch-bike{background:linear-gradient(135deg,#ff841f,#f4510a);box-shadow:0 9px 20px rgba(244,81,10,.22)}
+body.petrol-active .variants-p h2{color:#ed5b10}
+body.petrol-active .variant-p strong{color:#e95b12}
+body.petrol-active .row.total strong{color:#ee5d0d}
+body.electric-active .variant-toggle{color:#167e37}
+body.electric-active .vprice{color:#14843a}
+body.electric-active .more{background:linear-gradient(135deg,#20ad43,#0f8d39);box-shadow:0 9px 20px rgba(15,141,57,.2)}
+.mode-card .mode-action{pointer-events:none}
+@media(max-width:650px){
+ .page{padding:15px 11px 35px}.mode-grid{grid-template-columns:1fr}.top{padding:0 14px}.brand-title{font-size:23px}
+ .e-main{grid-template-columns:145px 1fr;min-height:160px}.e-photo{padding:10px}.e-photo img,.e-photo .electric-bike-img{height:130px}.e-info{padding:14px 12px 9px}
+ .brand{font-size:16px}.ename{font-size:21px}.price{font-size:18px}.rating{font-size:10px}.specs{padding:9px 12px;font-size:13px}
+ .features{padding:2px 12px 12px}.chip{padding:7px 9px;font-size:11px}.variant-toggle{padding:12px}.variants{padding:0 12px 12px}
+ .electric-toolbar{align-items:stretch;flex-wrap:wrap}.search{max-width:none;order:3}.count{padding-top:10px}
+ .bike-head{align-items:flex-start}.bike-visual{width:145px;flex-basis:145px}.bike-image,.bike-image-placeholder{width:145px;height:112px}.model{font-size:23px}
+}
+
+/* ===== MOBILE-FIRST BIKE TYPE HOME ===== */
+.home-kicker{font-size:12px;letter-spacing:3px;font-weight:900;color:#d77a31;margin-top:12px;margin-bottom:6px}
+.electric-card .home-kicker{color:#238f31}
+:root{
+  --petrol:#ff7a18;--petrol2:#ff4d00;
+  --electric:#38b83d;--electric2:#119b42;
+}
+body{background:#f5f6f8}
+.page{max-width:760px;padding:18px 16px 48px}
+#home{animation:homeIn .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes homeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.mode-title{font-size:clamp(34px,10vw,58px);line-height:.94;letter-spacing:-2.5px;margin:20px 0 9px;font-weight:900}
+.mode-sub{font-size:16px;color:#7a8189;margin:0 0 18px}
+.mode-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.mode-card{position:relative;isolation:isolate;overflow:hidden;width:100%;min-height:236px;border:1px solid rgba(255,255,255,.75);border-radius:28px;padding:22px 20px 18px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(25,31,40,.09);transition:transform .25s ease,box-shadow .25s ease}
+.mode-card:before{content:"";position:absolute;inset:auto -35px -70px auto;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.22);filter:blur(2px);z-index:-1;transition:transform .5s ease}
+.mode-card:after{content:"";position:absolute;top:-100%;left:-35%;width:45%;height:300%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);transform:rotate(18deg);animation:shine 4.5s ease-in-out infinite;z-index:0}
+@keyframes shine{0%,65%{left:-55%}100%{left:130%}}
+.mode-card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 18px 38px rgba(25,31,40,.14)}
+.mode-card:active{transform:scale(.985)}
+.mode-card.petrol-card{background:linear-gradient(145deg,#ffb45b 0%,#ff7417 48%,#ff4d00 100%);color:#fff}
+.mode-card.electric-card{background:linear-gradient(145deg,#dfff73 0%,#91e83d 48%,#49be3c 100%);color:#153014}
+.mode-card .mode-icon{position:relative;z-index:2;width:82px;height:82px;margin:0 0 14px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.88);box-shadow:0 10px 25px rgba(0,0,0,.13),inset 0 0 0 1px rgba(255,255,255,.8);animation:floatIcon 3.2s ease-in-out infinite}
+.mode-card:nth-child(2) .mode-icon{background:rgba(255,255,255,.72);color:var(--electric2)}
+@keyframes floatIcon{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-1deg)}}
+.mode-icon svg{width:49px;height:49px}
+.petrol-card .mode-icon{color:#15191d}
+.electric-card .mode-icon{color:#20a82d}
+.mode-card h2{position:relative;z-index:2;margin:0 0 15px;font-size:27px;line-height:1;letter-spacing:-.8px;font-weight:900}
+.mode-card p{display:none}
+.mode-action{position:relative;z-index:3;width:min(100%,310px);height:48px;border:0;border-radius:15px;background:#fff;color:#17191c;font-size:15px;font-weight:850;box-shadow:0 8px 18px rgba(0,0,0,.13);transition:transform .2s ease,box-shadow .2s ease}
+.mode-card.electric-card .mode-action{color:#123414}
+.mode-action:after{content:"  →";font-size:18px}
+.mode-action:active{transform:scale(.97);box-shadow:0 4px 12px rgba(0,0,0,.13)}
+@media(max-width:650px){
+  .page{padding:12px 14px 40px}
+  .mode-title{font-size:42px;line-height:.95;letter-spacing:-2px;margin:18px 0 8px}
+  .mode-sub{font-size:15px;margin-bottom:16px}
+  .mode-grid{gap:13px}
+  .mode-card{min-height:222px;border-radius:25px;padding:18px 16px 16px}
+  .mode-card .mode-icon{width:72px;height:72px;margin-bottom:12px}
+  .mode-icon svg{width:43px;height:43px}
+  .mode-card h2{font-size:24px;margin-bottom:13px}
+  .mode-action{height:44px;border-radius:14px;font-size:14px}
+}
+@media(min-width:651px){
+  .mode-grid{grid-template-columns:1fr 1fr}
+  .mode-card{min-height:300px}
+}
+
+
+/* ===== PETROL PRICE: compact mobile layout ===== */
+@media(max-width:650px){
+  .panel{border-radius:22px;padding:14px}
+  .pricebox{border-radius:18px;padding:14px}
+  .bike-head{gap:12px;margin-bottom:12px}
+  .bike-visual{width:118px;flex:0 0 118px}
+  .bike-image,.bike-image-placeholder{width:118px;height:92px}
+  .watch-bike{font-size:11px;padding:9px 6px}
+  .heading{font-size:12px}.model{font-size:21px}.variant-name{font-size:13px}
+  .row{font-size:14px;padding:11px 0}.row.total strong{font-size:22px}
+}
+
+/* ===== v18 MODERN GOA HOME ===== */
+:root{--petrol:#ff7317;--petrol2:#f44b00;--ev:#25b34a;--ev2:#087b35;--ink:#101318;--muted:#737b84}
+body{background:radial-gradient(circle at 0 20%,rgba(255,115,23,.08),transparent 27%),radial-gradient(circle at 100% 48%,rgba(37,179,74,.08),transparent 30%),#f6f8fa}
+.top{height:68px;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(20,30,40,.07);box-shadow:0 2px 18px rgba(20,30,40,.045)}
+.brand-title{font-family:Arial Black,Inter,system-ui,sans-serif;font-size:24px;font-weight:950;letter-spacing:-1.15px}.brand-title span{color:#7b838b;font-family:Inter,system-ui,sans-serif;font-weight:700}
+.page{max-width:760px;margin:0 auto;padding:18px 16px 50px}
+#home{animation:homeIn .65s cubic-bezier(.2,.8,.2,1) both}
+@keyframes homeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.home-kicker{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid #e7eaee;box-shadow:0 7px 20px rgba(20,30,40,.06);margin:8px 0 12px;color:#70777f;font-size:11px;letter-spacing:2.1px;font-weight:950}.home-kicker:before{content:"";width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--petrol),var(--ev));box-shadow:0 0 0 5px rgba(255,115,23,.08);animation:pulseDot 1.8s ease-in-out infinite}@keyframes pulseDot{50%{transform:scale(1.3);box-shadow:0 0 0 8px rgba(255,115,23,.03)}}
+.mode-title{margin:4px 0 10px;font-family:Arial Black,Inter,system-ui,sans-serif;font-size:clamp(43px,11vw,62px);line-height:.91;letter-spacing:-3.5px;font-weight:950;color:#0e1217;text-shadow:0 2px 0 rgba(255,255,255,.7)}
+.mode-title em{font-style:normal;background:linear-gradient(90deg,#ff6410,#f04b00);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mode-sub{max-width:650px;margin:0 0 21px;color:#737b84;font-size:16px;line-height:1.45;font-weight:600}
+.mode-grid{display:grid;grid-template-columns:1fr;gap:15px}
+.mode-card{position:relative;isolation:isolate;overflow:hidden;width:100%;min-height:225px;border:1px solid rgba(255,255,255,.8);border-radius:29px;padding:20px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;box-shadow:0 15px 34px rgba(22,30,38,.13);cursor:pointer;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease;will-change:transform}
+.mode-card:before{content:"";position:absolute;z-index:-2;width:220px;height:220px;left:-90px;top:-85px;border-radius:50%;background:rgba(255,255,255,.24);filter:blur(1px);animation:blobMove 5s ease-in-out infinite}.mode-card:after{content:"";position:absolute;z-index:0;top:-120%;left:-50%;width:42%;height:320%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transform:rotate(18deg);animation:shine 4.2s ease-in-out infinite;pointer-events:none}@keyframes blobMove{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(55px,28px) scale(1.13)}}@keyframes shine{0%,62%{left:-55%}100%{left:135%}}
+.mode-card.petrol-card{background:linear-gradient(135deg,#ffab53 0%,#ff7417 45%,#f24a00 100%);color:#fff}.mode-card.electric-card{background:linear-gradient(135deg,#75db7d 0%,#25b34a 48%,#087b35 100%);color:#fff}
+.mode-card:hover{transform:translateY(-5px);box-shadow:0 23px 46px rgba(22,30,38,.19)}.mode-card:active{transform:scale(.978);box-shadow:0 9px 20px rgba(22,30,38,.15)}
+.mode-icon{position:relative;z-index:3;width:68px;height:68px;border-radius:21px;display:grid;place-items:center;background:rgba(255,255,255,.95);box-shadow:0 10px 25px rgba(0,0,0,.16);margin-bottom:auto;animation:iconFloat 3.1s ease-in-out infinite;flex:none}.mode-icon svg{width:42px;height:42px}.petrol-card .mode-icon{color:#ef5b0a}.electric-card .mode-icon{color:#16943d}
+@keyframes iconFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-2deg)}}
+.mode-card h2{position:relative;z-index:3;margin:0 0 13px;font-family:Arial Black,Inter,system-ui,sans-serif;font-size:28px;line-height:1;letter-spacing:-1px;font-weight:950;text-shadow:0 2px 3px rgba(0,0,0,.11)}.mode-card p{display:none}.mode-card .mode-action{position:relative;z-index:4;pointer-events:none;width:min(100%,280px);height:45px;border:0;border-radius:15px;background:#fff;color:#17191c;font-size:14px;font-weight:950;box-shadow:0 9px 20px rgba(0,0,0,.16);transition:transform .2s ease}.mode-card.electric-card .mode-action{color:#12622e}.mode-action:after{content:"  →";font-size:20px;vertical-align:-1px}
+.card-orbit{position:absolute;border:1px solid rgba(255,255,255,.22);border-radius:50%;pointer-events:none;z-index:1}.orbit-one{width:175px;height:175px;right:-55px;top:-72px;animation:orbitSpin 9s linear infinite}.orbit-two{width:110px;height:110px;right:15px;top:-40px;border-style:dashed;animation:orbitSpin 6s linear infinite reverse}@keyframes orbitSpin{to{transform:rotate(360deg)}}
+.road-line{position:absolute;z-index:1;right:17px;bottom:20px;width:125px;height:2px;background:rgba(255,255,255,.28);box-shadow:0 -12px 0 rgba(255,255,255,.12),0 12px 0 rgba(255,255,255,.12);transform:skewX(-28deg);animation:roadMove 2.4s ease-in-out infinite;pointer-events:none}@keyframes roadMove{0%,100%{opacity:.25;transform:translateX(0) skewX(-28deg)}50%{opacity:.65;transform:translateX(-20px) skewX(-28deg)}}
+.ripple{position:absolute;z-index:10;border-radius:50%;background:rgba(255,255,255,.42);transform:scale(0);animation:ripple .55s ease-out forwards;pointer-events:none}@keyframes ripple{to{transform:scale(5);opacity:0}}
+@media(max-width:650px){.page{padding:13px 14px 40px}.brand-title{font-size:22px}.mode-title{font-size:43px;letter-spacing:-2.5px;margin:17px 0 9px}.mode-sub{font-size:15px;margin-bottom:18px}.mode-grid{gap:13px}.mode-card{min-height:218px;border-radius:27px;padding:18px}.mode-icon{width:66px;height:66px;border-radius:20px}.mode-icon svg{width:40px;height:40px}.mode-card h2{font-size:26px;margin-bottom:12px}.mode-card .mode-action{height:43px;border-radius:14px;font-size:13.5px}.orbit-one{width:155px;height:155px}.orbit-two{width:96px;height:96px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+
+/* ===== PETROL PRICE: compact mobile layout ===== */
+@media(max-width:650px){
+  .panel{border-radius:22px;padding:14px}
+  .pricebox{border-radius:18px;padding:14px}
+  .bike-head{gap:12px;margin-bottom:12px}
+  .bike-visual{width:118px;flex:0 0 118px}
+  .bike-image,.bike-image-placeholder{width:118px;height:92px}
+  .watch-bike{font-size:11px;padding:9px 6px}
+  .heading{font-size:12px}.model{font-size:21px}.variant-name{font-size:13px}
+  .row{font-size:14px;padding:11px 0}.row.total strong{font-size:22px}
+}
+
+/* ===== v17 MODERN GOA HOME ===== */
+:root{
+  --petrol:#ff7418;
+  --petrol-dark:#ed4d00;
+  --ev:#22ad45;
+  --ev-dark:#087c35;
+  --ink:#101419;
+  --muted:#727a83;
+}
+body{
+  background:
+    radial-gradient(circle at 8% 12%,rgba(255,122,24,.08),transparent 28%),
+    radial-gradient(circle at 92% 38%,rgba(34,173,69,.08),transparent 30%),
+    #f6f8fa;
+}
+.top{
+  height:68px;
+  background:rgba(255,255,255,.92);
+  border-bottom:1px solid rgba(20,30,40,.07);
+  box-shadow:0 2px 18px rgba(20,30,40,.04);
+}
+.brand-title{
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+.brand-title span{
+  color:#737b83;
+  font-weight:650;
+}
+.page{
+  max-width:760px;
+  padding:18px 16px 50px;
+}
+#home{
+  animation:homeEnter .55s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes homeEnter{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:none}
+}
+.home-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin:8px 0 12px;
+  padding:7px 11px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid #e8ebee;
+  box-shadow:0 5px 16px rgba(20,30,40,.05);
+  color:#70777f;
+  font-size:11px;
+  letter-spacing:1.8px;
+  font-weight:900;
+}
+.home-kicker:before{
+  content:"";
+  width:7px;height:7px;border-radius:50%;
+  background:linear-gradient(135deg,var(--petrol),var(--ev));
+  box-shadow:0 0 0 4px rgba(255,122,24,.08);
+}
+.mode-title{
+  margin:2px 0 10px;
+  font-size:clamp(40px,11vw,58px);
+  line-height:.94;
+  letter-spacing:-3px;
+  font-weight:950;
+}
+.mode-title em{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--petrol),#f0520a);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.mode-sub{
+  max-width:600px;
+  margin:0 0 22px;
+  color:#707981;
+  font-size:16px;
+  line-height:1.45;
+}
+.mode-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:15px;
+}
+.mode-card{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-height:214px;
+  border:0;
+  border-radius:30px;
+  padding:20px;
+  text-align:left;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-end;
+  box-shadow:0 14px 34px rgba(25,35,45,.13);
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+.mode-card:before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  inset:0;
+  width:auto;height:auto;
+  border-radius:0;
+  background:transparent;
+  filter:none;
+}
+.mode-card:after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:210px;height:210px;
+  right:-65px;top:-75px;
+  border-radius:50%;
+  background:rgba(255,255,255,.20);
+  filter:blur(1px);
+  transform:none;
+  animation:none;
+}
+.mode-card.petrol-card{
+  color:#fff;
+  background:
+    radial-gradient(circle at 88% 15%,rgba(255,255,255,.24),transparent 25%),
+    linear-gradient(135deg,#ff9a3d 0%,#ff6814 48%,#ed4d00 100%);
+}
+.mode-card.electric-card{
+  color:#fff;
+  background:
+    radial-gradient(circle at 88% 15%,rgba(255,255,255,.25),transparent 25%),
+    linear-gradient(135deg,#61d96b 0%,#22ad45 50%,#087c35 100%);
+}
+.mode-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 20px 42px rgba(25,35,45,.17);
+}
+.mode-card:active{
+  transform:scale(.985);
+}
+.mode-card .mode-icon{
+  position:absolute;
+  z-index:2;
+  top:20px;left:20px;
+  width:66px;height:66px;
+  margin:0;
+  border-radius:21px;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.94);
+  box-shadow:0 10px 24px rgba(0,0,0,.14);
+  animation:iconFloat 3s ease-in-out infinite;
+}
+@keyframes iconFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+}
+.mode-icon svg{
+  width:39px;height:39px;
+}
+.petrol-card .mode-icon{color:#ef5a0b}
+.electric-card .mode-icon{color:#11963d}
+.mode-card h2{
+  position:relative;
+  z-index:3;
+  margin:0 0 11px;
+  font-size:28px;
+  line-height:1;
+  letter-spacing:-1px;
+  font-weight:950;
+  text-shadow:0 1px 2px rgba(0,0,0,.08);
+}
+.mode-action{
+  position:relative;
+  z-index:3;
+  width:auto;
+  min-width:205px;
+  height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 17px;
+  border:0;
+  border-radius:14px;
+  background:#fff;
+  color:#161a1e;
+  font-size:14px;
+  font-weight:900;
+  box-shadow:0 9px 20px rgba(0,0,0,.15);
+}
+.mode-action:after{
+  content:"  ›";
+  font-size:23px;
+  line-height:0;
+}
+.mode-card.electric-card .mode-action{color:#11652f}
+@media(min-width:651px){
+  .mode-grid{grid-template-columns:1fr 1fr}
+  .mode-card{min-height:310px}
+}
+@media(max-width:650px){
+  .page{padding:13px 14px 40px}
+  .home-kicker{margin-top:6px}
+  .mode-title{
+    font-size:43px;
+    letter-spacing:-2.2px;
+  }
+  .mode-sub{
+    font-size:15px;
+    margin-bottom:19px;
+  }
+  .mode-grid{gap:14px}
+  .mode-card{
+    min-height:210px;
+    border-radius:27px;
+    padding:19px;
+  }
+  .mode-card .mode-icon{
+    top:19px;left:19px;
+    width:62px;height:62px;
+    border-radius:19px;
+  }
+  .mode-icon svg{width:36px;height:36px}
+  .mode-card h2{
+    font-size:26px;
+    margin-bottom:10px;
+  }
+  .mode-action{
+    min-width:190px;
+    height:43px;
+    border-radius:13px;
+    font-size:13px;
+  }
+}
+
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="back" id="backBtn">‹</div>
+  <div class="brand-title">Bike Road Price <span>in Goa</span></div>
+</header>
+
+<main class="page">
+  <section id="home">
+    <div class="home-kicker">GOA · BIKE ROAD PRICE</div>
+    <h1 class="mode-title">Bike Road Price<br><em>in Goa</em></h1>
+    <p class="mode-sub">Find the latest on-road prices for every bike in Goa.</p>
+    <div class="mode-grid">
+      <button class="mode-card petrol-card" id="petrolBtn" type="button" aria-label="Petrol Bike Price">
+        <div class="mode-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="43" r="9"></circle><circle cx="48" cy="43" r="9"></circle>
+            <path d="M18 43l10-17h10l10 17M28 26l-7-6h12l6 6M31 26l-4 17h17M39 18l8-3"></path>
+          </svg>
+        </div>
+        <h2>Petrol Bike</h2>
+        <span class="mode-action">Petrol Bike Price</span>
+      </button>
+      <button class="mode-card electric-card" id="electricBtn" type="button" aria-label="Electric Bike Price">
+        <div class="mode-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M35 5 16 35h14l-2 24 20-32H34l1-22Z" fill="currentColor" stroke="none"></path>
+          </svg>
+        </div>
+        <h2>Electric Bike</h2>
+        <span class="mode-action">Electric Bike Price</span>
+      </button>
+    </div>  </section>
+
+  <section id="petrolPage" class="hidden">
+    <div class="panel">
+      <div class="field"><label for="make">Bike Brand</label><select id="make"><option>Loading brands…</option></select></div>
+      <div class="field"><label for="model">Model</label><select id="model"><option>Loading models…</option></select></div>
+      <div id="petrolResult" class="petro-result"><div class="loading-state petrol-loading"><div class="loader-ring"></div><b>Please wait…</b><span>Loading price</span></div></div>
+    </div>
+  </section>
+
+  <section id="electricPage" class="hidden">
+    <div class="panel">
+      <div class="electric-toolbar">
+        <div class="count" id="electricCount">Loading electric bikes…</div>
+        <input class="search" id="electricSearch" placeholder="Search brand or model">
+      </div>
+      <div class="brand-tabs" id="electricBrands"></div>
+      <div class="model-picker" id="electricModels"></div>
+      <div id="electricResult"><div class="loading">Loading electric bikes…</div></div>
+      <button id="loadMore" class="more hidden">Load more</button>
+    </div>
+  </section>
+</main>
+
+<div class="image-modal" id="imageModal" role="dialog" aria-modal="true">
+  <button class="image-close" id="imageClose">×</button>
+  <img id="fullImage" alt="Bike picture">
+  <div class="image-caption" id="imageCaption"></div>
+</div>
+
+<script>
+/*
+  DATA SEPARATION
+  ---------------
+  PETROL:
+    Keeps the old MakeList -> ModelList -> Panjim price-page flow.
+    It does NOT use the electric search API.
+
+  ELECTRIC:
+    Uses ONLY the supplied /api/v4/new-bike-search/ endpoint with
+    fuelType=807 and pages 1-9.
+    No similar-bike API is used.
+    No electric card ever receives another bike's image.
+*/
+
+const CITY_ID=307, CITY_SLUG="panjim";
+
+/* ---------- ELECTRIC API supplied by user ---------- */
+const ELECTRIC_API = page =>
+  `https://www.bikewale.com/api/v4/new-bike-search/?cityId=${CITY_ID}&isMobile=true&pageSize=15&fuelType=807&sortField1=modelPopularity&sortOrder1=desc&pageNumber=${page}`;
+
+/* ---------- PETROL: old code endpoints ---------- */
+const MAKE_API="https://www.bikewale.com/api/MakeList/?requestType=2";
+const MODEL_API=id=>`https://www.bikewale.com/api/ModelList/?requestType=2&makeId=${encodeURIComponent(id)}`;
+
+const PETROL_FALLBACK={
+  "suzuki|access-125":{make:"Suzuki",model:"Access 125",price:"₹99,975",ex:"₹84,417",rto:"₹9,098",insurance:"₹6,460",variant:"Standard"}
+};
+
+const home=document.getElementById("home");
+const petrolPage=document.getElementById("petrolPage");
+const electricPage=document.getElementById("electricPage");
+const makeEl=document.getElementById("make");
+const modelEl=document.getElementById("model");
+const petrolResult=document.getElementById("petrolResult");
+const electricResult=document.getElementById("electricResult");
+const electricCount=document.getElementById("electricCount");
+const electricSearch=document.getElementById("electricSearch");
+const loadMoreBtn=document.getElementById("loadMore");
+const electricBrands=document.getElementById("electricBrands");
+const electricModels=document.getElementById("electricModels");
+let currentPage="home";
+
+function show(page){
+  document.body.classList.remove("petrol-active","electric-active");
+  if(page==="petrol")document.body.classList.add("petrol-active");
+  if(page==="electric")document.body.classList.add("electric-active");
+  home.classList.toggle("hidden",page!=="home");
+  petrolPage.classList.toggle("hidden",page!=="petrol");
+  electricPage.classList.toggle("hidden",page!=="electric");
+  currentPage=page;
+  window.scrollTo({top:0,behavior:"instant"});
+}
+document.getElementById("petrolBtn").onclick=()=>{show("petrol");if(!makeEl.dataset.loaded)loadMakes()};
+document.getElementById("electricBtn").onclick=()=>{show("electric");if(!window.electricLoaded)loadElectric()};
+document.getElementById("backBtn").onclick=()=>{if(currentPage!=="home")show("home")};
+
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function slug(v){return String(v||"").toLowerCase().trim().replace(/&/g,"and").replace(/['’]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")}
+function arr(data,keys){for(const k of keys){if(Array.isArray(data?.[k]))return data[k]}return Array.isArray(data)?data:[]}
+async function getJson(url){const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}
+function priceLoading(type="petrol",sub="Loading price"){
+  const cls=type==="electric"?"electric-loading":"petrol-loading";
+  return `<div class="loading-state ${cls}"><div class="loader-ring"></div><b>Please wait…</b><span>${esc(sub)}</span></div>`;
+}
+function money(s){
+  if(s==null)return null;
+  const n=String(s).replace(/[^0-9.]/g,"");
+  if(!n)return null;
+  return "₹"+Number(n).toLocaleString("en-IN");
+}
+function firstString(obj,keys){
+  for(const k of keys){
+    const v=obj?.[k];
+    if(typeof v==="string"&&v.trim())return v.trim();
+    if(typeof v==="number")return String(v);
+  }
+  return "";
+}
+function firstNumber(obj,keys){
+  for(const k of keys){
+    const v=obj?.[k];
+    if(v!==undefined&&v!==null&&v!==""&&isFinite(Number(v)))return Number(v);
+  }
+  return null;
+}
+function normalizeImageUrl(v){
+  if(!v)return "";
+  let s=String(v).trim();
+  if(!s)return "";
+  if(s.startsWith("//"))s="https:"+s;
+  if(/^https?:\/\//i.test(s)){
+    // Already a complete image URL.
+    return s;
+  }
+  if(/^\/?n\//i.test(s)){
+    const p=s.startsWith("/")?s:"/"+s;
+    return `https://imgd.aeplcdn.com/600x338${p}`;
+  }
+  return "";
+}
+
+function firstUrl(obj,keys){
+  for(const k of keys){
+    const v=obj?.[k];
+    if(typeof v==="string"){
+      const u=normalizeImageUrl(v);
+      if(u)return u;
+    }
+    if(v&&typeof v==="object"){
+      for(const kk of ["url","src","imageUrl","imagePath","originalImageUrl","originalImagePath","value"]){
+        const u=normalizeImageUrl(v?.[kk]);
+        if(u)return u;
+      }
+    }
+  }
+  return "";
+}
+
+/* Search only inside THIS API record. It never asks another-bike/similar-bike API. */
+function findImageDeep(obj,depth=0){
+  if(!obj||depth>8)return "";
+  const imageKeys=/image|photo|picture|thumbnail|pictureUrl|img/i;
+  if(typeof obj==="string"){
+    return normalizeImageUrl(obj);
+  }
+  if(Array.isArray(obj)){
+    for(const v of obj){
+      const u=findImageDeep(v,depth+1);
+      if(u)return u;
+    }
+    return "";
+  }
+  if(typeof obj==="object"){
+    for(const [k,v] of Object.entries(obj)){
+      if(imageKeys.test(k)){
+        const u=findImageDeep(v,depth+1);
+        if(u)return u;
+      }
+    }
+    for(const v of Object.values(obj)){
+      if(v&&typeof v==="object"){
+        const u=findImageDeep(v,depth+1);
+        if(u)return u;
+      }
+    }
+  }
+  return "";
+}
+
+function recursiveFind(obj,wanted,depth=0){
+  if(!obj||depth>8||typeof obj!=="object")return null;
+  for(const k of wanted){
+    if(Object.prototype.hasOwnProperty.call(obj,k)&&obj[k]!=null&&obj[k]!=="")return obj[k];
+  }
+  for(const v of Object.values(obj)){
+    if(v&&typeof v==="object"){
+      const got=recursiveFind(v,wanted,depth+1);
+      if(got!=null&&got!=="")return got;
+    }
+  }
+  return null;
+}
+function textValue(v){
+  if(v==null)return "";
+  if(typeof v==="string"||typeof v==="number")return String(v);
+  if(typeof v==="object"){
+    return firstString(v,["name","value","label","text","title","displayValue","displayText"]);
+  }
+  return "";
+}
+function formatPrice(v){
+  if(v==null)return "";
+  const s=String(v).trim();
+  if(!s)return "";
+  const m=s.match(/₹\s*([0-9][0-9,]*(?:\.[0-9]+)?)/);
+  if(m)return "₹"+Number(m[1].replace(/,/g,"")).toLocaleString("en-IN");
+  const n=s.replace(/[^0-9.]/g,"");
+  return n ? "₹"+Number(n).toLocaleString("en-IN") : s;
+}
+
+/* Find arrays of variant-like objects anywhere in the SAME model record. */
+function findVariantArrays(raw,depth=0){
+  const out=[];
+  if(!raw||depth>8||typeof raw!=="object")return out;
+  if(Array.isArray(raw)){
+    if(raw.length && raw.some(x=>x&&typeof x==="object" && (
+      recursiveFind(x,["variantName","versionName","variantId","variantId","exShowroomPrice","onRoadPrice","price"],0)!=null
+    ))) out.push(raw);
+    for(const v of raw)out.push(...findVariantArrays(v,depth+1));
+    return out;
+  }
+  for(const [k,v] of Object.entries(raw)){
+    if(Array.isArray(v) && /variant|version|priceList|option/i.test(k)) out.push(v);
+    if(v&&typeof v==="object")out.push(...findVariantArrays(v,depth+1));
+  }
+  return out;
+}
+
+/* =========================================================
+   ELECTRIC
+   ========================================================= */
+let electricAll=[],electricFiltered=[],electricShown=0;
+let selectedElectricBrand="ALL",selectedElectricModel="ALL";
+const ELECTRIC_PAGE_COUNT=9;
+
+function uniqueBy(arr,keyFn){
+  const seen=new Set(),out=[];
+  for(const x of arr){
+    const k=String(keyFn(x)).toLowerCase();
+    if(seen.has(k))continue;
+    seen.add(k);out.push(x);
+  }
+  return out;
+}
+
+
+/* =========================================================
+   ELECTRIC API NORMALIZER
+   Reads only the current electric-bike API record.
+   It is completely separate from the petrol price flow.
+   ========================================================= */
+
+const ELECTRIC_IMAGE_KEYS=[
+  "modelImage","modelImageUrl","modelImagePath","modelPhoto","modelPhotoUrl",
+  "imageUrl","imageURL","imagePath","originalImageUrl","originalImagePath",
+  "image","photoUrl","photo","thumbnailUrl","thumbnail","pictureUrl","picture"
+];
+
+function electricText(obj,keys){
+  for(const k of keys){
+    if(obj && Object.prototype.hasOwnProperty.call(obj,k)){
+      const v=textValue(obj[k]);
+      if(v)return v;
+    }
+  }
+  return "";
+}
+
+function electricNumber(obj,keys){
+  for(const k of keys){
+    if(obj && Object.prototype.hasOwnProperty.call(obj,k)){
+      const v=obj[k];
+      if(v!==null&&v!==undefined&&v!==""&&isFinite(Number(v)))return Number(v);
+      if(v&&typeof v==="object"){
+        const n=electricNumber(v,["value","amount","number","min","minimum","starting","start"]);
+        if(n!==null)return n;
+      }
+    }
+  }
+  return null;
+}
+
+function electricPrice(obj){
+  if(!obj || typeof obj!=='object')return "";
+
+  // 1) Prefer prices directly attached to the current record.
+  const directText=electricText(obj,[
+    "price","startingPrice","startPrice","minPrice","minimumPrice",
+    "onwardsPrice","displayPrice","formattedPrice","priceDisplay",
+    "onRoadPrice","onRoadStartingPrice","minOnRoadPrice","lowestPrice",
+    "exShowroomPrice","exShowroom"
+  ]);
+  if(directText && /\d/.test(directText))return formatPrice(directText);
+
+  const directNumber=electricNumber(obj,[
+    "price","startingPrice","startPrice","minPrice","minimumPrice",
+    "onwardsPrice","onRoadPrice","onRoadStartingPrice","minOnRoadPrice",
+    "lowestPrice","exShowroomPrice","exShowroom"
+  ]);
+  if(directNumber!==null)return money(directNumber);
+
+  // 2) BikeWale has changed the nesting of price information across API
+  // versions. Search ONLY inside this same bike/variant record.
+  const priceKeys=/^(price|startingPrice|startPrice|minPrice|minimumPrice|onwardsPrice|onRoadPrice|onRoadStartingPrice|minOnRoadPrice|lowestPrice|exShowroomPrice|exShowroom|displayPrice|formattedPrice|priceDisplay)$/i;
+  let found=null;
+  function walk(v,depth=0){
+    if(found!==null || !v || depth>7)return;
+    if(Array.isArray(v)){ for(const x of v)walk(x,depth+1); return; }
+    if(typeof v!=='object')return;
+    for(const [k,x] of Object.entries(v)){
+      if(!priceKeys.test(k))continue;
+      if(typeof x==='number' && isFinite(x)){found=x;return;}
+      if(typeof x==='string' && /\d/.test(x)){const f=formatPrice(x);if(f){found=f;return;}}
+      if(x&&typeof x==='object'){
+        const n=electricNumber(x,["value","amount","number","min","minimum","starting","start","onRoad","exShowroom"]);
+        if(n!==null){found=money(n);return;}
+      }
+    }
+    for(const x of Object.values(v))if(x&&typeof x==='object')walk(x,depth+1);
+  }
+  walk(obj);
+  return found===null?"":String(found);
+}
+
+function electricImage(obj){
+  if(!obj||typeof obj!=="object")return "";
+
+  const direct=firstUrl(obj,ELECTRIC_IMAGE_KEYS);
+  if(direct)return direct;
+
+  function walk(v,depth=0){
+    if(!v||depth>8)return "";
+    if(Array.isArray(v)){
+      for(const x of v){
+        const u=walk(x,depth+1);
+        if(u)return u;
+      }
+      return "";
+    }
+    if(typeof v!=="object")return "";
+
+    /* Exact model/bike image fields get priority. */
+    for(const [k,val] of Object.entries(v)){
+      if(/model.*image|image.*(url|path|src)|original.*image|bike.*image/i.test(k)){
+        const u=typeof val==="string"
+          ? normalizeImageUrl(val)
+          : firstUrl(val,["url","src","imageUrl","imagePath","originalImageUrl","originalImagePath"]);
+        if(u)return u;
+      }
+    }
+
+    /* Ignore logos/icons so a brand logo is never shown as the bike. */
+    for(const [k,val] of Object.entries(v)){
+      if(/logo|icon|rating|review|brand/i.test(k))continue;
+      if(/image|photo|picture|thumbnail|img/i.test(k)){
+        const u=typeof val==="string"?normalizeImageUrl(val):walk(val,depth+1);
+        if(u)return u;
+      }
+    }
+    return "";
+  }
+
+  return walk(obj);
+}
+
+function electricBrand(obj){
+  return electricText(obj,[
+    "makeName","make","brandName","brand","manufacturerName","manufacturer",
+    "companyName","makeDisplayName"
+  ])||String(recursiveFind(obj,["makeName","brandName","manufacturerName"])||"");
+}
+
+function electricModel(obj){
+  return electricText(obj,[
+    "modelName","model","name","bikeName","displayName","modelDisplayName"
+  ])||String(recursiveFind(obj,["modelName","bikeName","modelDisplayName"])||"");
+}
+
+function electricId(obj){
+  const v=recursiveFind(obj,["modelId","bikeId","productId","id","modelID","bikeID"]);
+  return v==null?"":String(v);
+}
+
+function electricRating(obj){
+  const n=electricNumber(obj,[
+    "rating","ratingValue","userRating","averageRating","modelRating","reviewRating","starRating"
+  ]);
+  return n!==null&&n>0?n:null;
+}
+
+function addElectricSpec(out,label,value){
+  if(value===null||value===undefined||value==="")return;
+  const s=String(value).trim();
+  if(!s)return;
+  if(!out.some(x=>x.label===label&&x.value===s))out.push({label,value:s});
+}
+
+function electricSpecs(obj){
+  const out=[];
+
+  addElectricSpec(out,"km/h",electricText(obj,[
+    "topSpeed","maxSpeed","maximumSpeed","topSpeedKmph","maxSpeedKmph"
+  ]));
+  addElectricSpec(out,"km",electricText(obj,[
+    "range","claimedRange","rangeKm","drivingRange","certifiedRange"
+  ]));
+  addElectricSpec(out,"kg",electricText(obj,[
+    "kerbWeight","kerbWt","weight","vehicleWeight","grossWeight"
+  ]));
+  addElectricSpec(out,"kWh",electricText(obj,[
+    "batteryCapacity","batteryCapacityKwh","batteryCapacityKWh","battery",
+    "batterySize","batteryEnergy"
+  ]));
+
+  const container=recursiveFind(obj,[
+    "specifications","specs","keySpecifications","keySpecs","technicalSpecifications"
+  ]);
+
+  function walk(v,depth=0){
+    if(!v||depth>6)return;
+    if(Array.isArray(v)){v.forEach(x=>walk(x,depth+1));return;}
+    if(typeof v!=="object")return;
+
+    const label=electricText(v,["label","name","title","key","specName","displayName"]);
+    const value=electricText(v,["value","displayValue","text","displayText"]);
+
+    if(label&&value){
+      const l=label.toLowerCase();
+      if(/speed/.test(l))addElectricSpec(out,"km/h",value);
+      else if(/range|distance/.test(l))addElectricSpec(out,"km",value);
+      else if(/weight/.test(l))addElectricSpec(out,"kg",value);
+      else if(/battery|capacity/.test(l))addElectricSpec(out,"kWh",value);
+    }
+
+    Object.values(v).forEach(x=>{
+      if(x&&typeof x==="object")walk(x,depth+1);
+    });
+  }
+
+  walk(container);
+  return out.slice(0,5);
+}
+
+function cleanFeatureText(v){
+  if(v==null)return "";
+  if(typeof v==="string"||typeof v==="number")return String(v).replace(/\s+/g," ").trim();
+  if(typeof v!=="object")return "";
+  return electricText(v,["featureName","label","title","displayName","name","text","displayText","value"])
+    .replace(/\s+/g," ").trim();
+}
+
+function isBadFeatureName(s){
+  return !s || s.length>100 || /^(yes|no|available|unavailable|true|false|1|0|na|n\/a|-|front|rear)$/i.test(s);
+}
+
+function featureLabelFromKey(k){
+  const s=String(k||"").replace(/[_-]+/g," ").replace(/([a-z])([A-Z])/g,"$1 $2").replace(/\s+/g," ").trim();
+  if(!s)return "";
+  const acr=/^(gps|usb|cbs|abs|led|ota|ev|ip|tpms|drls)$/i;
+  return s.split(" ").map(w=>acr.test(w)?w.toUpperCase():w.charAt(0).toUpperCase()+w.slice(1)).join(" ");
+}
+function electricFeatures(obj){
+  // Do not render raw API metadata as user-facing features.
+  // The search API can contain fields such as Item Id, Item Name,
+  // Custom Type Id and Data Type Id; these are internal metadata, not
+  // bike features. Keep the electric card clean until a verified
+  // feature source is available.
+  return [];
+}
+
+function parseEmbeddedJson(v){
+  if(typeof v!=="string")return v;
+  const s=v.trim();
+  if(!s || !/^[\[{]/.test(s))return v;
+  try{return JSON.parse(s)}catch(e){return v;}
+}
+
+function variantObject(v){
+  if(!v||typeof v!=="object"||Array.isArray(v))return null;
+  const name=electricText(v,["variantName","versionName","variantDisplayName","versionDisplayName","variantTitle","versionTitle","modelVariantName","variantLabel","versionLabel","variant","version","displayName","title","label","name"]);
+  const id=recursiveFind(v,["variantId","versionId","variantID","versionID"]);
+  const price=electricPrice(v);
+  if(!name||name.length>160)return null;
+  if(/^(price|pricing|specification|specifications|feature|features|colour|color|yes|no|available|unavailable|true|false|front|rear|1|0|data|items|list)$/i.test(name))return null;
+  if(!id&&!price&&!/(variant|version|model|standard|base|pro|plus|kwh|cc)/i.test(name))return null;
+  return {name:name.trim(),price:price||""};
+}
+function electricVariants(obj){
+  const out=[],seen=new Set(),variantKey=/variant|version|trim|option/i;
+  function push(x){
+    if(!x||typeof x!=="object")return;
+    const v=variantObject(x); if(!v)return;
+    const key=(v.name+"|"+v.price).toLowerCase();
+    if(!seen.has(key)){seen.add(key);out.push(v);}
+  }
+  function mapEntries(v){
+    if(!v||typeof v!=="object"||Array.isArray(v))return;
+    for(const [k,x0] of Object.entries(v)){
+      if(/^(variants?|versions?|data|items?|list|details|price|pricing|specs?|features?)$/i.test(k))continue;
+      const x=parseEmbeddedJson(x0), name=String(k).replace(/\s+/g," ").trim();
+      if(!name||name.length>160)continue;
+      if(x&&typeof x==="object"&&!Array.isArray(x)){
+        const p=electricPrice(x),id=recursiveFind(x,["variantId","versionId","variantName","versionName"]);
+        if(p||id||/(variant|version|standard|base|pro|plus|kwh|cc)/i.test(name))push({variantName:name,price:p||"",variantId:id||""});
+      }else if(typeof x==="string"||typeof x==="number"){
+        if(/\d/.test(String(x))||/(variant|version|standard|base|pro|plus|kwh|cc)/i.test(name))push({variantName:name,price:formatPrice(String(x))});
+      }
+    }
+  }
+  function walk(v,depth=0,ctx=false){
+    if(v==null||depth>14)return;
+    v=parseEmbeddedJson(v);
+    if(Array.isArray(v)){v.forEach(x=>{if(ctx)push(x);walk(x,depth+1,ctx)});return;}
+    if(typeof v!=="object")return;
+    if(ctx)push(v);
+    for(const [k,x0] of Object.entries(v)){
+      if(x0==null)continue;
+      const x=parseEmbeddedJson(x0), isVC=variantKey.test(k);
+      if(isVC){
+        if(Array.isArray(x))x.forEach(push);
+        else if(x&&typeof x==="object"){mapEntries(x);push(x);}
+        else if(typeof x==="string")push({variantName:x});
+        walk(x,depth+1,true);
+      }else if(x&&typeof x==="object")walk(x,depth+1,ctx);
+    }
+  }
+  walk(obj);
+  return uniqueBy(out,x=>x.name+"|"+x.price).slice(0,30);
+}
+
+function electricVariantCount(obj,variants){
+  if(variants.length)return variants.length;
+
+  const n=electricNumber(obj,[
+    "variantCount","variantsCount","numberOfVariants","totalVariants","versionCount","numberOfVersions","totalVersions","variantTotal"
+  ]);
+
+  return n!==null&&n>0?Math.round(n):0;
+}
+
+function normalizeElectric(raw,index){
+  const brand=electricBrand(raw)||"Other";
+  const model=electricModel(raw)||`Electric Bike ${index+1}`;
+  const variants=electricVariants(raw);
+  const rootPrice=electricPrice(raw);
+  const price=rootPrice || variants.find(v=>v.price)?.price || "";
+
+  return {
+    raw,
+    id:electricId(raw)||`${slug(brand)}|${slug(model)}|${index}`,
+    brand,
+    model,
+    price,
+    image:electricImage(raw),
+    rating:electricRating(raw),
+    specs:electricSpecs(raw),
+    features:electricFeatures(raw),
+    variants,
+    variantCount:electricVariantCount(raw,variants)
+  };
+}
+
+function findElectricRecords(data){
+  const preferred=arr(data,[
+    "results","bikes","models","bikeList","items","products",
+    "newBikes","bikeSearchResults","searchResults","result"
+  ]);
+
+  if(preferred.length)return preferred;
+  if(Array.isArray(data?.data)&&data.data.length)return data.data;
+
+  const found=[];
+
+  function walk(v,depth=0){
+    if(!v||depth>7)return;
+
+    if(Array.isArray(v)){
+      if(v.length&&v.some(x=>x&&typeof x==="object"&&(electricBrand(x)||electricModel(x)))){
+        found.push(...v);
+        return;
+      }
+      v.forEach(x=>walk(x,depth+1));
+      return;
+    }
+
+    if(typeof v==="object"){
+      Object.values(v).forEach(x=>{
+        if(x&&typeof x==="object")walk(x,depth+1);
+      });
+    }
+  }
+
+  walk(data);
+  return found;
+}
+
+async function loadElectric(){
+  window.electricLoaded=true;
+  electricResult.innerHTML=priceLoading("electric","Loading electric bikes");
+  electricAll=[];
+  try{
+    const pages=await Promise.all(
+      Array.from({length:ELECTRIC_PAGE_COUNT},(_,i)=>getJson(ELECTRIC_API(i+1)))
+    );
+    pages.forEach((data,pageIndex)=>{
+      const list=findElectricRecords(data);
+      list.forEach((raw,i)=>electricAll.push(normalizeElectric(raw,pageIndex*15+i)));
+    });
+
+    electricAll=uniqueBy(electricAll,b=>b.id||`${b.brand}|${b.model}`);
+    electricCount.textContent=`${electricAll.length} electric bikes`;
+    renderElectricSelectors();
+    applyElectricFilters();
+  }catch(e){
+    electricResult.innerHTML=
+      `<div class="error"><b>Electric bike list could not be loaded.</b><br><br>${esc(e.message)}<br><br>
+      The supplied electric API must be reachable from the browser/WebView.</div>`;
+    electricCount.textContent="Electric bikes unavailable";
+  }
+}
+
+function renderElectricSelectors(){
+  const brands=uniqueBy(electricAll.map(b=>b.brand).filter(Boolean),x=>x).sort((a,b)=>a.localeCompare(b));
+  electricBrands.innerHTML=
+    `<button class="brand-tab ${selectedElectricBrand==="ALL"?"active":""}" data-brand="ALL">All <span class="tab-count">${electricAll.length}</span></button>`+
+    brands.map(br=>{
+      const count=electricAll.filter(b=>b.brand===br).length;
+      return `<button class="brand-tab ${selectedElectricBrand===br?"active":""}" data-brand="${esc(br)}">${esc(br)} <span class="tab-count">${count}</span></button>`;
+    }).join("");
+
+  const pool=selectedElectricBrand==="ALL"?electricAll:electricAll.filter(b=>b.brand===selectedElectricBrand);
+  const models=uniqueBy(pool.map(b=>b.model).filter(Boolean),x=>x).sort((a,b)=>a.localeCompare(b));
+  electricModels.innerHTML=
+    `<button class="model-pill ${selectedElectricModel==="ALL"?"active":""}" data-model="ALL">All models</button>`+
+    models.map(m=>`<button class="model-pill ${selectedElectricModel===m?"active":""}" data-model="${esc(m)}">${esc(m)}</button>`).join("");
+}
+
+function applyElectricFilters(){
+  const q=electricSearch.value.trim().toLowerCase();
+  electricFiltered=electricAll.filter(b=>{
+    const brandOk=selectedElectricBrand==="ALL"||b.brand===selectedElectricBrand;
+    const modelOk=selectedElectricModel==="ALL"||b.model===selectedElectricModel;
+    const searchOk=!q||(b.brand+" "+b.model).toLowerCase().includes(q);
+    return brandOk&&modelOk&&searchOk;
+  });
+  electricShown=0;
+  electricResult.innerHTML="";
+  electricCount.textContent=`${electricFiltered.length} electric bikes`;
+  renderElectric();
+}
+
+electricBrands.addEventListener("click",e=>{
+  const btn=e.target.closest(".brand-tab"); if(!btn)return;
+  selectedElectricBrand=btn.dataset.brand;
+  selectedElectricModel="ALL";
+  renderElectricSelectors();
+  applyElectricFilters();
+});
+
+electricModels.addEventListener("click",e=>{
+  const btn=e.target.closest(".model-pill"); if(!btn)return;
+  selectedElectricModel=btn.dataset.model;
+  applyElectricFilters();
+});
+
+function renderElectric(){
+  const end=Math.min(electricShown+10,electricFiltered.length);
+  for(let i=electricShown;i<end;i++)
+    electricResult.insertAdjacentHTML("beforeend",electricCard(electricFiltered[i],i));
+  electricShown=end;
+  loadMoreBtn.classList.toggle("hidden",electricShown>=electricFiltered.length);
+  if(!electricFiltered.length)
+    electricResult.innerHTML='<div class="loading">No electric bikes matched your selection.</div>';
+}
+
+function featureIcon(){
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg>`;
+}
+
+function getElectricImageCandidates(url){
+  if(!url)return [];
+  const u=String(url);
+  const m=u.match(/^https:\/\/imgd\.aeplcdn\.com\/\d+x\d+(\/.*)$/i);
+  if(!m)return [u];
+
+  const path=m[1];
+  return uniqueBy([
+    `https://imgd.aeplcdn.com/1000x563${path}`,
+    `https://imgd.aeplcdn.com/800x450${path}`,
+    `https://imgd.aeplcdn.com/600x338${path}`,
+    `https://imgd.aeplcdn.com/400x225${path}`
+  ],x=>x);
+}
+
+function electricImageFallback(img){
+  let candidates=[];
+  try{candidates=JSON.parse(img.dataset.candidates||"[]")}catch(e){}
+
+  const next=Number(img.dataset.candidateIndex||0)+1;
+
+  if(next<candidates.length){
+    img.dataset.candidateIndex=String(next);
+    img.src=candidates[next];
+    return;
+  }
+
+  img.style.display="none";
+  const no=img.parentElement?.querySelector(".noimg");
+  if(no)no.style.display="grid";
+}
+
+function electricDetailUrl(b){
+  const r=b?.raw||{};
+  const direct=firstUrl(r,["priceUrl","pricePageUrl","modelUrl","bikeUrl","detailUrl","url","link","canonicalUrl"]);
+  if(direct){
+    if(/price-in-/i.test(direct))return direct;
+    return String(direct).replace(/\/?$/,"/price-in-"+CITY_SLUG+"/");
+  }
+  const makeSlug=slug(b.brand);
+  const modelSlug=slug(b.model);
+  return `https://www.bikewale.com/${makeSlug}-bikes/${modelSlug}/price-in-${CITY_SLUG}/`;
+}
+
+function parseElectricDetailText(doc){
+  const base=parseBikeWaleText(doc);
+  const raw=String(doc||"").replace(/\r/g,"").replace(/\u00a0/g," ");
+  const lines=raw.split("\n").map(s=>s.replace(/^\s*[-*]\s*/,"").trim()).filter(Boolean);
+  const features=[],seen=new Set();
+  let inFeatures=false;
+  const stop=/^(mobile app monitoring|colours? images|user reviews|latest updates|price of similar|on-road prices in cities|running cost calculator|faqs?)/i;
+  const category=/^(instrument cluster|safety & convenience|mobile app monitoring|lights|seat & storage|power & performance|battery & charging|brakes & wheels|suspensions? & chassis|dimensions|warranty and services|features)$/i;
+  for(let i=0;i<lines.length;i++){
+    const line=lines[i];
+    if(/^#{1,4}\s*features\s*$/i.test(line)||/^features$/i.test(line)){inFeatures=true;continue;}
+    if(!inFeatures)continue;
+    if(stop.test(line))break;
+    let m=line.match(/^(.{2,100}?)\s*\|\s*(.{1,100})$/);
+    if(!m)continue;
+    const label=m[1].replace(/^\|\s*/,"").trim();
+    const value=m[2].trim();
+    if(!label||category.test(label)||/^[-–—]+$/.test(value)||/^(view more|did you find|image|button|input)/i.test(label))continue;
+    if(/^(yes|available|front|rear|self start|led|cbs|abs|automatic|parking assist|live location|[0-9][^|]{0,30})$/i.test(value) || value.length<60){
+      const result=/^(yes|available)$/i.test(value)?label:`${label}: ${value}`;
+      const key=result.toLowerCase();
+      if(!seen.has(key)){seen.add(key);features.push(result);}
+    }
+  }
+  return {variants:base.variants||[],total:base.total||null,features:features.slice(0,14)};
+}
+
+async function fetchElectricDetail(b){
+  const target=electricDetailUrl(b);
+  const proxies=[
+    "https://r.jina.ai/http://"+target.replace(/^https?:\/\//,""),
+    "https://r.jina.ai/"+target,
+    "https://api.allorigins.win/raw?url="+encodeURIComponent(target)
+  ];
+  let last;
+  for(const proxy of proxies){
+    try{
+      const r=await fetch(proxy,{cache:"no-store"});
+      if(!r.ok)throw Error("Reader HTTP "+r.status);
+      const doc=await r.text();
+      const parsed=parseElectricDetailText(doc);
+      if(parsed.variants.length||parsed.features.length||parsed.total)
+        return {target,parsed};
+      last=Error("BikeWale detail page returned no usable details");
+    }catch(e){last=e}
+  }
+  throw last||Error("Could not read electric bike detail page");
+}
+
+async function loadElectricDetails(card,b){
+  if(card.dataset.detailsLoaded==="1"||card.dataset.detailsLoading==="1")return;
+  card.dataset.detailsLoading="1";
+  const box=card.querySelector(".variants");
+  const toggle=card.querySelector(".variant-toggle");
+  if(box&&!box.classList.contains("open"))box.classList.add("open");
+  if(box&&!b.variants.length)box.innerHTML='<div class="vloading">Please wait… Loading exact variants</div>';
+  try{
+    const x=await fetchElectricDetail(b);
+    const p=x.parsed;
+    if(p.variants.length)b.variants=p.variants;
+    if(p.features.length)b.features=p.features;
+    if(p.total&&!b.price)b.price=p.total;
+    b.variantCount=b.variants.length||b.variantCount||0;
+
+    const chips=b.features.slice(0,12).map((f,i)=>
+      `<span class="chip" style="animation-delay:${Math.min(i*35,300)}ms">${featureIcon()}${esc(f)}</span>`).join("");
+    const featureEl=card.querySelector(".features");
+    if(featureEl)featureEl.outerHTML=chips?`<div class="features">${chips}</div>`:"";
+    else if(chips){
+      const specsEl=card.querySelector(".specs");
+      (specsEl||card.querySelector(".e-main")).insertAdjacentHTML("afterend",`<div class="features">${chips}</div>`);
+    }
+
+    const vars=b.variants.length
+      ? b.variants.map(v=>`<div class="vrow"><span>${esc(v.name)}</span><span class="vprice">${esc(v.price||"—")}</span></div>`).join("")
+      : `<div class="vrow"><span>No variant details returned by BikeWale.</span><span>—</span></div>`;
+    if(box)box.innerHTML=vars;
+    const left=toggle?.querySelector(".vleft");
+    if(left)left.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg> ${b.variants.length?`View ${b.variants.length} Variants`:"View Variants"}`;
+    card.dataset.detailsLoaded="1";
+  }catch(e){
+    if(box&&(!b.variants.length||!b.features.length))
+      box.innerHTML=`<div class="vrow"><span>Could not load exact variants.</span><span>—</span></div>`;
+  }finally{
+    delete card.dataset.detailsLoading;
+  }
+}
+
+function electricCard(b,index){
+  const imageCandidates=b.image?getElectricImageCandidates(b.image):[];
+  const initialImage=imageCandidates[0]||"";
+  const img=initialImage
+    ? `<img class="electric-bike-img" src="${esc(initialImage)}" alt="${esc(b.brand+" "+b.model)}" loading="lazy"
+        data-candidates="${esc(JSON.stringify(imageCandidates))}" data-candidate-index="0"
+        onerror="electricImageFallback(this)">`
+    : "";
+  const noimg=`<div class="noimg" style="display:${initialImage?"none":"grid"};place-items:center">⚡</div>`;
+
+  const specs=b.specs.slice(0,5).map(s=>
+    `<span class="spec">${esc(s.value)} <small>${esc(s.label)}</small></span>`
+  ).join("");
+
+  const chips=b.features.slice(0,12).map((f,i)=>
+    `<span class="chip" style="animation-delay:${Math.min(i*35,300)}ms">${featureIcon()}${esc(f)}</span>`
+  ).join("");
+
+  const vars=b.variants.length
+    ? b.variants.map(v=>`<div class="vrow"><span>${esc(v.name)}</span><span class="vprice">${esc(v.price||"—")}</span></div>`).join("")
+    : `<div class="vrow"><span>${b.variantCount?`${b.variantCount} variants available in API`: "Variant details are not included in this model record"}</span><span>—</span></div>`;
+
+  return `<article class="e-card" data-index="${index}">
+    <div class="e-main">
+      <div class="e-photo">${img}${noimg}</div>
+      <div class="e-info">
+        ${b.rating?`<div class="rating">★ ${esc(Number(b.rating).toFixed(1))}</div>`:""}
+        <div class="brand">${esc(b.brand)}</div>
+        <div class="ename">${esc(b.model)}</div>
+        <div class="price">${esc(b.price||"Price unavailable")} <span>${b.price?"Onwards":""}</span></div>
+        <div class="evtag"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h7l-1 8 10-13h-7l0-7Z"/></svg> EV</div>
+      </div>
+    </div>
+    ${specs?`<div class="specs">${specs}</div>`:""}
+    ${chips?`<div class="features">${chips}</div>`:""}
+    <button class="variant-toggle" type="button">
+      <span class="vleft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
+      ${b.variants.length?`View ${b.variants.length} Variants`:b.variantCount?`View ${b.variantCount} Variants`:"View Variants"}</span>
+      <span class="chev">⌄</span>
+    </button>
+    <div class="variants">${vars}</div>
+  </article>`;
+}
+
+electricResult.addEventListener("click",e=>{
+  const btn=e.target.closest(".variant-toggle"); if(!btn)return;
+  const box=btn.nextElementSibling;
+  box.classList.toggle("open");
+  btn.classList.toggle("open",box.classList.contains("open"));
+  const card=btn.closest(".e-card");
+  const b=electricFiltered[Number(card?.dataset.index)];
+  if(box.classList.contains("open")&&b)loadElectricDetails(card,b);
+});
+
+loadMoreBtn.onclick=renderElectric;
+
+electricSearch.addEventListener("input",applyElectricFilters);
+
+/* =========================================================
+   PETROL: old flow kept separate
+   ========================================================= */
+let makes=[],models=[],petrolPriceRequest=0,petrolModelRequest=0;
+
+function getMakeSlug(m){return m.maskingName||m.makeMaskingName||slug(m.makeName||m.name)}
+function getModelSlug(m){return m.maskingName||m.modelMaskingName||slug(m.modelName||m.name)}
+
+function getBikeImageUrl(path,width=700,height=394){
+  if(!path)return "";
+  const p=String(path).startsWith("/")?String(path):"/"+String(path);
+  if(/^https?:\/\//i.test(String(path)))return String(path);
+  return `https://imgd.aeplcdn.com/${width}x${height}${p}`;
+}
+function firstImageValue(m){
+  const candidates=[
+    "imageUrl","imageURL","image","modelImage","modelImageUrl","imagePath","imagePathUrl",
+    "thumbnail","thumbnailUrl","photo","photoUrl","modelPhoto","modelPhotoUrl",
+    "originalImageUrl","originalImage","originalImagePath"
+  ];
+  const direct=firstUrl(m,candidates);
+  if(direct)return direct;
+  return findImageDeep(m);
+}
+function imageFromHtml(doc){
+  const patterns=[
+    /<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i,
+    /<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i,
+    /<meta[^>]+name=["']twitter:image["'][^>]+content=["']([^"']+)["']/i
+  ];
+  for(const rx of patterns){
+    const m=String(doc||"").match(rx);
+    if(m&&m[1]){
+      const u=normalizeImageUrl(m[1].replace(/&amp;/g,"&"));
+      if(u)return u;
+    }
+  }
+  return "";
+}
+function getBikeOriginalImageUrl(u){
+  if(!u)return "";
+  const m=String(u).match(/^https:\/\/imgd\.aeplcdn\.com\/\d+x\d+(\/.*)$/i);
+  return m?`https://imgd.aeplcdn.com/1200x675${m[1]}`:u;
+}
+
+function parseBikeWaleText(text){
+  const raw=String(text||"").replace(/\r/g,"").replace(/\u00a0/g," ");
+  const lines=raw.split("\n").map(s=>s.replace(/\s+/g," ").trim()).filter(Boolean);
+
+  // BikeWale has changed the wording of price-breakup labels several times.
+  // Do NOT require one exact label or require every component to exist.
+  function moneyFromLine(line){
+    const hits=[...String(line||"").matchAll(/(?:₹|Rs\.?|INR\s*)\s*([0-9][0-9,]*(?:\.[0-9]+)?)/gi)];
+    if(hits.length)return money(hits[hits.length-1][1]);
+    const nums=[...String(line||"").matchAll(/\b([0-9]{2,3}(?:,[0-9]{2,3})+|[0-9]{4,9})\b/g)];
+    if(nums.length)return money(nums[nums.length-1][1]);
+    return null;
+  }
+
+  function findByLabels(patterns){
+    for(let i=0;i<lines.length;i++){
+      const line=lines[i];
+      if(patterns.some(rx=>rx.test(line))){
+        const direct=moneyFromLine(line);
+        if(direct)return direct;
+        // Some reader responses put the value on the next line.
+        for(let j=1;j<=2;j++){
+          if(lines[i+j]){
+            const next=moneyFromLine(lines[i+j]);
+            if(next)return next;
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  const total=findByLabels([
+    /effective\s+on[- ]?road\s+price/i,
+    /on[- ]?road\s+price(?:\s+(?:in|for)\s+(?:panjim|panaji|goa))?/i,
+    /on[- ]?road\s+price/i
+  ]) || findByLabels([/price\s+in\s+(?:panjim|panaji|goa)/i]);
+
+  const ex=findByLabels([/ex[- ]?showroom/i,/ex[- ]showroom/i]);
+  const rto=findByLabels([/\brto\b/i,/rto\s+expense/i,/registration/i]);
+  const insurance=findByLabels([/insurance/i,/comprehensive/i,/insurance\s+cost/i]);
+
+  // FAQ text is often still present even when the main price table is
+  // rendered dynamically. Recover RTO + insurance from that sentence.
+  let rto2=rto, insurance2=insurance;
+  for(const line of lines){
+    const m=line.match(/(?:includes|including).*?RTO(?:\s+charges?)?.*?(?:₹|Rs\.?)[\s]*([0-9][0-9,]*).*?insurance(?:\s+cost)?[^₹\d]{0,40}(?:₹|Rs\.?)[\s]*([0-9][0-9,]*)/i);
+    if(m){
+      rto2=rto2||money(m[1]);
+      insurance2=insurance2||money(m[2]);
+    }
+  }
+
+  const variants=[];
+  const variantSeen=new Set();
+
+  function addVariant(name, price){
+    name=String(name||'').replace(/^[|•*\-–—]+\s*/,'').replace(/\s+/g,' ').trim();
+    if(!name||!price)return;
+
+    // Remove the selected model name when BikeWale prefixes it.
+    const modelPrefix=String(window.__CURRENT_PETROL_MODEL||'').trim();
+    if(modelPrefix){
+      const rx=new RegExp('^'+modelPrefix.replace(/[.*+?^${}()|[\\]\\]/g,'\\$&')+'(?:\\s+|\\s*[-:|]\\s*)','i');
+      name=name.replace(rx,'').trim();
+    }
+
+    // Never treat price-breakup rows, headings, or city-price rows as variants.
+    const bad=/^(price|variant|variants|version|versions|specifications?|ex[- ]?showroom|rto|registration|insurance|comprehensive|on[- ]?road(?:\s+price)?|total|city|price list|optional packages|available additional packages|effective on[- ]road price)$/i;
+    if(bad.test(name))return;
+    if(/^(?:₹|rs\.?|inr)\s*[0-9]/i.test(name))return;
+    if(/price\s+in\s+(?:panjim|panaji|goa)|on[- ]road price|similar bikes|similar scooters|cities near|emi|contact .*dealer/i.test(name))return;
+    if(name.length<2||name.length>180)return;
+
+    const key=(name+'|'+price).toLowerCase();
+    if(!variantSeen.has(key)){
+      variantSeen.add(key);
+      variants.push({name,price});
+    }
+  }
+
+  function priceFromText(line){
+    const s=String(line||'').replace(/\u00a0/g,' ');
+    const hits=[...s.matchAll(/(?:₹|Rs\.?|INR)\s*([0-9][0-9,]*(?:\.[0-9]+)?)/gi)];
+    if(hits.length)return money(hits[hits.length-1][1]);
+    const hits2=[...s.matchAll(/\b([0-9]{1,3}(?:,[0-9]{2,3})+|[0-9]{4,9})\b/g)];
+    if(hits2.length)return money(hits2[hits2.length-1][1]);
+    return null;
+  }
+
+  // BikeWale's text/reader output is not consistent: depending on the
+  // response it can return markdown pipes, comma-separated rows, or put the
+  // variant name and price on separate lines. Detect the table heading first,
+  // then accept all of those row formats until the next section.
+  let inVariantTable=false;
+  let sawVariantRows=0;
+  const sectionStop=/^(?:read more|key highlights|price of similar|similar bikes|similar scooters|.*on[- ]road prices in cities near|service experience|about the reviewer|latest updates|user reviews|faqs?|price of .* in india)/i;
+  // BikeWale currently uses several table-header formats, including:
+  //   Variant | Price | Specifications
+  //   Variants | On Road Price, Panjim
+  //   Variants  | On Road Price, Goa
+  const tableHeader=/^(?:\|\s*)?(?:variants?|versions?)\s*(?:\||,|:)\s*(?:(?:on[- ]?road\s+)?price)(?:\s*(?:,|\|)\s*(?:panjim|panaji|goa))?(?:\s*\|.*)?$/i;
+  const variantSection=/on[- ]?road\s+price\s+list.*\((?:variants?|versions?)\)/i;
+
+  for(let i=0;i<lines.length;i++){
+    const line=lines[i];
+
+    if(tableHeader.test(line) || variantSection.test(line) || /variants?\s*[|,].*on[- ]?road\s+price/i.test(line)){
+      inVariantTable=true;
+      sawVariantRows=0;
+      continue;
+    }
+
+    // Some BikeWale reader versions emit a standalone markdown header after
+    // the section title. Accept it even when the section title itself was
+    // omitted from the extracted text.
+    if(/^(?:\|\s*)?variant\s*\|\s*price(?:\s*\|.*)?$/i.test(line)){
+      inVariantTable=true;
+      sawVariantRows=0;
+      continue;
+    }
+    if(!inVariantTable)continue;
+    if(sectionStop.test(line)){
+      inVariantTable=false;
+      continue;
+    }
+
+    // Standard: Variant | ₹ price / Variant | Price | Specifications
+    let m=line.match(/^\|?\s*(.{2,180}?)\s*\|\s*(?:₹|Rs\.?|INR\s*)?\s*([0-9][0-9,]*(?:\.[0-9]+)?)(?:\s*(?:On[- ]?Road))?(?:\s*\|.*)?\s*$/i);
+    if(m){
+      addVariant(m[1],money(m[2]));
+      sawVariantRows++;
+      continue;
+    }
+
+    // Comma/space format: Variant, ₹ 94,320 or Variant ₹ 94,320.
+    const price=priceFromText(line);
+    if(price){
+      let name=line;
+      name=name.replace(/(?:₹|Rs\.?|INR)\s*[0-9][0-9,]*(?:\.[0-9]+)?/gi,' ')
+               .replace(/\|\s*(?:On[- ]?Road|Price).*$/i,' ')
+               .replace(/[,|:;\-–—]+\s*$/,' ')
+               .replace(/\s+/g,' ').trim();
+      // Avoid interpreting generic lines containing a number as variants.
+      if(name && !/^(?:on[- ]?road|ex[- ]?showroom|rto|insurance|registration|total|price|starting|starts? at|from|emi|panjim|panaji|goa)$/i.test(name)){
+        addVariant(name,price);
+        if(variants.length>sawVariantRows)sawVariantRows=variants.length;
+      }
+      continue;
+    }
+
+    // If we already captured rows, a blank/unrelated line usually means the
+    // reader has left the table. Do not continue into city prices/reviews.
+    if(sawVariantRows && line.length>0 && !/^(?:drum|disc|single|double|standard|base|deluxe|premium|pro|plus|sport|classic|millions?|i3s|abs|bs6|bs7|obd|electric|variant)/i.test(line)){
+      // Keep a little tolerance for multi-line variant names.
+      if(i+1<lines.length && priceFromText(lines[i+1]))continue;
+      inVariantTable=false;
+    }
+
+    if(variants.length>=50)inVariantTable=false;
+  }
+
+  /*
+    Last parser pass for the exact BikeWale variant table. Some gateways
+    flatten markdown into plain text differently, so look for the known
+    section followed by rows such as:
+      Splendor Plus Drum Brake - OBD 2B | ₹ 94,320 On-Road | ...
+    This pass deliberately starts only at the Panjim variant section.
+  */
+  if(!variants.length){
+    let started=false;
+    for(let i=0;i<lines.length;i++){
+      const line=lines[i];
+      if(/on[- ]?road\s+price\s+list.*\bvariants?\b/i.test(line)){
+        started=true; continue;
+      }
+      if(!started)continue;
+      if(/^key highlights|^price of similar|^similar bikes|^similar scooters|^hero .* user reviews/i.test(line))break;
+
+      const m=line.match(/^\|?\s*(.+?)\s*\|\s*(?:₹|Rs\.?|INR\s*)?\s*([0-9][0-9,]+)(?:\s*[- ]?On[- ]?Road)?\s*(?:\|.*)?$/i);
+      if(m){
+        addVariant(m[1],money(m[2]));
+        continue;
+      }
+    }
+  }
+
+  // If the reader also exposes the three Panjim breakup components, their
+  // sum is safer than a stray number from a secondary city/table.
+  const breakupTotal = ex && rto2 && insurance2
+    ? money(
+        Number(String(ex).replace(/[^0-9.]/g,"")) +
+        Number(String(rto2).replace(/[^0-9.]/g,"")) +
+        Number(String(insurance2).replace(/[^0-9.]/g,""))
+      )
+    : null;
+  const finalTotal=breakupTotal || total || variants[0]?.price || findByLabels([/starts?\s+at/i]);
+
+  return {
+    total:finalTotal,
+    ex,
+    rto:rto2,
+    insurance:insurance2,
+    variants
+  };
+}
+
+async function fetchPetrolPage(make,model){
+  const makeSlug=getMakeSlug(make);
+  const modelSlug=getModelSlug(model);
+  const baseTarget=`https://www.bikewale.com/${makeSlug}-bikes/${modelSlug}/price-in-${CITY_SLUG}/`;
+  const targets=[baseTarget,baseTarget+'?qti=1'];
+
+  /*
+    Android WebView normally cannot read BikeWale directly because of CORS.
+    Use several read-only HTML gateways. We do NOT use a similar-bike API,
+    and every request is for the exact selected make/model URL.
+  */
+  function proxyUrls(t){
+    return [
+      `https://r.jina.ai/http://${t.replace(/^https?:\/\//,'')}`,
+      `https://r.jina.ai/${t}`,
+      `https://corsproxy.io/?url=${encodeURIComponent(t)}`,
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(t)}`,
+      `https://cors.isomorphic-git.org/${t}`,
+      `https://www-bikewale-com.translate.goog/${makeSlug}-bikes/${modelSlug}/price-in-${CITY_SLUG}/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en`
+    ];
+  }
+
+  const image=firstImageValue(model);
+  let last=null;
+
+  for(const t of targets){
+    for(const proxy of proxyUrls(t)){
+      try{
+        const r=await fetch(proxy,{cache:'no-store',redirect:'follow'});
+        if(!r.ok)throw Error('Reader HTTP '+r.status);
+        const doc=await r.text();
+        if(!doc||doc.length<300)throw Error('Empty reader response');
+
+        const p=parseBikeWaleText(doc);
+        const pageImage=image || imageFromHtml(doc);
+
+        /*
+          IMPORTANT: accept a document only when it belongs to the selected
+          model. This prevents a proxy error page or a similar-bike page from
+          being interpreted as the selected bike's price.
+        */
+        const wantedModel=String(model.modelName||model.name||'').trim();
+        const wantedMake=String(make.makeName||make.name||'').trim();
+        const hasModel=new RegExp(wantedModel.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i').test(doc);
+        const hasMake=!wantedMake || new RegExp(wantedMake.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i').test(doc);
+        const hasPriceSection=/(?:on[- ]?road\s+price|price\s+list|variants?\s*\|\s*(?:price|on[- ]?road)|ex[- ]?showroom|\brto\b|insurance)/i.test(doc);
+
+        if((hasModel||hasMake) && (p.total||p.ex||p.rto||p.insurance||p.variants.length) && hasPriceSection){
+          return {target:t,text:doc,image:pageImage};
+        }
+        last=Error('Selected model price section not found');
+      }catch(e){last=e}
+    }
+  }
+
+  /*
+    Final direct attempt. If the WebView allows CORS for BikeWale, this is
+    the cleanest source. It is still the exact selected model page.
+  */
+  for(const t of targets){
+    try{
+      const r=await fetch(t,{cache:'no-store'});
+      if(!r.ok)throw Error('BikeWale HTTP '+r.status);
+      const doc=await r.text();
+      const p=parseBikeWaleText(doc);
+      if(p.total||p.variants.length||p.ex||p.rto||p.insurance){
+        return {target:t,text:doc,image:image||imageFromHtml(doc)};
+      }
+      last=Error('No price data in direct response');
+    }catch(e){last=e}
+  }
+
+  if(image)return {target:baseTarget,text:'',image};
+  throw last||Error('Could not read exact BikeWale price page');
+}
+
+async function loadMakes(){
+  try{
+    const data=await getJson(MAKE_API);
+    makes=arr(data,["makes","makeList","data"]);
+    if(!makes.length)throw Error("No brands returned");
+
+    makeEl.innerHTML=makes.map(m=>
+      `<option value="${esc(m.makeId??m.id)}">${esc(m.makeName??m.name)}</option>`
+    ).join("");
+
+    // Keep the API's first brand as the initial selection. Do not force a
+    // particular manufacturer because it hides other models on first load.
+
+    makeEl.dataset.loaded="1";
+    await loadModels();
+  }catch(e){
+    petrolResult.innerHTML=`<div class="error">Could not load petrol brands.<br>${esc(e.message)}</div>`;
+  }
+}
+
+async function loadModels(){
+  const req=++petrolModelRequest;
+  const makeId=String(makeEl.value);
+  modelEl.innerHTML="<option>Loading models…</option>";
+  petrolResult.innerHTML=priceLoading("petrol","Loading models");
+
+  try{
+    const data=await getJson(MODEL_API(makeId));
+    if(req!==petrolModelRequest)return;
+
+    models=arr(data,["models","modelList","data"]);
+    if(!models.length)throw Error("No models returned");
+
+    // Petrol page must never show EV models. Some BikeWale make/model
+    // responses include electric models under the same brand (for example
+    // Honda Activa e), which previously caused the petrol price scraper to
+    // request a petrol price page that does not exist.
+    const isElectricModel=m=>{
+      const fuel=String(
+        m.fuelTypeName ?? m.fuelType ?? m.fuel ?? m.fuelName ??
+        m.fuelTypeText ?? m.fuelCategory ?? ""
+      ).toLowerCase();
+      if(/electric|ev|battery/.test(fuel)) return true;
+      if(m.isElectric===true || m.electric===true) return true;
+      const name=String(m.modelName??m.name??"").toLowerCase().trim();
+      return /(^|\s)(activa\s*e|cuv\s*e|qc1|shine\s*e)(\s|$)/i.test(name);
+    };
+
+    models=models.filter(m=>!isElectricModel(m));
+    if(!models.length)throw Error("No petrol models returned for this brand");
+
+    modelEl.innerHTML=models.map(m=>
+      `<option value="${esc(m.modelId??m.id)}">${esc(m.modelName??m.name)}</option>`
+    ).join("");
+
+    const mk=makes.find(x=>String(x.makeId??x.id)===makeId);
+    const mn=mk?.makeName??mk?.name??"";
+
+    // Keep the API's first model as the initial selection for every brand.
+    // This avoids hard-coded Suzuki/Access behaviour.
+    await loadPetrolPrice();
+  }catch(e){
+    if(req===petrolModelRequest)
+      petrolResult.innerHTML=`<div class="error">Could not load models.<br>${esc(e.message)}</div>`;
+  }
+}
+
+async function loadPetrolPrice(){
+  const req=++petrolPriceRequest;
+  const mk=makes.find(x=>String(x.makeId??x.id)===String(makeEl.value));
+  const mo=models.find(x=>String(x.modelId??x.id)===String(modelEl.value));
+  if(!mk||!mo)return;
+
+  const makeName=mk.makeName??mk.name;
+  const modelName=mo.modelName??mo.name;
+
+  // Defensive guard for stale selections/bookmarks. Electric models belong
+  // to the Electric Bike flow, not the petrol price scraper.
+  const fuelText=String(
+    mo.fuelTypeName ?? mo.fuelType ?? mo.fuel ?? mo.fuelName ??
+    mo.fuelTypeText ?? mo.fuelCategory ?? ""
+  ).toLowerCase();
+  const looksElectric=mo.isElectric===true || mo.electric===true ||
+    /electric|battery|\bev\b/.test(fuelText) ||
+    /(^|\s)(activa\s*e|cuv\s*e|qc1|shine\s*e)(\s|$)/i.test(String(modelName));
+  if(looksElectric){
+    petrolResult.innerHTML=`<div class="error"><b>This is an electric model.</b><br><br>Open it from the Electric Bike section to see its Goa price.</div>`;
+    return;
+  }
+
+  const key=slug(makeName)+"|"+slug(modelName);
+
+  if(PETROL_FALLBACK[key]){
+    renderPetrol({...PETROL_FALLBACK[key]},null,firstImageValue(mo));
+  }else{
+    petrolResult.innerHTML=priceLoading("petrol","Fetching latest Goa on-road price");
+  }
+
+  try{
+    const x=await fetchPetrolPage(mk,mo);
+    if(req!==petrolPriceRequest)return;
+
+    window.__CURRENT_PETROL_MODEL=modelName;
+    const p=parseBikeWaleText(x.text);
+    // A number of valid BikeWale models do not expose every breakup row to
+    // the text reader. The total is the important value; render any rows
+    // that are actually available instead of showing a red error.
+    if(!p.total){
+      const fb=PETROL_FALLBACK[key]||{};
+      if(!fb.price)throw Error("No Goa price returned for this model.");
+    }
+
+    const fb=PETROL_FALLBACK[key]||{};
+    renderPetrol({
+      make:makeName,model:modelName,price:p.total,
+      ex:p.ex,rto:p.rto,insurance:p.insurance,
+      variant:p.variants[0]?.name||fb.variant||"Selected variant"
+    },p.variants,x.image);
+  }catch(e){
+    if(req!==petrolPriceRequest)return;
+    if(!PETROL_FALLBACK[key]){
+      petrolResult.innerHTML=
+        `<div class="pricebox"><div class="error"><b>Goa price is temporarily unavailable.</b><br><br>
+        Please try this model again in a moment.</div></div>`;
+    }
+  }
+}
+
+function renderPetrol(p,variants,image){
+  // Final guard against breakup rows being displayed as variants.
+  variants=(variants||[]).filter(v=>v&&v.name&&!/^(ex[- ]?showroom|rto|registration|insurance|comprehensive|on[- ]?road(?:\s+price)?|total|price)$/i.test(String(v.name).trim()));
+  const safe=normalizeImageUrl(image);
+  const full=getBikeOriginalImageUrl(safe);
+
+  const img=safe
+    ? `<div class="bike-visual">
+         <img class="bike-image" src="${esc(safe)}" alt="${esc(p.model)}"
+              onerror="this.outerHTML='<div class=&quot;bike-image-placeholder&quot;>🏍️</div>'">
+         <button class="watch-bike" data-full="${esc(full)}" data-name="${esc(p.model)}">Watch Bike Picture</button>
+       </div>`
+    : `<div class="bike-visual"><div class="bike-image-placeholder">🏍️</div></div>`;
+
+  petrolResult.innerHTML=
+    `<div class="pricebox">
+      <div class="bike-head">
+        ${img}
+        <div>
+          <div class="heading">${esc(p.make)}</div>
+          <div class="model">${esc(p.model)}</div>
+          <div class="variant-name">${esc(p.variant||"Selected variant")}</div>
+        </div>
+      </div>
+      <div class="rows">
+        ${p.ex?`<div class="row"><span>Ex-showroom</span><strong>${esc(p.ex)}</strong></div>`:""}
+        ${p.rto?`<div class="row"><span>RTO</span><strong>${esc(p.rto)}</strong></div>`:""}
+        ${p.insurance?`<div class="row"><span>Insurance</span><strong>${esc(p.insurance)}</strong></div>`:""}
+        <div class="row total"><span>On Road Price <small>(Goa)</small></span><strong>${esc(p.price||"—")}</strong></div>
+      </div>
+      <div class="note">On-road price in Goa</div>
+      ${variants?.length
+        ? `<div class="variants-p"><h2>Available Variants</h2>
+            ${variants.map(v=>`<div class="variant-p"><span>${esc(v.name)}</span><strong>${esc(v.price)}</strong></div>`).join("")}
+           </div>`
+        : ""}
+    </div>`;
+}
+
+makeEl.addEventListener("change",loadModels);
+modelEl.addEventListener("change",loadPetrolPrice);
+
+/* ---------- exact-image viewer ---------- */
+const imageModal=document.getElementById("imageModal");
+const fullImage=document.getElementById("fullImage");
+const imageCaption=document.getElementById("imageCaption");
+
+function openImage(url,name){
+  if(!url)return;
+  fullImage.src=url;
+  fullImage.alt=name||"Bike picture";
+  imageCaption.textContent=name||"Bike picture";
+  imageModal.classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeImage(){
+  imageModal.classList.remove("open");
+  fullImage.src="";
+  document.body.style.overflow="";
+}
+
+petrolResult.addEventListener("click",e=>{
+  const b=e.target.closest(".watch-bike");
+  if(b)openImage(b.dataset.full,b.dataset.name);
+});
+document.getElementById("imageClose").onclick=closeImage;
+imageModal.onclick=e=>{if(e.target===imageModal)closeImage()};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeImage()});
+
+
+// Modern touch ripple for the two home choices. The whole card remains clickable.
+document.querySelectorAll('.mode-card').forEach(card=>{
+  card.addEventListener('pointerdown',e=>{
+    const r=document.createElement('span'); r.className='ripple';
+    const rect=card.getBoundingClientRect(); const size=Math.max(rect.width,rect.height)*.32;
+    r.style.width=r.style.height=size+'px';
+    r.style.left=(e.clientX-rect.left-size/2)+'px'; r.style.top=(e.clientY-rect.top-size/2)+'px';
+    card.appendChild(r); setTimeout(()=>r.remove(),600);
+  });
+});
+</script>
+
+<style id="v19-typography-cleanup">
+/* V19 — typography cleanup only */
+body {
+  letter-spacing: 0 !important;
+  word-spacing: 0.02em !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.card-title, .hero-title, .title {
+  letter-spacing: -0.02em !important;
+  word-spacing: 0.03em !important;
+}
+
+p, .subtitle, .description, .card-description,
+button, .btn, .badge, .eyebrow, .label, .meta {
+  letter-spacing: 0.005em !important;
+  word-spacing: 0.025em !important;
+}
+
+button, .btn {
+  font-weight: 700 !important;
+}
+
+input, select, option {
+  letter-spacing: 0 !important;
+  word-spacing: 0.02em !important;
+}
+
+/* Prevent text from looking cramped on narrow phones. */
+@media (max-width: 480px) {
+  h1, .hero-title {
+    letter-spacing: -0.018em !important;
+  }
+
+  p, .subtitle, .description, .card-description {
+    line-height: 1.5 !important;
+  }
+
+  button, .btn {
+    line-height: 1.25 !important;
+  }
+}
+</style>
+
+</body>
+</html>
