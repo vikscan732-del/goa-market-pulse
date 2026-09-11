@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>Goa Government Schemes</title>
+<meta name="description" content="Find Goa Government Schemes, benefits, eligibility, documents and application details.">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;background:#f7f7f7;color:#222}
+body{min-height:100vh}
+button,input{font:inherit}
+button{cursor:pointer}
+
+.header{
+  min-height:178px;
+  padding:28px 22px 24px;
+  background:linear-gradient(115deg,#ffad45,#ffd77b);
+  position:relative;
+}
+.topbar{height:90px;display:flex;align-items:center;gap:14px}
+.back{
+  border:0;background:transparent;color:white;font-size:42px;line-height:1;
+  width:48px;height:55px;padding:0;
+}
+.header h1{margin:0;color:#fff;font-size:29px;font-weight:700}
+.lang{
+  margin-left:auto;border:0;background:transparent;font-size:24px;
+  color:#126b73;font-weight:bold
+}
+
+.container{max-width:900px;margin:0 auto;padding:20px 18px 40px}
+.searchbox{
+  background:#fff3df;border:1px solid #ead9c0;border-radius:15px;
+  box-shadow:0 2px 7px #00000014;display:flex;align-items:center;
+  padding:0 15px;height:62px;margin-top:3px
+}
+.search-icon{font-size:31px;margin-right:12px}
+.searchbox input{border:0;outline:0;background:transparent;width:100%;font-size:23px;color:#444}
+.searchbox input::placeholder{color:#777}
+
+.filters{
+  display:flex;gap:9px;overflow-x:auto;padding:10px 0 14px;
+  scrollbar-width:none
+}
+.filters::-webkit-scrollbar{display:none}
+.filter{
+  flex:0 0 auto;border:1px solid #e1e1e1;background:#fff;
+  border-radius:12px;padding:10px 15px;color:#555;font-size:14px;
+  box-shadow:0 1px 3px #0000000b
+}
+.filter.active{
+  background:#ffad45;color:#fff;border-color:#ffad45;
+  box-shadow:0 3px 7px #ffad4540
+}
+
+.section-heading{
+  font-size:20px;font-weight:700;color:#333;margin:2px 4px 4px
+}
+.list{margin-top:15px;background:transparent}
+.card{
+  width:100%;display:flex;align-items:center;gap:12px;
+  min-height:68px;margin:0 0 12px;padding:14px 16px;
+  border:0;border-radius:15px;background:linear-gradient(100deg,#ffad45,#ffc764);
+  box-shadow:0 3px 8px #0000001c;transition:transform .12s,box-shadow .12s;
+  color:white
+}
+.card:active{transform:scale(.985);box-shadow:0 1px 4px #00000018}
+.card-main{min-width:0;flex:1}
+.number{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:27px;height:27px;border-radius:50%;background:#fff;color:#e58d20;
+  font-size:13px;font-weight:700;margin-right:8px;vertical-align:middle
+}
+.title{
+  display:inline;color:#fff;font-size:18px;line-height:1.35;font-weight:700;
+  margin:0
+}
+.tags{display:none}
+.thumb{display:none}
+.arrow{
+  flex:0 0 auto;width:31px;height:31px;border-radius:50%;
+  background:#ffffff33;color:#fff;display:flex;align-items:center;
+  justify-content:center;font-size:27px;line-height:1
+}
+
+.status{text-align:center;padding:28px;color:#666;font-size:16px}
+.spinner{
+  width:30px;height:30px;border:3px solid #ddd;border-top-color:#ffad45;
+  border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.pagination{display:flex;justify-content:center;align-items:center;gap:10px;padding:20px 0}
+.page-btn{
+  border:0;background:#ffad45;color:white;border-radius:10px;
+  padding:11px 16px;font-weight:bold
+}
+.page-btn:disabled{opacity:.4;cursor:not-allowed}
+.page-info{color:#555;font-weight:600}
+
+.detail{display:none}
+.detail.visible{display:block}
+.list-page.hidden{display:none}
+.detail-image{
+  width:100%;max-height:310px;object-fit:cover;border-radius:18px;
+  background:#eee;display:block
+}
+.detail-title{font-size:28px;line-height:1.2;margin:18px 0 10px;color:#111}
+.detail-label{
+  display:inline-block;background:#ffad45;color:#fff;border-radius:10px;
+  padding:6px 10px;font-size:12px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.3px;margin-bottom:2px
+}
+.detail-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.pill{
+  background:#fff1d9;border:1px solid #f0d7ad;color:#82530e;
+  border-radius:20px;padding:8px 12px;font-size:14px
+}
+.section{
+  background:#fff;border-radius:16px;padding:18px;margin:13px 0;
+  box-shadow:0 1px 5px #0000000d
+}
+.section h2{font-size:21px;margin:0 0 13px;color:#222}
+.section p{font-size:16px;line-height:1.65;margin:9px 0}
+.section ul,.section ol{padding-left:23px;margin:8px 0}
+.section li{line-height:1.6;margin:7px 0}
+.section table{border-collapse:collapse;width:100%;margin:8px 0}
+.section th,.section td{border:1px solid #ddd;padding:10px;text-align:left;min-width:150px}
+.section th{background:#fff3df}
+.mobile-table{width:100%;margin:8px 0}
+.mobile-table-row{
+  display:block;background:#fff;border:1px solid #e7e7e7;
+  border-radius:12px;margin:9px 0;overflow:hidden
+}
+.mobile-table-label{
+  display:block;background:#fff3df;color:#7a4d10;font-weight:700;
+  font-size:14px;padding:9px 12px
+}
+.mobile-table-value{
+  display:block;color:#222;font-size:16px;line-height:1.5;
+  padding:10px 12px
+}
+@media(max-width:600px){
+  body{font-size:16px}
+  .section{padding:15px;margin:11px 0;border-radius:14px}
+  .section h2{font-size:20px;line-height:1.25}
+  .section p,.section li{font-size:16px;line-height:1.58}
+  .section ol,.section ul{padding-left:21px}
+  .section table{display:block;overflow:visible}
+  .mobile-table-value a{word-break:break-word}
+}
+.section a{color:#1236b5;word-break:break-word}
+.hero-summary{
+  background:linear-gradient(115deg,#fff4e3,#fffaf3);
+  border-left:5px solid #ffad45
+}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.summary-item{background:#fff;padding:12px;border-radius:11px;border:1px solid #eee}
+.summary-label{font-size:12px;color:#777;margin-bottom:5px}
+.summary-value{font-weight:600;line-height:1.4}
+.faq-q{
+  width:100%;border:0;background:#fafafa;text-align:left;padding:14px;
+  border-radius:10px;margin-top:8px;font-weight:700
+}
+.faq-a{display:none;padding:12px 14px 5px;line-height:1.6}
+.faq-a.open{display:block}
+
+.detail-back{
+  display:flex;align-items:center;gap:5px;border:0;background:transparent;
+  color:#fff;font-weight:bold;font-size:17px;padding:0
+}
+.detail-top{display:flex;align-items:center;height:70px}
+.error{
+  background:#fff1f1;border:1px solid #f2c5c5;color:#a33;padding:15px;
+  border-radius:12px;text-align:center
+}
+.empty{text-align:center;padding:40px 20px;color:#777}
+
+@media(max-width:600px){
+  .header{min-height:178px}
+  .header h1{font-size:27px}
+  .container{padding:20px 12px 35px}
+  .searchbox{height:62px}
+  .searchbox input{font-size:19px}
+  .card{padding:14px 13px;min-height:64px}
+  .title{font-size:17px}
+  .summary-grid{grid-template-columns:1fr}
+  .detail-title{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="topbar">
+    <button class="back" id="headerBack" aria-label="Back">←</button>
+    <h1 id="headerTitle">Goa Schemes</h1>
+    <button class="lang" type="button" aria-label="Language">अ A</button>
+  </div>
+</header>
+
+<main class="container">
+  <section id="listPage" class="list-page">
+    <div class="section-heading">Categories</div>
+    <div class="filters">
+      <button class="filter active" data-filter="all">All Schemes</button>
+      <button class="filter" data-filter="Financial Assistance">Financial Assistance</button>
+      <button class="filter" data-filter="Housing">Housing</button>
+      <button class="filter" data-filter="Loan">Loans</button>
+      <button class="filter" data-filter="Education">Education</button>
+      <button class="filter" data-filter="Women">Women</button>
+      <button class="filter" data-filter="Students">Students</button>
+    </div>
+
+    <div class="searchbox">
+      <span class="search-icon">🔍</span>
+      <input id="search" type="search" placeholder="Search Scheme" autocomplete="off">
+    </div>
+
+    <div id="list" class="list">
+      <div class="status"><div class="spinner"></div>Loading Goa schemes...</div>
+    </div>
+
+    <div class="pagination">
+      <button class="page-btn" id="prev">← Previous</button>
+      <span class="page-info" id="pageInfo">Page 1 of 3</span>
+      <button class="page-btn" id="next">Next →</button>
+    </div>
+  </section>
+
+  <section id="detailPage" class="detail">
+    <div id="detailContent"></div>
+  </section>
+</main>
+
+<script>
+const API_BASE = "https://www.govtschemes.in/api";
+const LIST_ENDPOINT = API_BASE + "/schemes?lang=en&state=162&caste=0&person_type=0&scheme_type=0";
+const LIMIT = 10;
+
+/*
+  IMPORTANT:
+  A normal HTML file/GitHub Pages cannot reliably call govtschemes.in
+  from JavaScript if that server does not grant CORS permission.
+  Therefore the catalogue below is embedded as a guaranteed fallback.
+  The page never gets stuck on "Loading".
+*/
+const EMBEDDED_SCHEMES = [
+  ["Goa Ashraya Adhar Scheme","/goa-ashraya-adhar-scheme"],
+  ["Goa Atal Asra Yojana","/goa-atal-asra-yojana"],
+  ["Goa Chief Minister's Apprenticeship Scheme","/goa-chief-ministers-apprenticeship-scheme"],
+  ["Goa Chief Minister's Housing Scheme","/goa-chief-ministers-housing-scheme"],
+  ["Goa Chief Minister's Rojgar Yojana","/goa-chief-ministers-rojgar-yojana"],
+  ["Goa Dayanand Social Security Scheme","/goa-dayanand-social-security-scheme"],
+  ["Goa Deen Dayal Swasthya Seva Yojana","/goa-deen-dayal-swasthya-seva-yojana"],
+  ["Goa Divyang Kaushal Yojana","/goa-divyang-kaushal-yojana"],
+  ["Goa Eklavya Prashikshan Yojana","/goa-eklavya-prashikshan-yojana"],
+  ["Goa Griha Aadhar Scheme","/goa-griha-aadhar-scheme"],
+  ["Goa Interest Free Education Loan Scheme (IFEL)","/goa-interest-free-education-loan-scheme-ifel"],
+  ["Goa Kanya Dhan Scheme","/goa-kanya-dhan-scheme"],
+  ["Goa Laadli Laxmi Scheme","/goa-laadli-laxmi-scheme"],
+  ["Goa Mamta Scheme","/goa-mamta-scheme"],
+  ["Goa Mhaje Ghar Yojana","/goa-mhaje-ghar-yojana"],
+  ["Goa MHAJO FLAT Scheme","/goa-mhajo-flat-scheme"],
+  ["Goa Mukhya Mantri Janjatiya Mhaje Ghar Yojana","/goa-mukhya-mantri-janjatiya-mhaje-ghar-yojana"],
+  ["Goa Mukhyamantri Bahujan Utkarsh Yojana","/goa-mukhyamantri-bahujan-utkarsh-yojana"],
+  ["Goa Mukhyamantri Sukanya Kaushal Vikas Protsahan Yojana","/goa-mukhyamantri-sukanya-kaushal-vikas-protsahan-yojana"],
+  ["Goa Mukhyamantri Swayam Rojgar Yojana (MSRY)","/goa-mukhyamantri-swayam-rojgar-yojana-msry"],
+  ["Goa Patrakar Kritadnyata Nidhi Scheme (Journalist Benevolent Fund)","/goa-patrakar-kritadnyata-nidhi-scheme-journalist-benevolent-fund"],
+  ["Goa Sant Sohirobanath Ambiye Dnyanvruddhi Shishyavrutti Bursary Scheme","/goa-sant-sohirobanath-ambiye-dnyanvruddhi-shishyavrutti-bursary-scheme"],
+  ["Goa Self Employment Scheme","/goa-self-employment-scheme"],
+  ["Goa Short Term Loan Scheme","/goa-short-term-loan-scheme"],
+  ["Goa Ujjwala Yojana","/goa-ujjwala-yojana"],
+  ["Manohar Parrikar Goa Scholars Scheme","/manohar-parrikar-goa-scholars-scheme"]
+].map((x,i)=>({
+  nid: null,
+  title: x[0],
+  url: x[1],
+  image: "",
+  scheme_type: [],
+  caste: [],
+  person_type: [],
+  _index: i + 1
+}));
+
+let currentPage = 1;
+let totalPages = Math.ceil(EMBEDDED_SCHEMES.length / LIMIT);
+let allVisible = [];
+let activeFilter = "all";
+let searchText = "";
+let currentScheme = null;
+
+const listPage = document.getElementById("listPage");
+const detailPage = document.getElementById("detailPage");
+const listEl = document.getElementById("list");
+const searchEl = document.getElementById("search");
+const pageInfo = document.getElementById("pageInfo");
+const prevBtn = document.getElementById("prev");
+const nextBtn = document.getElementById("next");
+const headerBack = document.getElementById("headerBack");
+const headerTitle = document.getElementById("headerTitle");
+
+function escapeHTML(value){
+  return String(value ?? "")
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;").replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+function stripHTML(value){
+  const div = document.createElement("div");
+  div.innerHTML = value || "";
+  return div.textContent || div.innerText || "";
+}
+
+function tags(items, max=3){
+  return (items || []).slice(0,max).map(x =>
+    `<span class="tag">${escapeHTML(x.name)}</span>`
+  ).join("");
+}
+
+async function fetchJSON(url){
+  try{
+    const r = await fetch(url, {cache:"no-store"});
+    if(r.ok) return await r.json();
+  }catch(e){}
+  throw new Error("CORS/API unavailable");
+}
+
+async function loadSchemes(page=1){
+  currentPage = Math.max(1, Math.min(page,totalPages));
+
+  // Always render immediately. No indefinite loading.
+  const start = (currentPage-1) * LIMIT;
+  allVisible = EMBEDDED_SCHEMES.slice(start,start+LIMIT);
+  renderList();
+  pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+  prevBtn.disabled = currentPage <= 1;
+  nextBtn.disabled = currentPage >= totalPages;
+
+  // If hosted somewhere that permits CORS, refresh this page from the live API.
+  // Failure is silently ignored because the embedded catalogue is already usable.
+  try{
+    const json = await fetchJSON(`${LIST_ENDPOINT}&page=${currentPage}&limit=${LIMIT}`);
+    if(Array.isArray(json.data) && json.data.length){
+      allVisible = json.data;
+      renderList();
+      totalPages = Number(json.meta?.total_pages || totalPages);
+      pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+      prevBtn.disabled = currentPage <= 1;
+      nextBtn.disabled = currentPage >= totalPages;
+    }
+  }catch(e){
+    console.warn("Using embedded Goa schemes catalogue:", e.message);
+  }
+}
+
+function renderList(){
+  const filtered = allVisible.filter(scheme => {
+    const name = (scheme.title || "").toLowerCase();
+    const typeNames = (scheme.scheme_type || []).map(x=>x.name);
+    const matchesSearch = !searchText || name.includes(searchText);
+    const personNames = (scheme.person_type || []).map(x => x.name);
+    const matchesFilter =
+      activeFilter === "all" ||
+      typeNames.includes(activeFilter) ||
+      (activeFilter === "Women" && personNames.some(x => /widow|women|girl/i.test(x))) ||
+      (activeFilter === "Students" && personNames.some(x => /student/i.test(x)));
+    return matchesSearch && matchesFilter;
+  });
+
+  if(!filtered.length){
+    listEl.innerHTML = `<div class="empty">No schemes found on this page.</div>`;
+    return;
+  }
+
+  listEl.innerHTML = filtered.map((scheme,index) => `
+    <article class="card" role="button" tabindex="0"
+      data-url="${escapeHTML(scheme.url || "")}"
+      data-nid="${escapeHTML(scheme.nid || "")}">
+      ${scheme.image ? `<img class="thumb" src="${escapeHTML(scheme.image)}" alt="" loading="lazy" onerror="this.style.display='none'">` : ""}
+      <div class="card-main">
+        <div class="number">${((currentPage-1)*LIMIT)+index+1}</div>
+        <h2 class="title">${escapeHTML((scheme.title||"").trim())}</h2>
+        <div class="tags">${tags(scheme.scheme_type)}${tags(scheme.person_type,2)}</div>
+      </div>
+      <div class="arrow">›</div>
+    </article>
+  `).join("");
+
+  listEl.querySelectorAll(".card").forEach(card=>{
+    const open = () => openScheme(card.dataset.nid, card.dataset.url);
+    card.addEventListener("click",open);
+    card.addEventListener("keydown",e=>{
+      if(e.key==="Enter" || e.key===" ") {e.preventDefault();open();}
+    });
+  });
+}
+
+async function openScheme(nid,url){
+  // If we have an API nid, try the rich internal detail view.
+  if(nid){
+    listPage.classList.add("hidden");
+    detailPage.classList.add("visible");
+    headerTitle.textContent = "Scheme Details";
+    document.getElementById("detailContent").innerHTML =
+      `<div class="status"><div class="spinner"></div>Loading scheme details...</div>`;
+    window.scrollTo(0,0);
+
+    try{
+      const json = await fetchJSON(`${API_BASE}/schemes/${encodeURIComponent(nid)}?lang=en`);
+      currentScheme = json.data || json;
+      renderDetail(currentScheme);
+      return;
+    }catch(e){
+      // Fall through to the official page.
+    }
+  }
+
+  // Static/GitHub Pages fallback: show the scheme information first.
+  // The "Official Details" button then opens the source page.
+  listPage.classList.add("hidden");
+  detailPage.classList.add("visible");
+  headerTitle.textContent = "Scheme Details";
+  window.scrollTo(0,0);
+
+  const title = (EMBEDDED_SCHEMES.find(x => x.url === url) || {}).title || "Goa Government Scheme";
+  document.getElementById("detailContent").innerHTML = `
+    <div class="section hero-summary">
+      <div class="detail-label">Goa Government Scheme</div>
+      <h2 class="detail-title" style="margin-top:12px">${escapeHTML(title)}</h2>
+      <p>Scheme information is available from the official Government Schemes source.</p>
+      <a class="page-btn" style="display:inline-block;text-decoration:none;margin-top:8px"
+         href="https://www.govtschemes.in${escapeHTML(url)}"
+         target="_blank" rel="noopener">View Full Scheme Information →</a>
+    </div>
+    <div class="section">
+      <h2>About this scheme</h2>
+      <p>Tap <b>View Full Scheme Information</b> to see eligibility, benefits, required documents, application procedure, contact details and other available information.</p>
+    </div>`;
+
+}
+
+function removeSubscriptionContent(root){
+  // Remove any table row whose label is Subscription.
+  root.querySelectorAll("table tr").forEach(row=>{
+    const firstCell = row.querySelector("th,td");
+    if(firstCell && /subscription/i.test(firstCell.textContent.trim())){
+      row.remove();
+    }
+  });
+
+  // Remove standalone subscription/update links and their surrounding list items/paragraphs.
+  root.querySelectorAll("a").forEach(a=>{
+    const text = (a.textContent || "").trim();
+    if(/subscribe|subscription|update regarding scheme/i.test(text)){
+      const li = a.closest("li");
+      const p = a.closest("p");
+      if(li) li.remove();
+      else if(p) p.remove();
+      else a.remove();
+    }
+  });
+
+  // Remove empty list/paragraph elements left after subscription removal.
+  root.querySelectorAll("li,p").forEach(el=>{
+    if(!el.textContent.trim() && !el.querySelector("img")) el.remove();
+  });
+}
+
+function makeTablesMobile(root){
+  root.querySelectorAll("table").forEach(table=>{
+    const rows = [...table.querySelectorAll("tr")];
+    if(rows.length < 2) return;
+
+    // Keep the table's header as column names and convert each data row
+    // into a readable mobile card.
+    const headerCells = [...rows[0].querySelectorAll("th,td")].map(c=>c.textContent.trim());
+    if(!headerCells.length) return;
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "mobile-table";
+
+    rows.slice(1).forEach(row=>{
+      const cells = [...row.querySelectorAll("td,th")];
+      if(!cells.length) return;
+
+      const item = document.createElement("div");
+      item.className = "mobile-table-row";
+
+      cells.forEach((cell,i)=>{
+        const label = document.createElement("div");
+        label.className = "mobile-table-label";
+        label.textContent = headerCells[i] || `Information ${i+1}`;
+
+        const value = document.createElement("div");
+        value.className = "mobile-table-value";
+        value.innerHTML = cell.innerHTML;
+
+        item.appendChild(label);
+        item.appendChild(value);
+      });
+      wrapper.appendChild(item);
+    });
+
+    if(wrapper.children.length){
+      table.replaceWith(wrapper);
+    }
+  });
+}
+
+function renderDetail(s){
+  const body = s.body || "";
+  const highlights = s.highlights || "";
+  const image = s.image || "";
+  const typeText = (s.scheme_type||[]).map(x=>x.name).join(", ");
+  const personText = (s.person_type||[]).map(x=>x.name).join(", ");
+  const casteText = (s.caste||[]).map(x=>x.name).join(", ");
+
+  let summary = "";
+  const tableMatch = body.match(/<table[\s\S]*?<\/table>/i);
+  if(tableMatch) summary = tableMatch[0];
+  const bodyWithoutFirstTable = summary ? body.replace(summary,"") : body;
+
+  let html = `
+    <div class="detail-label">Scheme Information</div>
+    <img class="detail-image" src="${escapeHTML(image)}" alt="${escapeHTML(s.title)}" onerror="this.style.display='none'">
+    <h2 class="detail-title">${escapeHTML((s.title||"").trim())}</h2>
+    <div class="detail-meta">
+      ${typeText ? `<span class="pill">${escapeHTML(typeText)}</span>` : ""}
+      ${personText ? `<span class="pill">👤 ${escapeHTML(personText)}</span>` : ""}
+      ${casteText ? `<span class="pill">Category: ${escapeHTML(casteText)}</span>` : ""}
+    </div>`;
+
+  if(highlights) html += `<div class="section hero-summary"><h2>Key Highlights</h2>${highlights}</div>`;
+  if(summary) html += `<div class="section"><h2>Scheme Summary</h2>${summary}</div>`;
+  if(bodyWithoutFirstTable.trim()) html += `<div class="section">${bodyWithoutFirstTable}</div>`;
+
+  if(s.websites?.length){
+    html += `<div class="section"><h2>Official Website</h2>
+      ${s.websites.map(w=>`<p><a href="${escapeHTML(w.url)}" target="_blank" rel="noopener">${escapeHTML(w.title || w.url)}</a></p>`).join("")}
+    </div>`;
+  }
+  if(s.customer_care) html += `<div class="section"><h2>Contact Information</h2>${s.customer_care}</div>`;
+  if(s.govt_contacts) html += `<div class="section"><h2>Government Contact</h2>${s.govt_contacts}</div>`;
+
+  if(Array.isArray(s.faqs) && s.faqs.length){
+    html += `<div class="section"><h2>Frequently Asked Questions</h2>`;
+    s.faqs.forEach((faq,i)=>{
+      html += `<button class="faq-q" data-faq="${i}">${escapeHTML(stripHTML(faq.question))}</button>
+      <div class="faq-a" id="faq-${i}">${faq.answer || ""}</div>`;
+    });
+    html += `</div>`;
+  }
+
+  const detailRoot = document.getElementById("detailContent");
+  detailRoot.innerHTML = html;
+  removeSubscriptionContent(detailRoot);
+  makeTablesMobile(detailRoot);
+
+  document.querySelectorAll(".faq-q").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      document.getElementById("faq-"+btn.dataset.faq).classList.toggle("open");
+    });
+  });
+}
+
+function showList(){
+  detailPage.classList.remove("visible");
+  listPage.classList.remove("hidden");
+  headerTitle.textContent = "Goa Schemes";
+  window.scrollTo(0,0);
+}
+
+headerBack.addEventListener("click",()=>{
+  if(detailPage.classList.contains("visible")) showList();
+  else history.back();
+});
+
+searchEl.addEventListener("input",()=>{
+  searchText = searchEl.value.trim().toLowerCase();
+  renderList();
+});
+
+document.querySelectorAll(".filter").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    activeFilter = btn.dataset.filter;
+    renderList();
+  });
+});
+
+prevBtn.addEventListener("click",()=>{ if(currentPage>1) loadSchemes(currentPage-1); });
+nextBtn.addEventListener("click",()=>{ if(currentPage<totalPages) loadSchemes(currentPage+1); });
+
+loadSchemes(1);
+</script>
+</body>
+</html>
