@@ -203,6 +203,33 @@
                 font-size: 14px;
             }
         }
+
+        /* ==========================================
+           🏛️ GOA GOVERNMENT SCHEMES BANNER
+           ========================================== */
+
+        .goa-schemes-banner {
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 23px;
+            margin: 0 0 13px;
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .goa-schemes-banner:active {
+            transform: scale(0.975);
+        }
+
+        .goa-schemes-banner img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
     </style>
 </head>
 
@@ -258,67 +285,32 @@
         <!-- Top 4 Category Cards -->
         <div class="grid grid-cols-4 gap-2.5">
 
-            <!-- Goa Bagayatdar -->
-            <a href="bagayatdar.html"
-               class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#eaf8f0] border border-[#c3ecd2] shadow-sm hover:shadow-md transition active:scale-95 text-center">
-
-                <div class="text-3xl my-auto">
-                    🧺
-                </div>
-
+            <a href="bagayatdar.html" class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#eaf8f0] border border-[#c3ecd2] shadow-sm hover:shadow-md transition active:scale-95 text-center">
+                <div class="text-3xl my-auto">🧺</div>
                 <span class="text-[11px] font-bold text-[#0e5e3a] leading-tight mt-2 flex items-center justify-center gap-0.5">
-                    Goa Bagaydar
-                    <i class="fas fa-chevron-right text-[8px]"></i>
+                    Goa Bagaydar <i class="fas fa-chevron-right text-[8px]"></i>
                 </span>
-
             </a>
 
-
-            <!-- Vegetables -->
-            <a href="vegetable.html"
-               class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#fff6ee] border border-[#ffdec2] shadow-sm hover:shadow-md transition active:scale-95 text-center">
-
-                <div class="text-3xl my-auto">
-                    🥬
-                </div>
-
+            <a href="vegetable.html" class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#fff6ee] border border-[#ffdec2] shadow-sm hover:shadow-md transition active:scale-95 text-center">
+                <div class="text-3xl my-auto">🥬</div>
                 <span class="text-[11px] font-bold text-[#c2410c] leading-tight mt-2 flex items-center justify-center gap-0.5">
-                    Vegetable
-                    <i class="fas fa-chevron-right text-[8px]"></i>
+                    Vegetable <i class="fas fa-chevron-right text-[8px]"></i>
                 </span>
-
             </a>
 
-
-            <!-- Construction -->
-            <a href="construction.html"
-               class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#f0f6ff] border border-[#cfe2ff] shadow-sm hover:shadow-md transition active:scale-95 text-center">
-
-                <div class="text-3xl my-auto">
-                    🏗️
-                </div>
-
+            <a href="construction.html" class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#f0f6ff] border border-[#cfe2ff] shadow-sm hover:shadow-md transition active:scale-95 text-center">
+                <div class="text-3xl my-auto">🏗️</div>
                 <span class="text-[11px] font-bold text-[#1d4ed8] leading-tight mt-2 flex items-center justify-center gap-0.5">
-                    Construction
-                    <i class="fas fa-chevron-right text-[8px]"></i>
+                    Construction <i class="fas fa-chevron-right text-[8px]"></i>
                 </span>
-
             </a>
 
-
-            <!-- Fuel -->
-            <a href="fuel.html"
-               class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#fffbeb] border border-[#fef08a] shadow-sm hover:shadow-md transition active:scale-95 text-center">
-
-                <div class="text-3xl my-auto">
-                    ⛽
-                </div>
-
+            <a href="fuel.html" class="flex flex-col items-center justify-between p-3 rounded-2xl bg-[#fffbeb] border border-[#fef08a] shadow-sm hover:shadow-md transition active:scale-95 text-center">
+                <div class="text-3xl my-auto">⛽</div>
                 <span class="text-[11px] font-bold text-[#b45309] leading-tight mt-2 flex items-center justify-center gap-0.5">
-                    Fuel
-                    <i class="fas fa-chevron-right text-[8px]"></i>
+                    Fuel <i class="fas fa-chevron-right text-[8px]"></i>
                 </span>
-
             </a>
 
         </div>
@@ -368,15 +360,9 @@
 
                 </div>
 
-
                 <div class="flex items-center gap-1 bg-white/20 group-hover:bg-white text-white group-hover:text-emerald-900 text-xs font-black px-3 py-2 rounded-xl transition duration-300 shrink-0">
-
-                    <span>
-                        Open
-                    </span>
-
+                    <span>Open</span>
                     <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
-
                 </div>
 
             </div>
@@ -388,22 +374,15 @@
         <div class="space-y-3 pt-2">
 
             <h2 class="font-extrabold text-sm text-slate-700 flex items-center gap-2">
-
                 <i class="fas fa-chart-line text-emerald-600"></i>
-
                 Today's Trending Prices
-
             </h2>
-
 
             <div id="trendingList" class="space-y-2.5">
 
                 <div class="text-center py-6 text-xs text-slate-400 bg-white rounded-2xl border border-slate-100 shadow-sm">
-
                     <i class="fas fa-spinner fa-spin mr-1.5"></i>
-
                     Loading fresh prices...
-
                 </div>
 
             </div>
@@ -428,20 +407,11 @@
                     loading="lazy"
                 >
 
-                <!-- Animated Click Indicator -->
                 <div class="bike-tap-indicator">
-
-                    <span>
-                        Tap to View
-                    </span>
-
-                    <span class="bike-tap-arrow">
-                        →
-                    </span>
-
+                    <span>Tap to View</span>
+                    <span class="bike-tap-arrow">→</span>
                 </div>
 
-                <!-- Pulse -->
                 <div class="bike-tap-dot"></div>
 
             </div>
@@ -449,9 +419,25 @@
         </a>
 
 
+        <!-- ==============================================
+             🏛️ GOA GOVERNMENT SCHEMES BANNER
+             ============================================== -->
+
+        <a href="goa-schemes.html"
+           class="goa-schemes-banner"
+           aria-label="Open Goa Government Schemes">
+
+            <img
+                src="goa-government-schemes.png"
+                alt="Goa Government Schemes"
+                loading="lazy"
+            >
+
+        </a>
+
+
         <!-- Quick Access Banners -->
         <div class="space-y-3 pt-2">
-
 
             <!-- START: Useful Tools & Calculators Bright Animated Banner -->
 
@@ -477,11 +463,8 @@
                                 </span>
 
                                 <span class="inline-flex items-center text-[9px] text-indigo-100 font-semibold">
-
                                     <span class="w-1.5 h-1.5 rounded-full bg-pink-300 mr-1 animate-pulse"></span>
-
                                     80+ Calculators
-
                                 </span>
 
                             </div>
@@ -498,15 +481,9 @@
 
                     </div>
 
-
                     <div class="flex items-center gap-1 bg-white/20 group-hover:bg-white text-white group-hover:text-indigo-900 text-xs font-black px-3 py-2 rounded-xl transition duration-300 shrink-0">
-
-                        <span>
-                            Open
-                        </span>
-
+                        <span>Open</span>
                         <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
-
                     </div>
 
                 </div>
@@ -515,7 +492,6 @@
 
 
             <!-- END: Useful Tools & Calculators Bright Animated Banner -->
-
 
             <!-- 1. Goa Traffic Fines -->
 
@@ -784,10 +760,6 @@
             ];
 
 
-            /* ======================================
-               1. BAGAYATDAR JSON
-               ====================================== */
-
             try {
 
                 const res =
@@ -875,10 +847,6 @@
             }
 
 
-            /* ======================================
-               2. VEGETABLE JSON
-               ====================================== */
-
             try {
 
                 const res =
@@ -932,10 +900,6 @@
 
             }
 
-
-            /* ======================================
-               3. FUEL JSON
-               ====================================== */
 
             try {
 
@@ -1021,10 +985,6 @@
             }
 
 
-            /* ======================================
-               4. METALS JSON
-               ====================================== */
-
             try {
 
                 const res =
@@ -1096,10 +1056,6 @@
 
             }
 
-
-            /* ======================================
-               RENDER TRENDING ITEMS
-               ====================================== */
 
             listEl.innerHTML =
                 trendingItems.map(item => {
