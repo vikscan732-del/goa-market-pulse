@@ -7,7 +7,7 @@
 <meta name="description" content="Find Goa Government Schemes, benefits, eligibility, documents and application details.">
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;background:#f7f7f7;color:#222}
+html,body{margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;background:#f7f7f7;color:#222;overflow-x:hidden}
 body{min-height:100vh}
 button,input{font:inherit}
 button{cursor:pointer}
@@ -102,10 +102,8 @@ button{cursor:pointer}
 .detail{display:none}
 .detail.visible{display:block}
 .list-page.hidden{display:none}
-.detail-image{
-  width:100%;max-height:310px;object-fit:cover;border-radius:18px;
-  background:#eee;display:block
-}
+.detail-image{display:none!important}
+.section img,.hero-summary img{display:none!important}
 .detail-title{font-size:28px;line-height:1.2;margin:18px 0 10px;color:#111}
 .detail-label{
   display:inline-block;background:#ffad45;color:#fff;border-radius:10px;
@@ -513,7 +511,6 @@ function makeTablesMobile(root){
 function renderDetail(s){
   const body = s.body || "";
   const highlights = s.highlights || "";
-  const image = s.image || "";
   const typeText = (s.scheme_type||[]).map(x=>x.name).join(", ");
   const personText = (s.person_type||[]).map(x=>x.name).join(", ");
   const casteText = (s.caste||[]).map(x=>x.name).join(", ");
@@ -525,7 +522,6 @@ function renderDetail(s){
 
   let html = `
     <div class="detail-label">Scheme Information</div>
-    <img class="detail-image" src="${escapeHTML(image)}" alt="${escapeHTML(s.title)}" onerror="this.style.display='none'">
     <h2 class="detail-title">${escapeHTML((s.title||"").trim())}</h2>
     <div class="detail-meta">
       ${typeText ? `<span class="pill">${escapeHTML(typeText)}</span>` : ""}
