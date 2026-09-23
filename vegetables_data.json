@@ -1,5 +1,5 @@
 {
-  "last_updated": "GSHCL 22 Sep, Today",
+  "last_updated": "GSHCL 23 Sep, Today",
   "vegetables": [
     {
       "name": "Bhendi",
@@ -7,8 +7,8 @@
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🌿",
-      "change": -2,
-      "changePercent": -6.2
+      "change": 0,
+      "changePercent": 0.0
     },
     {
       "name": "Cabbage",
@@ -16,17 +16,17 @@
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🥬",
-      "change": 1,
-      "changePercent": 4.0
+      "change": 0,
+      "changePercent": 0.0
     },
     {
       "name": "Carrot",
-      "price": 47,
+      "price": 48,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🥕",
       "change": 1,
-      "changePercent": 2.2
+      "changePercent": 2.1
     },
     {
       "name": "Cauliflower",
@@ -39,30 +39,30 @@
     },
     {
       "name": "Chilli",
-      "price": 55,
+      "price": 51,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🌶️",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -4,
+      "changePercent": -7.3
     },
     {
       "name": "Cluster Beans",
-      "price": 47,
+      "price": 43,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": -3,
-      "changePercent": -6.0
+      "change": -4,
+      "changePercent": -8.5
     },
     {
       "name": "French Beans",
-      "price": 52,
+      "price": 50,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": 5,
-      "changePercent": 10.6
+      "change": -2,
+      "changePercent": -3.8
     },
     {
       "name": "Onion",
@@ -70,8 +70,8 @@
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🧅",
-      "change": -1,
-      "changePercent": -1.7
+      "change": 0,
+      "changePercent": 0.0
     },
     {
       "name": "Potato",
@@ -88,8 +88,8 @@
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🍅",
-      "change": 4,
-      "changePercent": 16.0
+      "change": 0,
+      "changePercent": 0.0
     }
   ]
 }
