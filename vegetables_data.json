@@ -43,8 +43,8 @@
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🌶️",
-      "change": 4,
-      "changePercent": 7.5
+      "change": 0,
+      "changePercent": 0.0
     },
     {
       "name": "Cluster Beans",
@@ -61,8 +61,8 @@
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": 12,
-      "changePercent": 24.0
+      "change": 0,
+      "changePercent": 0.0
     },
     {
       "name": "Onion",
