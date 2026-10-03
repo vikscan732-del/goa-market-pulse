@@ -12,66 +12,66 @@
     },
     {
       "name": "Cabbage",
-      "price": 23,
+      "price": 22,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🥬",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -1,
+      "changePercent": -4.3
     },
     {
       "name": "Carrot",
-      "price": 44,
+      "price": 43,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🥕",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -1,
+      "changePercent": -2.3
     },
     {
       "name": "Cauliflower",
-      "price": 30,
+      "price": 31,
       "unit": "pc",
       "market": "GSHCL Goa",
       "icon": "🥦",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 1,
+      "changePercent": 3.3
     },
     {
       "name": "Chilli",
-      "price": 50,
+      "price": 49,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🌶️",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -1,
+      "changePercent": -2.0
     },
     {
       "name": "Cluster Beans",
-      "price": 52,
+      "price": 47,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -5,
+      "changePercent": -9.6
     },
     {
       "name": "French Beans",
-      "price": 70,
+      "price": 68,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -2,
+      "changePercent": -2.9
     },
     {
       "name": "Onion",
-      "price": 56,
+      "price": 57,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🧅",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 1,
+      "changePercent": 1.8
     },
     {
       "name": "Potato",
@@ -84,12 +84,12 @@
     },
     {
       "name": "Tomato",
-      "price": 32,
+      "price": 35,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🍅",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 3,
+      "changePercent": 9.4
     }
   ]
 }
