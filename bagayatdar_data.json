@@ -3,27 +3,27 @@
     "products": [
         {
             "name": "Supari Old  / सुपारी जुनी",
-            "price": "393",
+            "price": "390",
             "icon": "🥥"
         },
         {
             "name": "Supari Raas Old / सुपारी रास जुनी",
-            "price": "378",
+            "price": "375",
             "icon": "🥥"
         },
         {
             "name": "Safed Khoka Old / सफेद खोका जुना",
-            "price": "343",
+            "price": "340",
             "icon": "🥥"
         },
         {
             "name": "Lal Khoka Old / लाल खोका जुना",
-            "price": "333",
+            "price": "330",
             "icon": "🥥"
         },
         {
             "name": "Vench Old  / वेच जुना",
-            "price": "298",
+            "price": "294",
             "icon": "🥥"
         },
         {
@@ -43,7 +43,7 @@
         },
         {
             "name": "Kharad Old / खरड जुना",
-            "price": "293",
+            "price": "285",
             "icon": "📦"
         },
         {
