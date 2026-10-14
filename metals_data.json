@@ -1,24 +1,24 @@
 {
-  "last_updated": "Today, 02:39 AM",
-  "updated_iso": "2026-10-13T02:39:57.401214",
+  "last_updated": "Today, 12:27 AM",
+  "updated_iso": "2026-10-14T00:27:48.469425",
   "gold": {
     "symbol": "XAU",
-    "ounce_price": 399800.6,
-    "gram_price": 12853.89,
+    "ounce_price": 396878,
+    "gram_price": 12759.92,
     "karats": {
-      "24k": 12853.89,
-      "22k": 11782.73,
-      "18k": 9640.42
+      "24k": 12759.92,
+      "22k": 11696.6,
+      "18k": 9569.94
     }
   },
   "silver": {
     "symbol": "XAG",
-    "ounce_price": 5760.6,
-    "gram_price": 185.21,
+    "ounce_price": 5646.9,
+    "gram_price": 181.55,
     "karats": {
-      "24k": 185.21,
-      "22k": 169.77,
-      "18k": 138.91
+      "24k": 181.55,
+      "22k": 166.42,
+      "18k": 136.16
     }
   }
 }
