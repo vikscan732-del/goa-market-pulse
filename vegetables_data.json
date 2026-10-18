@@ -1,14 +1,14 @@
 {
-  "last_updated": "GSHCL 17 Oct, Today",
+  "last_updated": "GSHCL 18 Oct, Today",
   "vegetables": [
     {
       "name": "Bhendi",
-      "price": 52,
+      "price": 48,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🌿",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -4,
+      "changePercent": -7.7
     },
     {
       "name": "Cabbage",
@@ -21,12 +21,12 @@
     },
     {
       "name": "Carrot",
-      "price": 42,
+      "price": 49,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🥕",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 7,
+      "changePercent": 16.7
     },
     {
       "name": "Cauliflower",
@@ -39,39 +39,39 @@
     },
     {
       "name": "Chilli",
-      "price": 65,
+      "price": 64,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🌶️",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -1,
+      "changePercent": -1.5
     },
     {
       "name": "Cluster Beans",
-      "price": 44,
+      "price": 32,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -12,
+      "changePercent": -27.3
     },
     {
       "name": "French Beans",
-      "price": 67,
+      "price": 66,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -1,
+      "changePercent": -1.5
     },
     {
       "name": "Onion",
-      "price": 55,
+      "price": 57,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🧅",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 2,
+      "changePercent": 3.6
     },
     {
       "name": "Potato",
@@ -84,12 +84,12 @@
     },
     {
       "name": "Tomato",
-      "price": 27,
+      "price": 26,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🍅",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -1,
+      "changePercent": -3.7
     }
   ]
 }
