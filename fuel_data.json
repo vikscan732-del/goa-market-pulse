@@ -1,5 +1,5 @@
 {
-  "last_updated": "Today, 12:01 AM",
+  "last_updated": "Today, 12:06 AM",
   "city": "Panjim",
   "state": "Goa",
   "fuels": [
@@ -16,7 +16,7 @@
     {
       "name": "Diesel (Panjim)",
       "category": "diesel",
-      "price": 95.98,
+      "price": 95.94,
       "unit": "Litre",
       "district": "Goa (Panjim)",
       "icon": "🛢️",
@@ -26,7 +26,7 @@
     {
       "name": "CNG (Panjim)",
       "category": "cng",
-      "price": 86.5,
+      "price": 98.0,
       "unit": "kg",
       "district": "Goa (Panjim)",
       "icon": "🟢",
@@ -36,7 +36,7 @@
     {
       "name": "Auto Gas (Panjim)",
       "category": "cng",
-      "price": 58.2,
+      "price": 46.69,
       "unit": "Litre",
       "district": "Goa (Panjim)",
       "icon": "🔵",
