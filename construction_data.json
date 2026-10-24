@@ -1,5 +1,5 @@
 {
-  "last_updated": "Today, 11:54 PM",
+  "last_updated": "Today, 11:31 PM",
   "total_categories": 16,
   "total_materials": 200,
   "categories": [
@@ -338,7 +338,7 @@
         },
         {
           "name": "AAC Block (600×200×200)",
-          "price": "₹86",
+          "price": "₹97",
           "unit": "per piece"
         },
         {
@@ -414,7 +414,7 @@
         },
         {
           "name": "Kota Stone",
-          "price": "₹31",
+          "price": "₹40",
           "unit": "per sqft"
         },
         {
@@ -520,7 +520,7 @@
         },
         {
           "name": "Asian Apcolite Enamel",
-          "price": "₹330",
+          "price": "₹402",
           "unit": "per litre"
         },
         {
@@ -545,7 +545,7 @@
         },
         {
           "name": "Berger Luxol Hi-gloss",
-          "price": "₹347",
+          "price": "₹472",
           "unit": "per litre"
         },
         {
@@ -601,12 +601,12 @@
         },
         {
           "name": "BWR Plywood (19mm)",
-          "price": "₹140",
+          "price": "₹102",
           "unit": "per sqft"
         },
         {
           "name": "Marine Plywood (19mm)",
-          "price": "₹165",
+          "price": "₹147",
           "unit": "per sqft"
         },
         {
@@ -631,7 +631,7 @@
         },
         {
           "name": "Kitply Marine Plywood",
-          "price": "₹120",
+          "price": "₹144",
           "unit": "per sqft"
         },
         {
@@ -667,7 +667,7 @@
         },
         {
           "name": "PVC Pipe (4\" / 110mm SWR)",
-          "price": "₹368",
+          "price": "₹301",
           "unit": "per metre"
         },
         {
@@ -778,12 +778,12 @@
         },
         {
           "name": "Havells Wire 2.5 sqmm",
-          "price": "₹66",
+          "price": "₹58",
           "unit": "per metre"
         },
         {
           "name": "Polycab Wire 2.5 sqmm",
-          "price": "₹80",
+          "price": "₹62",
           "unit": "per metre"
         },
         {
