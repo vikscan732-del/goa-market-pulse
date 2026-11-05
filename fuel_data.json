@@ -1,12 +1,12 @@
 {
-  "last_updated": "Today, 01:33 AM",
+  "last_updated": "Today, 01:41 AM",
   "city": "Panjim",
   "state": "Goa",
   "fuels": [
     {
       "name": "Petrol (Panjim)",
       "category": "petrol",
-      "price": 104.06,
+      "price": 103.92,
       "unit": "Litre",
       "district": "Goa (Panjim)",
       "icon": "⛽",
@@ -16,7 +16,7 @@
     {
       "name": "Diesel (Panjim)",
       "category": "diesel",
-      "price": 95.94,
+      "price": 95.81,
       "unit": "Litre",
       "district": "Goa (Panjim)",
       "icon": "🛢️",
