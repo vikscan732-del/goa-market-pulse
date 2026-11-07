@@ -1,14 +1,14 @@
 {
-  "last_updated": "GSHCL 06 Nov, Today",
+  "last_updated": "GSHCL 07 Nov, Today",
   "vegetables": [
     {
       "name": "Bhendi",
-      "price": 39,
+      "price": 54,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🌿",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 15,
+      "changePercent": 38.5
     },
     {
       "name": "Cabbage",
@@ -21,48 +21,48 @@
     },
     {
       "name": "Carrot",
-      "price": 40,
+      "price": 42,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🥕",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 2,
+      "changePercent": 5.0
     },
     {
       "name": "Cauliflower",
-      "price": 29,
+      "price": 32,
       "unit": "pc",
       "market": "GSHCL Goa",
       "icon": "🥦",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 3,
+      "changePercent": 10.3
     },
     {
       "name": "Chilli",
-      "price": 57,
+      "price": 51,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🌶️",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -6,
+      "changePercent": -10.5
     },
     {
       "name": "Cluster Beans",
-      "price": 38,
+      "price": 39,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 1,
+      "changePercent": 2.6
     },
     {
       "name": "French Beans",
-      "price": 70,
+      "price": 69,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -1,
+      "changePercent": -1.4
     },
     {
       "name": "Onion",
@@ -75,12 +75,12 @@
     },
     {
       "name": "Potato",
-      "price": 29,
+      "price": 30,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🥔",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 1,
+      "changePercent": 3.4
     },
     {
       "name": "Tomato",
