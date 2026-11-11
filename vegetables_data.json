@@ -1,77 +1,77 @@
 {
-  "last_updated": "GSHCL 08 Nov, Today",
+  "last_updated": "GSHCL 11 Nov, Today",
   "vegetables": [
     {
       "name": "Bhendi",
-      "price": 54,
+      "price": 35,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🌿",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -19,
+      "changePercent": -35.2
     },
     {
       "name": "Cabbage",
-      "price": 22,
+      "price": 23,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🥬",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 1,
+      "changePercent": 4.5
     },
     {
       "name": "Carrot",
-      "price": 42,
+      "price": 45,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🥕",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 3,
+      "changePercent": 7.1
     },
     {
       "name": "Cauliflower",
-      "price": 32,
+      "price": 30,
       "unit": "pc",
       "market": "GSHCL Goa",
       "icon": "🥦",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -2,
+      "changePercent": -6.2
     },
     {
       "name": "Chilli",
-      "price": 51,
+      "price": 77,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🌶️",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 26,
+      "changePercent": 51.0
     },
     {
       "name": "Cluster Beans",
-      "price": 39,
+      "price": 44,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 5,
+      "changePercent": 12.8
     },
     {
       "name": "French Beans",
-      "price": 69,
+      "price": 86,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🫛",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 17,
+      "changePercent": 24.6
     },
     {
       "name": "Onion",
-      "price": 56,
+      "price": 55,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🧅",
-      "change": 0,
-      "changePercent": 0.0
+      "change": -1,
+      "changePercent": -1.8
     },
     {
       "name": "Potato",
@@ -84,12 +84,12 @@
     },
     {
       "name": "Tomato",
-      "price": 26,
+      "price": 27,
       "unit": "kg",
       "market": "GSHCL Goa",
       "icon": "🍅",
-      "change": 0,
-      "changePercent": 0.0
+      "change": 1,
+      "changePercent": 3.8
     }
   ]
 }
